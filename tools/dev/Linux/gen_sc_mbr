@@ -1,0 +1,208 @@
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+import hashlib
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric import ec
+from cryptography.hazmat.primitives.asymmetric import utils
+from cryptography.hazmat.primitives.serialization import *
+import crcmod
+import struct
+from optparse import OptionParser
+from sys import argv as sys_argv
+from sys import exit as sys_exit
+from os.path import exists as file_is_exist
+
+SHA256_USE_LITTLE   = 1
+
+
+def sha256_cal(data, use_little=SHA256_USE_LITTLE):
+    cipher = hashlib.sha256()
+    cipher.update(data)
+    result = cipher.digest()
+    if use_little != 0:
+        tmp = bytearray(result)
+        tmp.reverse()
+        result = bytes(tmp)
+    return result
+
+def crc32_cal(data):
+    crc32_way = crcmod.mkCrcFun(0x104c11db7, rev=True, initCrc=0xFFFFFFFF, xorOut=0x0000)
+    return crc32_way(data)
+
+def int_to_list(val, num):
+    val_str = ('%.'+ str(num*2) + 'x') %val
+    val_list = []
+    for i in list(range(0, num * 2, 2)):
+        index = num * 2 - 2 - i
+        val_list.append(int(val_str[index:index+2], 16))
+    return val_list
+
+def list_to_str(list, num):
+    str = ''
+    for i in range(num):
+        str += '%.2x'%list[i]
+        if (i+1) % 16 == 0:
+            str += '\n'
+        else:
+            str += ' '
+    return str.strip()
+
+class Ecdsa_Cal():
+
+    def __init__(self, private_key = None):
+        curve = ec.SECP256R1()
+        self.sign_algo = ec.ECDSA(hashes.SHA256())
+
+        if private_key != None:
+            self.pri_key = ec.derive_private_key(int(private_key), curve)
+            self.pub_key = self.pri_key.public_key()
+        else:
+            self.pri_key = ec.generate_private_key(curve)
+            self.pub_key = self.pri_key.public_key()
+
+    def private_key_get(self):
+        return int_to_list(self.pri_key.private_numbers().private_value, 32)
+
+    def public_key_get(self):
+        pub_key_x = self.pub_key.public_numbers().x
+        pub_key_y = self.pub_key.public_numbers().y
+        public_key = []
+        for i in range(32):
+            val = pub_key_x & 0xff
+            public_key.append(val)
+            pub_key_x = pub_key_x >> 8
+        for i in range(32):
+            val = pub_key_y & 0xff
+            public_key.append(val)
+            pub_key_y = pub_key_y >> 8
+        return public_key
+
+    def sign_cal(self, data):
+        signature = self.pri_key.sign(data, self.sign_algo)
+        try:
+            self.pub_key.verify(signature, data, self.sign_algo)
+            print('sign finished')
+        except Exception as e:
+            print('sign fail:',e)
+        [r, s] = utils.decode_dss_signature(signature)
+        dig_sign = []
+        for i in range(32):
+            val = r & 0xff
+            dig_sign.append(val)
+            r = r >> 8
+        for i in range(32):
+            val = s & 0xff
+            dig_sign.append(val)
+            s = s >> 8
+        return dig_sign
+
+    def generate_key(self, gen_private_key = True):
+        if gen_private_key:
+            private = struct.unpack('<32B', self.pri_key.private_numbers().private_value)
+            print(list(private))
+        else:
+            pass
+
+if __name__ == '__main__':
+
+    usage = './gen_mbr.exe -f <app_file>  -v <app_version> -x <app_excute_addr> [-l <app_load_addr>] [-k <private key file>] [-o <output_file>] [-g <private key>]'
+    parse = OptionParser(usage)
+    parse.add_option('-f', '--app_file', action = 'store', type='string', dest = 'app_file', default='', help='specify the app file')
+    parse.add_option('-k', '--private_key', action = 'store', type = 'string', dest = 'private_key_file', default='', help='sepcify private key file if you have')
+    parse.add_option('-v', '--app_ver', action = 'store', type='int', dest = 'app_ver', default=0xFFFFFFFF, help='specify app version')
+    parse.add_option('-x', '--excute_addr', action = 'store', type = 'string', dest = 'execute_addr', default='', help='specify app execute address')
+    parse.add_option('-l', '--load_addr', action = 'store', type = 'string', dest = 'load_addr', default='', help='specify app load address')
+    parse.add_option('-o', '--out', action = 'store', type = 'string', dest = 'out_file', default='./app_manifest.bin', help='specify output file, use ./app_manifest.bin by default' )
+    parse.add_option('-g', '--gen_key', dest = 'gen_key', type= 'string', help='generate private and public key, public key\'s hash, if GEN_KEY = 0, generate random private key')
+
+    # check parameter
+    (options, args) = parse.parse_args(sys_argv[1:])
+    if options.gen_key != None:
+        ecdsa_gen_key = None
+        if options.gen_key == '0x0':
+            ecdsa_gen_key = Ecdsa_Cal(None)
+        else:
+            ecdsa_gen_key = Ecdsa_Cal(int(options.gen_key, 16))
+        with open('private_key.txt', 'w') as f:
+            f.write(list_to_str(ecdsa_gen_key.private_key_get(), 32))
+        with open('public_key.txt', 'w') as f:
+            f.write(list_to_str(ecdsa_gen_key.public_key_get(), 64))
+        with open('public_key_hash.txt', 'w') as f:
+            f.write(list_to_str(sha256_cal(bytes(ecdsa_gen_key.public_key_get())), 32))
+        sys_exit()
+
+    if options.app_file == '':
+        print('Error:Please specify app_file, use -f or --app_file')
+        sys_exit()
+    elif options.app_ver == 0xFFFFFFFF:
+        print('Error:Please specify app\'s version, use -v or --app_ver')
+        sys_exit()
+    elif options.execute_addr == '':
+        print('Error:Please specify app execute address, use -v or --app_ver')
+        sys_exit()
+
+    if not file_is_exist(options.app_file):
+        print('Error:Specified app file is not exist')
+        sys_exit()
+
+    magic_num       = ord('M') | (ord('B') << 8) | (ord('R') << 16)
+    mbr_length      = 0xb4
+    app_ver         = options.app_ver
+    app_vma         = int(options.execute_addr, 16)
+    app_lma         = 0xdeadbeef
+    app_length      = 0x0
+    app_hash        = [0x0 for i in range(32)]
+    public_key      = [0x0 for i in range(64)]
+    dig_sign        = [0x0 for i in range(64)]
+    mbr_crc32       = 0x0
+
+    if options.load_addr != '':
+        app_lma = int(options.load_addr, 16)
+
+    PRIVATE_KEY_IS_VALID = True
+    if options.private_key_file == '':
+        PRIVATE_KEY_IS_VALID = False
+    else:
+        PRIVATE_KEY_IS_VALID = True
+
+    if PRIVATE_KEY_IS_VALID:
+        if not file_is_exist(options.private_key_file):
+            print('Error:Specified private key file is not exist')
+            sys_exit()
+
+        private_key_val = 0x0
+        with open(options.private_key_file, 'r') as prk_f:
+            prk_data = prk_f.read()
+            prk_data = prk_data.split()
+            if (len(prk_data) != 32):
+                print('Error:Specified private key file format error')
+                sys_exit()
+            for i in list(range(31, -1, -1)):
+                private_key_val = private_key_val << 8
+                private_key_val = private_key_val | int(prk_data[i], 16)
+
+    app_path = options.app_file
+    app_data = b''
+    with open(app_path, 'rb') as f_app:
+        app_data    = f_app.read()
+        app_length  = len(app_data)
+        app_hash    = sha256_cal(app_data)
+
+    if PRIVATE_KEY_IS_VALID:
+        ecdsa_cal = Ecdsa_Cal(private_key_val)
+        public_key = ecdsa_cal.public_key_get()
+        sign_data = struct.pack('<6L', magic_num, mbr_length, app_ver, app_vma, app_lma, app_length) + bytes(app_hash) + bytes(public_key)
+        dig_sign = ecdsa_cal.sign_cal(sign_data)
+    else:
+        sign_data = struct.pack('<6L', magic_num, mbr_length, app_ver, app_vma, app_lma, app_length) + bytes(app_hash) + bytes(public_key)
+
+    crc32_data = sign_data + bytes(dig_sign)
+    mbr_crc32  = crc32_cal(crc32_data)
+
+    with open(options.out_file, 'wb') as f_mbr:
+        mbr_data = crc32_data + struct.pack('<L', mbr_crc32)
+        f_mbr.write(mbr_data)
+    print(options.out_file, ' is generated successfully ')
+
+    sys_exit()

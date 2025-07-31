@@ -1,0 +1,12 @@
+######################################################################
+#
+# via file for armlink
+#
+#####################################################################
+
+# ROM extend patchs
+rom_lib_ble_full.lib(*)
+
+# ROM symbol (User can edit this file to remove some ROM symbol)
+rom_symbol.symdefs
+
