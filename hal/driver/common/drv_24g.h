@@ -1,31 +1,31 @@
 /* ----------------------------------------------------------------------------
-* Copyright (c) 2020-2030 chipsea Limited. All rights reserved.
-*
-* Redistribution and use in source and binary forms, with or without modification,
-* are permitted provided that the following conditions are met:
-*   1. Redistributions of source code must retain the above copyright notice,
-*      this list of conditions and the following disclaimer.
-*   2. Redistributions in binary form must reproduce the above copyright notice,
-*      this list of conditions and the following disclaimer in the documentation
-*      and/or other materials provided with the distribution.
-*   3. Neither the name of chipseaelectronics nor the names of its contributors
-*      may be used to endorse or promote products derived from this software
-*      without specific prior written permission.
-*
-* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-* DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-* OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-* OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*
-* -------------------------------------------------------------------------- */
+ * Copyright (c) 2020-2030 chipsea Limited. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without modification,
+ * are permitted provided that the following conditions are met:
+ *   1. Redistributions of source code must retain the above copyright notice,
+ *      this list of conditions and the following disclaimer.
+ *   2. Redistributions in binary form must reproduce the above copyright notice,
+ *      this list of conditions and the following disclaimer in the documentation
+ *      and/or other materials provided with the distribution.
+ *   3. Neither the name of chipseaelectronics nor the names of its contributors
+ *      may be used to endorse or promote products derived from this software
+ *      without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+ * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * -------------------------------------------------------------------------- */
 
-/**          
+/**
  * @file     drv_24g.h
  * @brief    CS24G Driver
  * @date     24. July 2021
@@ -54,14 +54,12 @@
 #include <stdint.h>
 #ifdef __cplusplus
 
-extern "C"
-{
+extern "C" {
 #endif
 
 /*********************************************************************
  * MACROS
  */
-
 
 /*********************************************************************
  * TYPEDEFS
@@ -69,7 +67,7 @@ extern "C"
 
 /// CS24G PACKET STRUCTURE
 typedef enum {
-    /// PACKET STRUCTURE A 
+    /// PACKET STRUCTURE A
     CS_24G_STRUCTURE_A = 0,
     /// PACKET STRUCTURE B
     CS_24G_STRUCTURE_B = 1,
@@ -77,7 +75,7 @@ typedef enum {
 
 /// CS24G SYNCWORD SEL
 typedef enum {
-    /// Select sync word 0 
+    /// Select sync word 0
     CS_24G_SYNCWORD0 = 0,
     /// Select sync word 1
     CS_24G_SYNCWORD1 = 1,
@@ -153,7 +151,7 @@ typedef enum {
 
 /// CS24G DEMODULATION MODE
 typedef enum {
-    /// Software demodulation 
+    /// Software demodulation
     CS_24G_SOFT_DETECTION,
     /// Hardware demodulation
     CS_24G_HARD_DETECTION,
@@ -163,86 +161,53 @@ typedef enum {
 
 /// CS24G config
 typedef struct {
-    /// tx data pointer
-    uint8_t                 *tx_data;
-    /// rx data pointer
-    uint8_t                 *rx_data;
-    // select package structure A or B
-    cs_24g_structure_t       packet_struct_sel;
-    /// preamble content, The last bit of the preamble needs to be opposite to the first bit of the synchronization word.
-    uint8_t                 preamble;
-    /// preamble lenth
-    uint8_t                 preamble_len;
-    /// select sync word0 or word1 to transmit package
-    cs_24g_syncword_t        sync_word_sel;
-    /// sync word0
-    uint32_t                sync_word0;
-    /// sync word1
-    uint32_t                sync_word1;
-    /// tx pipe address
-    uint8_t                 tx_addr;
-    /// rx pipe0 address
-    uint8_t                 rx_addr;
-    /// If it is 1, check if rx pipe address matches, and if it is 0, do not check.
-    uint8_t                 addr_chk;
+    uint8_t *tx_data; // 发送数据缓冲区指针
+    uint8_t *rx_data; // 接收数据缓冲区指针
+
+    cs_24g_structure_t packet_struct_sel; // 数据包结构A/B
+    uint8_t preamble;                     // 前导码
+    uint8_t preamble_len;                 // 前导码长度
+    cs_24g_syncword_t sync_word_sel;      // 同步字选择(SYNCWORD0 或 SYNCWORD1)
+    uint32_t sync_word0;                  // ​​同步字低32位​​
+    uint32_t sync_word1;                  // 同步字高32位​
+    uint8_t tx_addr;                      // 发送地址
+    uint8_t rx_addr;                      // 接收地址
+    uint8_t addr_chk;                     // 地址校验​​(1=启用,0=禁用)
     /// The number of bits in the header. if hdr_bits = 8, static_len = 257, It can avoid the problem of AGC lock up, but it will increase RAM usage, and it is necessary to set cs_24d_rx_cyload [257 * 2].
-    uint8_t                 hdr_bits;
+    uint8_t hdr_bits; // 包头位数字,如8就代表1字节包头
     /// In fixed length mode, it is the length of the receiving and sending. In dynamic length mode, it is the maximum packet length that can be sent.
-    uint16_t                static_len;
-    /// The number of bits in rx pipe address.
-    uint8_t                 addr1_bits;
-    /// The number of bits in lenth.
-    uint8_t                 len_bits;
+    uint16_t static_len; // ​​固定包长度(静态模式)或最大包长度(动态模式)
+    uint8_t addr1_bits;  // 接收地址的位数
+    uint8_t len_bits;    // 长度字段的位数​​(动态长度模式下)
     /// The location of rx pipe address.
-    uint8_t                 addr1_pos;
-    /// The location of rx pipe address(after/in/before header).
-    uint8_t                 addr1_loc;
-    /// The location of lenth.
-    uint8_t                 len_pos;
-    /// MSB first or LSB first transmit.
-    cs_24g_endian_t          endian;
-    /// The channel for transmitting frequency points.
-    uint16_t                freq;
-    /// air date rate.
-    cs_24g_rate_t            data_rate;
-    /// enable ack mode.
-    uint8_t                 ack_en;
-    /// Enable dynamic length.
-    uint8_t                 dpl_en;
-    /// Enable whitening.
-    uint8_t                 white_en;
-    /// 1: Do not whiten the header.
-    uint8_t                 white_skip_hdr;
-    /// 1: Do not whiten the pipe address.
-    uint8_t                 white_skip_addr;
-    /// 1: Do not whiten CRC.
-    uint8_t                 white_skip_crc;
-    /// select whiten mode(0~7) to Adapt to different chips.
-    uint8_t                 white_sel;
-    /// white seed value.
-    uint16_t                white_seed;
-    /// white out bit.
-    uint8_t                 white_obit;
-    /// lenth of crc.
-    cs_24g_crc_byte_t        crc_len;
-    /// Enable crc.
-    uint8_t                 crc_en;
-    /// select crc mode.
-    uint8_t                 crc_mode;
-    /// CRC Polynomial
-    uint32_t                crc_poly;
-    /// CRC initital value.
-    uint32_t                crc_init;
-    /// 1: CRC does not verify synchronization words.
-    uint8_t                 crc_skip_sync;
-    /// 1: CRC does not verify lenth.
-    uint8_t                 crc_skip_len;
-    /// 1: CRC does not verify pipe address.
-    uint8_t                 crc_skip_addr;
-    /// Select GFSK or FSK.
-    cs_24g_modulation_t      modulation_mode;
-    /// Select modulation mode.
-    cs_24g_detect_mode_t     detect_mode;
+    uint8_t addr1_pos;       // 接收地址在数据包中的位置​​(比特偏移量)
+    uint8_t addr1_loc;       // ​​接收地址的存储位置​​(在包头,包尾或独立字段)
+    uint8_t len_pos;         // ​​长度字段在数据包中的位置​​(比特偏移量)
+    cs_24g_endian_t endian;  // ​​字节序​​(MSB=大端，LSB=小端)
+    uint16_t freq;           // ​​射频频率​
+    cs_24g_rate_t data_rate; // 数据传输速度
+    uint8_t ack_en;          // 自动确认(ACK)​​(1=启用,0=禁用)
+    uint8_t dpl_en;          // ​动态负载长度​​(1=启用,0=禁用)
+
+    uint8_t white_en;        // 白化使能(1=启用,0=禁用)
+    uint8_t white_skip_hdr;  // 跳过包头白化​​(1=跳过,0=处理)
+    uint8_t white_skip_addr; // 跳过地址白化​​(1=跳过,0=处理)
+    uint8_t white_skip_crc;  // 跳过CRC白化​​(1=跳过,0=处理)
+    uint8_t white_sel;       // 白化算法选择​​(0~7,适配不同芯片)
+    uint16_t white_seed;     // ​​白化初始种子值
+    uint8_t white_obit;      // 白化输出位控制​​(调整打乱强度)
+
+    cs_24g_crc_byte_t crc_len; // crc长度
+    uint8_t crc_en;            // CRC 使能(1=启用,0=禁用)
+    uint8_t crc_mode;          // CRC 计算模式​​
+    uint32_t crc_poly;         // CRC 多项式​
+    uint32_t crc_init;         // ​​CRC 初始值​​
+    uint8_t crc_skip_sync;     // ​​跳过同步字CRC校验​​(1=跳过)
+    uint8_t crc_skip_len;      // ​​跳过长度字段CRC校验​​(1=跳过)
+    uint8_t crc_skip_addr;     // ​​跳过地址字段CRC校验(1=跳过)
+
+    cs_24g_modulation_t modulation_mode; //	​​调制方式​​(FSK/GFSK)
+    cs_24g_detect_mode_t detect_mode;    // 解调模式(软件/硬件/锁相环)
 } cs_24g_config_t;
 
 /// CS24G PIPE
@@ -269,11 +234,11 @@ typedef enum {
 
 /// cs_24g control
 typedef enum {
-    CS_24G_CONTROL_CLK_DISABLE      = 0U,                 /**< Disable clock CS24G controller, argu is bool, return CS_ERROR_OK */
-    CS_24G_CONTROL_CLK_ENABLE       = 1U,                 /**< Enable clock CS24G controller, argu is bool, return CS_ERROR_OK */
-    CS_24G_CONTROL_RESET            = 2U,                 /**< Reseet CS24G controller, argu is bool, return CS_ERROR_OK */
-    CS_24G_CONTROL_SWITCH_ROLE      = 3U,                 /**< rx/tx mode switch, argu is cs_24g_role_t, return CS_ERROR_OK */
-    CS_24G_CONTROL_DUMP_RF_REGISTER = 4U,                 /**< Dump 2.4G rf register, argu is NULL, return CS_ERROR_OK */
+    CS_24G_CONTROL_CLK_DISABLE      = 0U, /**< Disable clock CS24G controller, argu is bool, return CS_ERROR_OK */
+    CS_24G_CONTROL_CLK_ENABLE       = 1U, /**< Enable clock CS24G controller, argu is bool, return CS_ERROR_OK */
+    CS_24G_CONTROL_RESET            = 2U, /**< Reseet CS24G controller, argu is bool, return CS_ERROR_OK */
+    CS_24G_CONTROL_SWITCH_ROLE      = 3U, /**< rx/tx mode switch, argu is cs_24g_role_t, return CS_ERROR_OK */
+    CS_24G_CONTROL_DUMP_RF_REGISTER = 4U, /**< Dump 2.4G rf register, argu is NULL, return CS_ERROR_OK */
 } cs_24g_control_t;
 
 /// cs_24g transfer case
@@ -330,9 +295,9 @@ extern void cs_24g_set_rate(uint8_t data_rate, bool en_arb, uint8_t n_avr, uint8
 /**
  *******************************************************************************
  * @brief Set transmission rate, frequency point.
- * The speed only allows the use of speeds listed in enumeration cs_24g_rate_t in drv_24g.h. Please do not configure them arbitrarily. 
+ * The speed only allows the use of speeds listed in enumeration cs_24g_rate_t in drv_24g.h. Please do not configure them arbitrarily.
  * For special requirements, please contact the developer.
- * 
+ *
  * @param[in] data_rate         tx/rx data rate.
  * @param[in] frequency         Integer frequency point.
  * @param[in] fract_freq        Decimal frequency point.
@@ -362,7 +327,7 @@ extern int8_t cs_24g_get_rssi(void);
  *******************************************************************************
  * @brief init the 2.4g transerive when the event begin.
  * If the deviation is dynamically switched, it is prohibited to repeatedly call cs_24g_init.
- * 
+ *
  * @param[in] cfg          2.4G register configuration.
  *******************************************************************************
  */
@@ -425,7 +390,7 @@ extern uint16_t cs_24g_read(uint8_t *rx_payload, uint32_t timeout_ms);
 /**
  *******************************************************************************
  * @brief Receive data from receive FIFO by interrupt mode. The received data and length can be obtained from the callback function.
-  
+
  * @param[in] rx_payload      Data read from receive buffer
  * @param[in] max_rx_num      The maximum number of receives for this application.
 
@@ -465,7 +430,7 @@ extern void drv_cs_24g_isr(void);
  *******************************************************************************
  * @brief Control the CS24G CLK and Printing registers.
  * cs_24g_control() contains drv_pmu_ana_enable(), so turning on or turning off the clock only requires calling cs_24g_control().
- * 
+ *
  * @param[in] control        Control options
  * @param[in] argu           argument for control options, Not used, always set NULL
  *
@@ -512,7 +477,7 @@ extern void cs_24g_rf_init_seq(void);
 }
 #endif
 
-#endif  /*RTE_CS24G*/
+#endif /*RTE_CS24G*/
 #endif /*__CS_24G_H*/
 
 /** @} */

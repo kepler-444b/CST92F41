@@ -1,4 +1,4 @@
-./objects/evt_task.o: ..\src\evt_task.c ..\..\..\common\cs.h \
+./objects/app_24g.o: ..\src\app_24g.c ..\..\..\common\cs.h \
   ..\..\..\hal\device\include\cs_device.h ..\..\..\include\features.h \
   ..\..\..\hal\device\include\autoconf_preset.h \
   ..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h \
@@ -75,11 +75,14 @@
   ..\..\..\components\evt\evt_timer.h ..\..\..\bsp\include\board.h \
   ..\..\..\bsp\CST92F4X_EVB\board_cst92f41_evb.h \
   ..\..\..\components\mbr\mbr.h ..\..\..\components\nvds\nvds.h \
-  ..\..\..\components\nvds\nvds_tags.h ..\src\sdk_config.h \
+  ..\..\..\components\nvds\nvds_tags.h \
+  ..\..\..\components\ble\controller\include\cs_bc.h \
+  ..\..\..\components\ble\controller\include\cs_bc_hci_h4.h \
+  ..\..\..\components\ble\controller\include\cs_bc_llt.h \
+  ..\..\..\components\ble\controller\include\cs_bc_pta.h \
   ..\..\..\components\ble\host\include\cs_ble.h \
   ..\..\..\components\ble\host\include\cs_ble_gap.h \
   ..\..\..\components\ble\host\include\cs_ble_range.h \
   ..\..\..\components\ble\host\include\cs_ble_gatt.h \
   ..\..\..\components\ble\host\include\cs_ble_misc.h \
-  ..\..\..\components\ble\host\include\cs_ble_error.h \
-  ..\..\common\cs_tspp\service_tspp.h ..\..\..\rtos\include\cmsis_os2.h
+  ..\..\..\components\ble\host\include\cs_ble_error.h

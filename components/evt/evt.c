@@ -38,7 +38,6 @@
  * @{
  */
 
-
 /*******************************************************************************
  * INCLUDES
  */
@@ -54,7 +53,6 @@
  * TYPEDEFS
  */
 
-
 /// environment structure
 typedef struct
 {
@@ -68,8 +66,7 @@ typedef struct
     /// callback for evt_set
     evt_callback_t schedule_trigger_callback;
 #endif
-}evt_env_t;
-
+} evt_env_t;
 
 /*******************************************************************************
  * GLOBAL VARIABLES
@@ -77,7 +74,6 @@ typedef struct
 
 /// environment
 static evt_env_t evt_env;
-
 
 /*******************************************************************************
  * LOCAL FUNCTION DEFINITIONS
@@ -95,18 +91,17 @@ static evt_env_t evt_env;
 __RAM_CODES("PM")
 static uint32_t evt_ctz(uint32_t x)
 {
-    #ifdef __RBIT // armv7+
+#ifdef __RBIT // armv7+
     return __CLZ(__RBIT(x));
-    #else
-    int c = __CLZ(x & -x);      //lint !e501 use x&-x to get the lowest bit 1, and clear other bits
+#else
+    int c = __CLZ(x & -x); // lint !e501 use x&-x to get the lowest bit 1, and clear other bits
     return x ? 31 - c : c;
-    #endif
+#endif
 }
 
 /*******************************************************************************
  * EXPORTED FUNCTION DEFINITIONS
  */
-
 
 /**
  ****************************************************************************************
@@ -257,21 +252,24 @@ void evt_schedule(void)
     // Get the volatile value
     uint32_t field = evt_env.field;
 
-    while (field) { // Compiler is assumed to optimize with loop inversion
+    while (field)
+    { // Compiler is assumed to optimize with loop inversion
         // Find highest priority event set
-        uint32_t hdl = evt_ctz(field);
+        uint32_t hdl = evt_ctz(field); // 找到最低位的1(最高优先级事件)
 
-        if(evt_env.callback[hdl] != NULL) {
+        if (evt_env.callback[hdl] != NULL)
+        {
             // Execute corresponding handler
-            TRC_IO(TRC_IO_EVT_EXEC_CB, 1);
-            (evt_env.callback[hdl])();
-            TRC_IO(TRC_IO_EVT_EXEC_CB, 0);
-        } else {
-            CS_ASSERT(0);
+            TRC_IO(TRC_IO_EVT_EXEC_CB, 1); // 标记回调开始
+            (evt_env.callback[hdl])();     // 执行实际回调
+            TRC_IO(TRC_IO_EVT_EXEC_CB, 0); // 标记回调结束
+        }
+        else
+        {
+            CS_ASSERT(0); // 挂起
         }
 
-        // Update the volatile value
-        field = evt_env.field;
+        field = evt_env.field; // 重新读取事件标志(处理新事件)
     }
 }
 
@@ -287,16 +285,20 @@ uint32_t evt_schedule_once(void)
     // Get the volatile value
     uint32_t field = evt_env.field;
 
-    if (field) { // Compiler is assumed to optimize with loop inversion
+    if (field)
+    { // Compiler is assumed to optimize with loop inversion
         // Find highest priority event set
         uint8_t hdl = evt_ctz(field);
 
-        if(evt_env.callback[hdl] != NULL) {
+        if (evt_env.callback[hdl] != NULL)
+        {
             // Execute corresponding handler
             TRC_IO(TRC_IO_EVT_EXEC_CB, 1);
             (evt_env.callback[hdl])();
             TRC_IO(TRC_IO_EVT_EXEC_CB, 0);
-        } else {
+        }
+        else
+        {
             CS_ASSERT(0);
         }
 
@@ -308,4 +310,3 @@ uint32_t evt_schedule_once(void)
 }
 
 /** @} */
-

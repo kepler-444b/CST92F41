@@ -5,7 +5,6 @@
 #include "pm.h"
 #include "board.h"
 #include "mbr.h"
-
 #include "sdk_config.h"
 #include "cs_ble.h"
 
@@ -26,21 +25,20 @@ static void drv_pin_wakeup_isr_handler(void *cs_reg, drv_event_t event, void *in
 
 static void pm_sleep_notify_handler(pm_sleep_state_t sleep_state, pm_status_t power_status)
 {
-    switch (sleep_state)
-    {
-    case PM_SLEEP_ENTRY:
-        // CS_LOG_DEBUG("> %d\n", power_status);
-        break;
+    switch (sleep_state) {
+        case PM_SLEEP_ENTRY:
+            // CS_LOG_DEBUG("> %d\n", power_status);
+            break;
 
-    case PM_SLEEP_LEAVE_TOP_HALF:
-        break;
+        case PM_SLEEP_LEAVE_TOP_HALF:
+            break;
 
-    case PM_SLEEP_LEAVE_BOTTOM_HALF:
-        // CS_LOG_DEBUG("< %d\n", power_status);
-        break;
+        case PM_SLEEP_LEAVE_BOTTOM_HALF:
+            // CS_LOG_DEBUG("< %d\n", power_status);
+            break;
 
-    default:
-        break;
+        default:
+            break;
     }
 }
 
@@ -71,8 +69,7 @@ static void vTestTask(void *argument)
 
     osTimerStart(xTimer, 125 * osKernelGetTickFreq() / 1000);
 
-    for (;;)
-    {
+    for (;;) {
         //        drv_gpio_toggle(CS_GPIO0, BIT_MASK(PAD_LED_3));
         CS_LOG_DEBUG("vTestTask delay 500ms, TickFreq=%dHz\n", osKernelGetTickFreq());
         osDelay(500 * osKernelGetTickFreq() / 1000);
@@ -100,7 +97,7 @@ int main(void)
 
     osKernelInitialize(); // 初始化 RTOS 内核
 
-    vStartEvtTask();  // 启动蓝牙事件任务
+    vStartEvtTask();  // 启动事件任务
     vStartTestTask(); // 启动测试任务
 
     // Start thread execution

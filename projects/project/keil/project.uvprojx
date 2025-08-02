@@ -506,6 +506,21 @@
               <FileType>1</FileType>
               <FilePath>../../common/cs_hid_media/app_hid_media.c</FilePath>
             </File>
+            <File>
+              <FileName>app_24g.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\src\app_24g.c</FilePath>
+            </File>
+            <File>
+              <FileName>app_24g.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\app_24g.h</FilePath>
+            </File>
+            <File>
+              <FileName>app_adv.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\src\app_adv.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

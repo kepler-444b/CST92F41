@@ -68,6 +68,15 @@ typedef enum {
  * MACROS
  */
 #ifdef CONFIG_LOG
+
+#define APP_PRINTF(format, ...)                    cs_log(CS_LOG_INFO, format, ##__VA_ARGS__)
+#define APP_PRINTF_BUF(name, buf, len)             do {                                                       \
+                                                        APP_PRINTF("%s: ", (name));                           \
+                                                        for (size_t i = 0; i < (len); i++) {                  \
+                                                            APP_PRINTF("%02X ", ((const uint8_t *)(buf))[i]); \
+                                                        }                                                     \
+                                                        APP_PRINTF("\n");                                     \
+                                                    } while (0)
 /// log
 #define CS_LOG(level, format, ...)                 cs_log(level, format,  ## __VA_ARGS__)
 /// log array

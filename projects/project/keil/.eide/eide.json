@@ -96,6 +96,15 @@
           },
           {
             "path": "../../common/cs_hid_media/app_hid_media.c"
+          },
+          {
+            "path": "../src/app_24g.c"
+          },
+          {
+            "path": "../src/app_24g.h"
+          },
+          {
+            "path": "../src/app_adv.h"
           }
         ],
         "folders": []
