@@ -70,6 +70,8 @@ typedef enum {
 #ifdef CONFIG_LOG
 
 #define APP_PRINTF(format, ...)                    cs_log(CS_LOG_INFO, format, ##__VA_ARGS__)
+#define APP_ERROR(format, ...)                     APP_PRINTF("[#%s#] \"" format "\" ERROR!\n", __func__, ##__VA_ARGS__)
+
 #define APP_PRINTF_BUF(name, buf, len)             do {                                                       \
                                                         APP_PRINTF("%s: ", (name));                           \
                                                         for (size_t i = 0; i < (len); i++) {                  \

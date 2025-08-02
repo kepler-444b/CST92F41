@@ -93,7 +93,7 @@ int main(void)
     drv_rf_init();    // 射频初始化
     evt_init();       // 事件系统初始化
     evt_timer_init(); // 事件定时器初始化
-    shell_init(NULL); // 命令行shell初始化
+    shell_init(NULL); // 命令行shell初始化(暂用于调试)
 
     osKernelInitialize(); // 初始化 RTOS 内核
 

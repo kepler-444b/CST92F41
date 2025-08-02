@@ -38,7 +38,6 @@
  * @{
  */
 
-
 /*******************************************************************************
  * INCLUDES
  */
@@ -48,7 +47,6 @@
 #include "cs_device.h"
 #include "cs_driver.h"
 
-
 /*******************************************************************************
  * MACROS
  */
@@ -57,19 +55,18 @@ typedef struct {
 } drv_usart_ex_env_t;
 
 typedef struct {
-    void            *reg;
-    void            *env;
-    IRQn_Type       irq_num;
-    uint8_t         irq_prio;
+    void *reg;
+    void *env;
+    IRQn_Type irq_num;
+    uint8_t irq_prio;
 } drv_usart_ex_resource_t;
-
 
 /*******************************************************************************
  * TYPEDEFS
  */
 #if (RTE_USART0)
 static drv_usart_ex_env_t usart0_env = {
-    .isr_cb        = NULL,
+    .isr_cb = NULL,
 };
 
 static const drv_usart_ex_resource_t usart0_resource = {
@@ -80,29 +77,27 @@ static const drv_usart_ex_resource_t usart0_resource = {
 };
 #endif
 
-
 /*******************************************************************************
  * CONST & VARIABLES
  */
-
 
 /*******************************************************************************
  * LOCAL FUNCTIONS
  */
 static const drv_usart_ex_resource_t *usart_ex_get_resource(CS_USART_EX_Type *cs_usart)
 {
-    #if (RTE_USART0)
+#if (RTE_USART0)
     if ((uint32_t)cs_usart == (uint32_t)(usart0_resource.reg)) {
         return &usart0_resource;
     }
-    #endif /* RTE_USART0 */
+#endif /* RTE_USART0 */
 
     return NULL;
 }
 
 static void usart_ex_config_mode_baudrate(CS_USART_EX_Type *cs_usart, usart_ex_mode_t mode, uint32_t baudrate)
 {
-    uint16_t   baud_divisor;
+    uint16_t baud_divisor;
 
     // config mode
     register_set(&cs_usart->CON, MASK_1REG(UART_EX_CON_MODE, mode));
@@ -131,7 +126,6 @@ static void usart_ex_config_mode_baudrate(CS_USART_EX_Type *cs_usart, usart_ex_m
     }
 }
 
-
 /*******************************************************************************
  * PUBLIC FUNCTIONS
  */
@@ -154,7 +148,7 @@ cs_error_t drv_usart_ex_init(CS_USART_EX_Type *cs_usart, const usart_ex_config_t
     CS_ASSERT(usart_cfg);
 
     resource = usart_ex_get_resource(cs_usart);
-    if(resource == NULL){
+    if (resource == NULL) {
         return CS_ERROR_PARAMETER;
     }
 
@@ -164,12 +158,12 @@ cs_error_t drv_usart_ex_init(CS_USART_EX_Type *cs_usart, const usart_ex_config_t
 
     drv_usart_ex_control(cs_usart, USART_EX_CTRL_MULT_PROCESSOR_EN, NULL, NULL);
 
-    register_set(&cs_usart->CON, MASK_2REG(UART_EX_CON_SRX_EN,    1,
+    register_set(&cs_usart->CON, MASK_2REG(UART_EX_CON_SRX_EN, 1,
                                            UART_EX_CON_RX_INT_EN, 1));
 
     NVIC_ClearPendingIRQ(resource->irq_num);
-	NVIC_SetPriority(resource->irq_num, resource->irq_prio);
-	NVIC_EnableIRQ(resource->irq_num);
+    NVIC_SetPriority(resource->irq_num, resource->irq_prio);
+    NVIC_EnableIRQ(resource->irq_num);
 
     return CS_ERROR_OK;
 }
@@ -187,34 +181,36 @@ cs_error_t drv_usart_ex_init(CS_USART_EX_Type *cs_usart, const usart_ex_config_t
 void drv_usart_ex_register_isr_callback(CS_USART_EX_Type *cs_usart, drv_isr_callback_t cb)
 {
     const drv_usart_ex_resource_t *resource;
-    drv_usart_ex_env_t            *env;
+    drv_usart_ex_env_t *env;
 
+    // 获取 usart 硬件资源
     resource = usart_ex_get_resource(cs_usart);
-    if(resource == NULL) {
+    if (resource == NULL) {
         return;
     }
+    // 获取 usart 的环境变量 env
     env = (drv_usart_ex_env_t *)(resource->env);
-
+    // 注册中断回调函数
     env->isr_cb = cb;
 }
 #endif
 
 __WEAK void drv_usart_ex_isr_callback(CS_USART_EX_Type *cs_usart, drv_event_t event, uint8_t *data, uint16_t num)
 {
-    #if (RTE_USART_REGISTER_CALLBACK)
+#if (RTE_USART_REGISTER_CALLBACK)
     const drv_usart_ex_resource_t *resource;
-    drv_usart_ex_env_t            *env;
+    drv_usart_ex_env_t *env;
 
     resource = usart_ex_get_resource(cs_usart);
-    if(resource == NULL) {
+    if (resource == NULL) {
         return;
     }
     env = (drv_usart_ex_env_t *)(resource->env);
 
     if (env->isr_cb != NULL) {
-        env->isr_cb(cs_usart, event, data, (void *)(uint32_t)num);
+        env->isr_cb(cs_usart, event, data, (void *)(uint32_t)num); // 触发回调函数
     }
-    #endif
+#endif
 }
 
 /**
@@ -233,14 +229,14 @@ __WEAK void drv_usart_ex_isr_callback(CS_USART_EX_Type *cs_usart, drv_event_t ev
  */
 cs_error_t drv_usart_ex_write(CS_USART_EX_Type *cs_usart, const uint8_t *data, uint16_t num, uint32_t timeout_ms)
 {
-    const drv_usart_ex_resource_t  *resource;
+    const drv_usart_ex_resource_t *resource;
     uint16_t tx_cnt;
     uint16_t tx_num;
     cs_error_t error;
 
     CS_ASSERT(num != 0U);
     resource = usart_ex_get_resource(cs_usart);
-    if(resource == NULL) {
+    if (resource == NULL) {
         return CS_ERROR_PARAMETER;
     }
 
@@ -272,9 +268,9 @@ cs_error_t drv_usart_ex_write(CS_USART_EX_Type *cs_usart, const uint8_t *data, u
 void *drv_usart_ex_control(CS_USART_EX_Type *cs_usart, usart_ex_control_t control, void *argu0, void *argu1)
 {
     const drv_usart_ex_resource_t *resource;
-    uint32_t              ret;
+    uint32_t ret;
 
-    ret = (uint32_t )CS_ERROR_OK;
+    ret      = (uint32_t)CS_ERROR_OK;
     resource = usart_ex_get_resource(cs_usart);
     if (resource == NULL) {
         return (void *)CS_ERROR_PARAMETER;
@@ -322,10 +318,10 @@ void *drv_usart_ex_control(CS_USART_EX_Type *cs_usart, usart_ex_control_t contro
 void drv_usart_ex_isr(CS_USART_EX_Type *cs_usart)
 {
     uint8_t ch;
-    const drv_usart_ex_resource_t  *resource;
+    const drv_usart_ex_resource_t *resource;
 
     resource = usart_ex_get_resource(cs_usart);
-    if(resource == NULL) {
+    if (resource == NULL) {
         return;
     }
 
@@ -336,7 +332,6 @@ void drv_usart_ex_isr(CS_USART_EX_Type *cs_usart)
         drv_usart_ex_isr_callback(cs_usart, DRV_EVENT_COMMON_READ_COMPLETED, &ch, 1);
     }
 }
-
 
 #endif /* (RTE_USART0) */
 

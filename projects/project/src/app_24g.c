@@ -1,46 +1,3 @@
-/* ----------------------------------------------------------------------------
- * Copyright (c) 2020-2030 chipsea Limited. All rights reserved.
- *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- *   1. Redistributions of source code must retain the above copyright notice,
- *      this list of conditions and the following disclaimer.
- *   2. Redistributions in binary form must reproduce the above copyright notice,
- *      this list of conditions and the following disclaimer in the documentation
- *      and/or other materials provided with the distribution.
- *   3. Neither the name of chipseaelectronics nor the names of its contributors
- *      may be used to endorse or promote products derived from this software
- *      without specific prior written permission.
- *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
- * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
- * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
- * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
- * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
- * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- *
- * -------------------------------------------------------------------------- */
-
-/**
- * @file     main.c
- * @brief    cst92f41 main entry
- * @date     10. Sept. 2021
- * @author   chipsea
- *
- * @version
- * Version 1.0
- *  - Initial release
- *
- * @{
- */
-
-/*******************************************************************************
- * INCLUDES
- */
 #include "cs.h"
 #include "cs_driver.h"
 #include "shell.h"
@@ -54,48 +11,25 @@
 #include "cs_bc.h"
 #include "cs_ble.h"
 
-/*********************************************************************
- * MACROS
- */
-
 #define TX_ROLE           0 // 使用接收模式
 #define CS_24G_ACK_MODE   0 // 禁用ack
 #define ENABLE_SLEEP_MODE 0 // 禁用睡眠
-
-/*********************************************************************
- * LOCAL VARIABLES
- */
 
 static volatile uint16_t error_count = 0;
 static volatile uint16_t right_count = 0;
 static volatile uint16_t tx_count    = 0;
 
 static uint8_t cs_24g_tx_payload[32];
-/*
-In order to optimize reception performance, dual buffers are used to receive data,
-and the array size must be more than twice the maximum number of received packets,
-otherwise it will cause packet reception failure. For example, the business can only
-receive a maximum of 32 bytes of packets, and the array size is 64 bytes or greater
-*/
-static uint8_t cs_24g_rx_payload[64];
+static uint8_t cs_24g_rx_payload[64]; // 使用双重缓冲
 
 /**
- *******************************************************************************
- * @brief 24G configuration parameter
+ * @brief 2.4G无线配置(结构A模式)
  *
- * Package structure A、ACK mode、Dynamic length mode、Compatible with cst92f41、nordic series
- * 5 bytes sync word : (sync_word0 + rx/tx_addr) 0xEDD4765602
- * 9 bits header: (a 6 bits’ length field, a 2-bit PID (Packet Identity) field and a 1 bit NO_ACK flag)
- * 0~32 bytes payload: {1,2,......32}
- * 2 bytes crc: seed = 0xFFFF crc_poly = 0x1021
- *
- * the data whitening scope includes only the payload domain.
- * the scope of CRC is fixed: includes sync_word field, 1-byte address field, 2 bytes guard field (if guard field exist), header field, and payload field.
- *
- * @param[in] static_len  The maximum packet length is 32 bytes
- * @param[in] freq        2480MHZ
- * @note    CS_24G_STRUCTURE_A Speed below 1M ACK MODE must use CS_24G_HARD_DETECTION.
- *******************************************************************************
+ * 特点:高可靠性,ACK确认,动态长度,专为CST92F41/Nordic优化
+ * 数据包格式：
+ * [前导码0xAA] + [同步字0x817e817e84] + [动态包头] + [Payload 1-32字节] + [2字节CRC]
+ * 同步字:5字节(sync_word0 + 地址字段)
+ * 包头：9比特(6比特长度 + 2比特PID + 1比特NO_ACK标志)
  */
 cs_24g_config_t cs_24g_config_a = {
     .tx_data           = cs_24g_tx_payload,
@@ -140,21 +74,13 @@ cs_24g_config_t cs_24g_config_a = {
 };
 
 /**
- *******************************************************************************
- * @brief 24G configuration parameter
+ * @brief 2.4G无线配置()结构B模式)
  *
- * Package structure B、NO ACK mode、Dynamic length mode、Compatible with cst92f41、nordic、TI、siliconlab chip
- * 4 bytes sync word : 0xEDD47656
- * 1bytes header:      packet lenth
- * 0~32 bytes payload: {1,2,......32}
- * 2 bytes crc: seed = 0xFFFF crc_poly = 0x1021
- *
- * data whitening ranges include header field, payload field, and crc field.
- * the scope of CRC includes sync_word, header, payload.
- *
- * @param[in] static_len  The maximum packet length is 32 bytes
- * @param[in] freq        2480MHZ
- *******************************************************************************
+ * 特点:高速率,无ACK,兼容多品牌芯片(Nordic/TI/Silicon Labs)
+ * 数据包格式：
+ * [前导码0xAA] + [同步字0xEDD47656] + [1字节长度头] + [Payload 1-32字节] + [2字节CRC]
+ * 同步字：固定4字节(0xEDD47656)
+ * 白化编码：作用于包头,Payload和CRC字段
  */
 cs_24g_config_t cs_24g_config_b = {
     .tx_data           = cs_24g_tx_payload,
@@ -198,15 +124,19 @@ cs_24g_config_t cs_24g_config_b = {
     .detect_mode       = CS_24G_SOFT_DETECTION,
 };
 
+// 函数声明
+static void app_24g_rx(uint8_t *data, uint8_t length);
+
 static void cs_24g_callback(void *cs_reg, drv_event_t drv_event, void *buff, void *num)
 {
     uint16_t payload_lenth = 0;
     bool error_flag        = false;
 
     switch (drv_event) {
-        case DRV_EVENT_COMMON_RECEIVE_COMPLETED: // 读取完成(没有启用ack不会执行操作)
-            payload_lenth = (uint32_t)num;
-            APP_PRINTF_BUF("rcv tx", buff, payload_lenth); // 打印接收到的消息
+        case DRV_EVENT_COMMON_RECEIVE_COMPLETED: // 接收完成(没有启用ack不会执行操作)
+            // payload_lenth = (uint32_t)num;
+            app_24g_rx((uint8_t *)buff, (uint8_t)(uintptr_t)num);
+
 #if (TX_ROLE)
             CS_LOG_DEBUG_ARRAY_EX("rcv ack", buff, payload_lenth);
 #else
@@ -221,9 +151,10 @@ static void cs_24g_callback(void *cs_reg, drv_event_t drv_event, void *buff, voi
 #endif
 
 #if ENABLE_SLEEP_MODE
-            CS_24G_CE_LOW();
-            pm_sleep_allow(PM_ID_24G);
-            cs_24g_control(CS_24G_CONTROL_CLK_DISABLE, NULL);
+            CS_24G_CE_LOW();                                  // 拉低射频模块 CE 脚
+            pm_sleep_allow(PM_ID_24G);                        // 允许 2.4g 模块进入睡眠模式
+            cs_24g_control(CS_24G_CONTROL_CLK_DISABLE, NULL); // 禁用 2.4g 模块时钟
+
             drv_pmu_timer_control(PMU_TIMER_TRIG_VAL1, PMU_TIMER_CONTROL_SET_TIMER_VAL, (void *)(drv_pmu_timer_cnt_get() + PMU_TIMER_MS2TICK(100))); // PMU_TIMER_US2TICK
             drv_pmu_timer_control(PMU_TIMER_TRIG_VAL1, PMU_TIMER_CONTROL_ENABLE, NULL);
 #endif
@@ -238,6 +169,8 @@ static void cs_24g_callback(void *cs_reg, drv_event_t drv_event, void *buff, voi
             break;
 
         case DRV_EVENT_COMMON_TRANSMIT_COMPLETED: // 数据发送完成
+            cs_24g_switch_role(CS_24G_ROLE_PRX);  // 切换到PRX(主接收)模式
+            CS_24G_CE_HIGH();                     // 使能射频芯片(CE引脚拉高)
 #if 0
             //            pm_sleep_allow(PM_ID_24G);
             //            cs_24g_control(CS_24G_CONTROL_CLK_DISABLE, NULL);
@@ -262,9 +195,10 @@ static void cs_24g_callback(void *cs_reg, drv_event_t drv_event, void *buff, voi
 // ble 与 2.4g 共存
 static void app_24g_ble_bb_frame_ongoing_handler(bool is_ongoing)
 {
+    // 用于跟踪射频模块的仲裁状态
     static bool low_rate_enable = false;
     if (is_ongoing) {
-        // BLE is running, close 2.4g function.
+        // ble 正在运行,关闭2.4g
         if (REGR(&CS_24G->RF_DR, MASK_POS(CS_24G_EN_TX_ARB)) == true) {
             low_rate_enable = true;
             // 关闭 2.4g 的TX/RX仲裁
@@ -277,7 +211,7 @@ static void app_24g_ble_bb_frame_ongoing_handler(bool is_ongoing)
         // 关闭 2.4g 时钟
         cs_24g_control(CS_24G_CONTROL_CLK_DISABLE, NULL);
     } else {
-        // BLE is stoped, resume 2.4g function.
+        // ble 停止运行,2.4g 恢复
         if (low_rate_enable) {
             // 启用 2.4g 时钟
             DRV_RCC_CLOCK_ENABLE(RCC_CLK_2P4, 1U);
@@ -291,7 +225,7 @@ static void app_24g_ble_bb_frame_ongoing_handler(bool is_ongoing)
 #if RTE_CS_24G_NORDIC
         REGW(&CS_PHY->H_RX_CTRL, MASK_2REG(PHY_H_RX_CTRL_FXP, 0x29, PHY_H_RX_CTRL_RVS_FXP, 0xC8)); // RX modulation index = 0.32
 #endif
-        cs_24g_read_int(cs_24g_rx_payload, 32); // 读取 2.4g 接收缓冲区数据
+        cs_24g_read_int(cs_24g_rx_payload, 32); // 启用 2.4g 中断接收
     }
 }
 
@@ -398,7 +332,7 @@ void app_24g_init(void)
 {
     // 注册回调函数,用于处理正在进行的基带帧
     cs_bc_bb_frame_ongoing_callback_register(app_24g_ble_bb_frame_ongoing_handler);
-    // 注册一个定时器中断服务例程(ISR)回调函数
+    // 注册一个定时器中断服务例程(ISR)回调函数 PMU_TIMER_TRIG_VAL1
     drv_pmu_timer_register_isr_callback(PMU_TIMER_TRIG_VAL1, timer1_callback);
 
     CS_ASSERT_WHILE(true, RTE_CS_24G_CS92F4X); // 断言检查,确保该宏存在
@@ -414,45 +348,27 @@ void app_24g_init(void)
 #endif
 }
 
-// 使用 2.4g 发送
-static void app_24g_tx(uint8_t *data, uint8_t length)
+void app_24g_tx(uint8_t *data, uint8_t length)
 {
-    if (length > 32) {
-        length = 32; // 限制最大长度
+    if (data == NULL || length == 0 || length > 32) {
+        APP_ERROR("Invalid data");
+        return;
+    }
+    if (!cs_24g_tx_idle()) {
+        APP_ERROR("TX is busy");
+        return;
     }
 
-    // 如果当前是 RX 模式，临时切换到 TX 模式
-    if (current_radio_mode == RADIO_MODE_RX) {
-        switch_radio_mode(RADIO_MODE_TX);
-    }
-    for (uint8_t i = 0; i < length; i++) {
-        cs_24g_tx_payload[i] = data[i];
-    }
+    CS_24G_CE_LOW();
+    cs_24g_control(CS_24G_CONTROL_CLK_ENABLE, NULL); // 启用射频时钟
+    pm_sleep_prevent(PM_ID_24G);                     // 阻止休眠
+
+    memcpy(cs_24g_tx_payload, data, length); // 填充发送缓冲区
     cs_24g_write_int(cs_24g_tx_payload, length);
-
-    switch_radio_mode(RADIO_MODE_RX); // 发送完成,切换为接收模式
+    APP_PRINTF_BUF("[tx data]", cs_24g_tx_payload, length);
 }
 
-// 切换 2.4g 收发模式
-void switch_radio_mode(radio_mode_t new_mode)
+static void app_24g_rx(uint8_t *data, uint8_t length)
 {
-    if (current_radio_mode == new_mode) {
-        return; // 已经是目标模式，无需切换
-    }
-
-    // 停止当前射频操作
-    CS_24G_CE_LOW();                                  // 禁用射频
-    cs_24g_control(CS_24G_CONTROL_CLK_DISABLE, NULL); // 关闭时钟（省电）
-
-    current_radio_mode = new_mode; // 更新模式
-
-    // 重新初始化射频
-    if (current_radio_mode == RADIO_MODE_TX) {
-        CS_LOG_DEBUG("切换到发送模式\r\n");
-        cs_24g_init(&cs_24g_config_a); // 使用发送配置
-    } else {
-        CS_LOG_DEBUG("切换回接收模式\r\n");
-        cs_24g_init(&cs_24g_config_a);          // 使用接收配置
-        cs_24g_read_int(cs_24g_rx_payload, 32); // 重新开始接收
-    }
+    APP_PRINTF_BUF("rcv tx", data, length); // 打印接收到的消息
 }

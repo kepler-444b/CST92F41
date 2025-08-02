@@ -38,7 +38,6 @@
  * @{
  */
 
-
 /*******************************************************************************
  * INCLUDES
  */
@@ -54,19 +53,17 @@
  */
 
 typedef struct {
-    cs_kfifo_t          fifo;
-    uint8_t             fifo_buffer[64];
-    char                shell_line[SHELL_MAX_ARGUMENTS];
-    uint32_t            shell_line_index;
-    const shell_cmd_t   *shell_line_cmd;
+    cs_kfifo_t fifo;
+    uint8_t fifo_buffer[64];
+    char shell_line[SHELL_MAX_ARGUMENTS];
+    uint32_t shell_line_index;
+    const shell_cmd_t *shell_line_cmd;
 } shell_env_t;
-
 
 /*******************************************************************************
  * CONST & VARIABLES
  */
 static shell_env_t shell_env;
-
 
 /*******************************************************************************
  * LOCAL FUNCTIONS
@@ -75,14 +72,15 @@ static shell_env_t shell_env;
 #if (CONFIG_SHELL_USART0 || CONFIG_SHELL_USART1)
 
 #if (CONFIG_SHELL_USART0)
-#define SHELL_USART          CS_USART0
+#define SHELL_USART CS_USART0
 #elif (CONFIG_SHELL_USART1)
-#define SHELL_USART          CS_USART1
+#define SHELL_USART CS_USART1
 #endif
 
 static void shell_usart_cb(void *cs_usart, drv_event_t event, void *rx_buf, void *rx_cnt)
 {
-    if (event & DRV_EVENT_COMMON_READ_COMPLETED) {
+    if (event & DRV_EVENT_COMMON_READ_COMPLETED) { // 读取操作完成
+        // 将数据存入FIFO缓冲区
         cs_kfifo_in(&shell_env.fifo, rx_buf, (uint32_t)rx_cnt);
         evt_set(EVT_TYPE_SHELL);
     }
@@ -90,35 +88,35 @@ static void shell_usart_cb(void *cs_usart, drv_event_t event, void *rx_buf, void
 
 static void shell_usart_init(void)
 {
-    #if ((CONFIG_SHELL_USART0) && (RTE_USART0))
+#if ((CONFIG_SHELL_USART0) && (RTE_USART0))
     usart_ex_config_t usart_cfg = {
-        .baudrate       = CONFIG_SHELL_USART_BAUDRATE,
+        .baudrate = CONFIG_SHELL_USART_BAUDRATE,
     };
     drv_usart_ex_init(SHELL_USART, &usart_cfg);
     drv_usart_ex_register_isr_callback(SHELL_USART, shell_usart_cb);
-    #elif ((CONFIG_SHELL_USART1) && (RTE_USART1))
+#elif ((CONFIG_SHELL_USART1) && (RTE_USART1))
     usart_config_t usart_cfg = {
-        .baudrate       = CONFIG_SHELL_USART_BAUDRATE,
-        .flow_control   = USART_FLOW_CONTROL_NONE,
-        .data_bit       = USART_DATA_BIT_8,
-        .stop_bit       = USART_STOP_BIT_1,
-        .parity         = USART_PARITY_NONE,
+        .baudrate     = CONFIG_SHELL_USART_BAUDRATE,
+        .flow_control = USART_FLOW_CONTROL_NONE,
+        .data_bit     = USART_DATA_BIT_8,
+        .stop_bit     = USART_STOP_BIT_1,
+        .parity       = USART_PARITY_NONE,
     };
 
     drv_usart_init(SHELL_USART, &usart_cfg);
     drv_usart_register_isr_callback(SHELL_USART, shell_usart_cb);
     drv_usart_read_int(SHELL_USART, NULL, 0);
-    #endif
+#endif
 }
 
 static void shell_usart_out(char c)
 {
     CS_CRITICAL_BEGIN();
-    #if ((CONFIG_SHELL_USART0) && (RTE_USART0))
+#if ((CONFIG_SHELL_USART0) && (RTE_USART0))
     drv_usart_ex_write(SHELL_USART, (uint8_t *)&c, 1, DRV_MAX_DELAY);
-    #elif ((CONFIG_SHELL_USART1) && (RTE_USART1))
+#elif ((CONFIG_SHELL_USART1) && (RTE_USART1))
     drv_usart_write(SHELL_USART, (uint8_t *)&c, 1, DRV_MAX_DELAY);
-    #endif
+#endif
     CS_CRITICAL_END();
 }
 
@@ -133,26 +131,21 @@ static void shell_pm_sleep_store_restore_handler(pm_sleep_state_t sleep_state, p
 
 #endif
 
-
-/*******************************************************************************
- * PUBLIC FUNCTIONS
- */
-
+// 从 FIFO 缓冲区读取的串口数据
 static void shell_evt_handler(void)
 {
     uint8_t rx_ch;
     uint16_t rx_len;
+    evt_clear(EVT_TYPE_SHELL); // 清除事件标志位
 
-    evt_clear(EVT_TYPE_SHELL);
-
-    #if (RTE_PM)
+#if (RTE_PM)
     pm_sleep_prevent(PM_ID_SHELL);
-    #endif  /* (RTE_PM) */
-
-    // process rx character
+#endif
+    // 处理接收的数据
     while (1) {
-        rx_len = cs_kfifo_out_1byte(&shell_env.fifo, &rx_ch);
+        rx_len = cs_kfifo_out_1byte(&shell_env.fifo, &rx_ch); // 从FIFO缓冲区读取一个字节到rx_len
         if (rx_len) {
+            // 解析命令行
             if (shell_get_line(rx_ch, shell_env.shell_line, sizeof(shell_env.shell_line), (unsigned *)(&shell_env.shell_line_index)) == true) {
                 if (shell_env.shell_line_index != 0) {
                     shell_main(shell_env.shell_line, shell_env.shell_line_cmd);
@@ -165,37 +158,33 @@ static void shell_evt_handler(void)
             break;
         }
     }
-
-    #if (RTE_PM)
+#if (RTE_PM)
     if (shell_env.shell_line_index == 0) {
         pm_sleep_allow(PM_ID_SHELL);
     }
-    #endif  /* (RTE_PM) */
+#endif
 }
 
-
-/*******************************************************************************
- * PUBLIC FUNCTIONS
- */
 void shell_init(const shell_cmd_t *cmd)
 {
-    memset(shell_env.shell_line, 0x00, sizeof(shell_env.shell_line));
-    shell_env.shell_line_cmd = cmd;
+    memset(shell_env.shell_line, 0x00, sizeof(shell_env.shell_line)); // 初始化shell命令行缓冲区
+    shell_env.shell_line_cmd = cmd;                                   // 注册命令列表
 
-    evt_callback_set(EVT_TYPE_SHELL, shell_evt_handler);
+    evt_callback_set(EVT_TYPE_SHELL, shell_evt_handler); // 设置事件回调
+    // 初始化 FIFO 环形缓冲区​
     cs_kfifo_init(&shell_env.fifo, shell_env.fifo_buffer, sizeof(shell_env.fifo_buffer));
 
-    #if (CONFIG_SHELL_USART0 || CONFIG_SHELL_USART1)
-    shell_usart_init();
-    #endif
+#if (CONFIG_SHELL_USART0 || CONFIG_SHELL_USART1)
+    shell_usart_init(); // 串口初始化
+#endif
 
     shell_printf("\nCS_BLE\n");
     shell_printf("> ");
 
-    #if (RTE_PM)
+#if (RTE_PM)
     pm_sleep_prevent(PM_ID_SHELL);
     pm_sleep_store_restore_callback_register(shell_pm_sleep_store_restore_handler);
-    #endif  /* (RTE_PM) */
+#endif /* (RTE_PM) */
 }
 
 void shell_out(char c)
