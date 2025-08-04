@@ -252,20 +252,16 @@ void evt_schedule(void)
     // Get the volatile value
     uint32_t field = evt_env.field;
 
-    while (field)
-    { // Compiler is assumed to optimize with loop inversion
+    while (field) { // Compiler is assumed to optimize with loop inversion
         // Find highest priority event set
         uint32_t hdl = evt_ctz(field); // 找到最低位的1(最高优先级事件)
 
-        if (evt_env.callback[hdl] != NULL)
-        {
+        if (evt_env.callback[hdl] != NULL) {
             // Execute corresponding handler
             TRC_IO(TRC_IO_EVT_EXEC_CB, 1); // 标记回调开始
             (evt_env.callback[hdl])();     // 执行实际回调
             TRC_IO(TRC_IO_EVT_EXEC_CB, 0); // 标记回调结束
-        }
-        else
-        {
+        } else {
             CS_ASSERT(0); // 挂起
         }
 
@@ -285,20 +281,16 @@ uint32_t evt_schedule_once(void)
     // Get the volatile value
     uint32_t field = evt_env.field;
 
-    if (field)
-    { // Compiler is assumed to optimize with loop inversion
+    if (field) { // Compiler is assumed to optimize with loop inversion
         // Find highest priority event set
         uint8_t hdl = evt_ctz(field);
 
-        if (evt_env.callback[hdl] != NULL)
-        {
+        if (evt_env.callback[hdl] != NULL) {
             // Execute corresponding handler
             TRC_IO(TRC_IO_EVT_EXEC_CB, 1);
             (evt_env.callback[hdl])();
             TRC_IO(TRC_IO_EVT_EXEC_CB, 0);
-        }
-        else
-        {
+        } else {
             CS_ASSERT(0);
         }
 

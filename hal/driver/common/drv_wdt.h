@@ -49,7 +49,6 @@
 #ifndef __DRV_WDT_H
 #define __DRV_WDT_H
 
-
 /*******************************************************************************
  * INCLUDES
  */
@@ -60,25 +59,20 @@
 #include "cs_driver.h"
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
-
 
 /*******************************************************************************
  * MACROS
  */
 
-
 /*******************************************************************************
  * TYPEDEFS
  */
 
-
 /*******************************************************************************
  * EXTERN VARIABLES
  */
-
 
 /*******************************************************************************
  * EXTERN FUNCTIONS
@@ -118,7 +112,7 @@ __STATIC_FORCEINLINE void drv_wdt_init(uint32_t timeout_ms)
     drv_wdt_enable(timeout_ms);
 
     if (timeout_ms == 0U) {
-        while(CS_PMU->WDT_STATUS & PMU_WDT_STATUS_LD_WDT_KR_STATUS_MASK);
+        while (CS_PMU->WDT_STATUS & PMU_WDT_STATUS_LD_WDT_KR_STATUS_MASK);
         CS_PMU->WDT_KR_CFG = 0x6666;
     }
 }
@@ -127,9 +121,8 @@ __STATIC_FORCEINLINE void drv_wdt_init(uint32_t timeout_ms)
 }
 #endif
 
-#endif  /* RTE_WDT */
+#endif /* RTE_WDT */
 
-#endif  /* __DRV_WDT_H */
-
+#endif /* __DRV_WDT_H */
 
 /** @} */

@@ -6,11 +6,11 @@
 #include "uart_process.h"
 #endif
 
-#define BOARD_32K_SELECT CFG_PMU_32K_SEL                       // 使用内部 RC 振荡器
+#define BOARD_32K_SELECT         CFG_PMU_32K_SEL               // 使用内部 RC 振荡器
 #define BOARD_PIN_DRIVER_CURRENT PMU_PIN_DRIVER_CURRENT_NORMAL // 引脚驱动电流"正常"
 
 static const pin_config_t pin_config[] = {
-#if (1 && RTE_USART0)
+#if (1 && RTE_USART0) // 调试串口
     {PAD_UART0_TXD, {PINMUX_UART0_TX_CFG}, PMU_PIN_MODE_PP, BOARD_PIN_DRIVER_CURRENT},
     {PAD_UART0_RXD, {PINMUX_UART0_RX_CFG}, PMU_PIN_MODE_PU, BOARD_PIN_DRIVER_CURRENT},
 #endif

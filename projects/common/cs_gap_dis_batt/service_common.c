@@ -61,48 +61,48 @@ static uint16_t m_start_handle;
  * TYPEDEFS
  */
 enum {
-    #if defined(GAP_DEVICE_NAME) || defined(GAP_APPEARANCE)
+#if defined(GAP_DEVICE_NAME) || defined(GAP_APPEARANCE)
     IDX_GAP_SVC,
-    #if defined(GAP_DEVICE_NAME)
+#if defined(GAP_DEVICE_NAME)
     IDX_DNAME_CHAR,
     IDX_DNAME_VAL,
-    #endif
-    #if defined(GAP_APPEARANCE)
+#endif
+#if defined(GAP_APPEARANCE)
     IDX_APPE_CHAR,
     IDX_APPE_VAL,
-    #endif
-    #endif /*defined(GAP_DEVICE_NAME) || defined(GAP_APPEARANCE) */
+#endif
+#endif /*defined(GAP_DEVICE_NAME) || defined(GAP_APPEARANCE) */
 
-    #if (defined(DIS_SYSTEM_ID) || defined(DIS_HARD_VERSION) || defined(DIS_SOFT_VERSION) || defined(DIS_MANU_NAME_STR) || defined(DIS_PNP_ID))
+#if (defined(DIS_SYSTEM_ID) || defined(DIS_HARD_VERSION) || defined(DIS_SOFT_VERSION) || defined(DIS_MANU_NAME_STR) || defined(DIS_PNP_ID))
     IDX_DIS_SVC,
-    #if defined(DIS_SYSTEM_ID)
+#if defined(DIS_SYSTEM_ID)
     IDX_SYSID_CHAR,
     IDX_SYSID_VAL,
-    #endif
-    #if defined(DIS_HARD_VERSION)
+#endif
+#if defined(DIS_HARD_VERSION)
     IDX_H_REV_CHAR,
     IDX_H_REV_VAL,
-    #endif
-    #if defined(DIS_SOFT_VERSION)
+#endif
+#if defined(DIS_SOFT_VERSION)
     IDX_S_REV_CHAR,
     IDX_S_REV_VAL,
-    #endif
-    #if defined(DIS_MANU_NAME_STR)
+#endif
+#if defined(DIS_MANU_NAME_STR)
     IDX_MANU_CHAR,
     IDX_MANU_VAL,
-    #endif
-    #if defined(DIS_PNP_ID)
+#endif
+#if defined(DIS_PNP_ID)
     IDX_PNPID_CHAR,
     IDX_PNPID_VAL,
-    #endif
-    #endif /* DIS_DEFINED  */
+#endif
+#endif /* DIS_DEFINED  */
 
-    #if SERVICE_BATTARY
+#if SERVICE_BATTARY
     IDX_BATT_SVC,
     IDX_BATVAL_CHAR,
     IDX_BATVAL_VAL,
     IDX_BATVAL_DESC,
-    #endif /* SERVICE_BATTARY */
+#endif /* SERVICE_BATTARY */
 };
 /*********************************************************************
  * LOCAL FUNCTIONS
@@ -110,12 +110,12 @@ enum {
 #if SERVICE_BATTARY
 static void batt_level_report(void)
 {
-    uint16_t len = 1;
+    uint16_t len       = 1;
     cs_gatts_hvx_t hvx = {
-        CS_HANDLE_VALUE_NTF,
+        CS_HANDLE_VALUE_NTF,             // 通知类型
         m_start_handle + IDX_BATVAL_VAL, // handle
-        &val_bat_lev,
-        len,
+        &val_bat_lev,                    // 数据指针
+        len,                             // 数据长度
     };
     cs_gatts_send_hvx(0, &hvx);
 }
@@ -129,7 +129,7 @@ void batt_level_change(uint8_t val)
 
 static void service_discovery_event_cb(uint16_t evt_id, const cs_ble_evt_t *evt)
 {
-    if (evt_id == CS_GATTS_EVT_READ_REQ) {
+    if (evt_id == CS_GATTS_EVT_READ_REQ) { // 处理读请求
         const cs_gatts_evt_read_req_t *req = &evt->gatt.read_req;
         if (req->att_hdl == m_start_handle + IDX_DNAME_VAL) {
 #ifdef AT_ENABLE
@@ -141,60 +141,61 @@ static void service_discovery_event_cb(uint16_t evt_id, const cs_ble_evt_t *evt)
                 cs_gatts_read_response(evt->gatt.conn_idx, CS_BLE_GATT_ERR_NO_ERROR, (uint8_t *)"", 0);
             }
 #else
+            // 蓝牙 GATT 服务中设备名称的分片读取功能
             if (req->offset < sizeof(GAP_DEVICE_NAME) - 1) {
                 cs_gatts_read_response(evt->gatt.conn_idx, CS_BLE_GATT_ERR_NO_ERROR, (uint8_t *)GAP_DEVICE_NAME + req->offset,
                                        sizeof(GAP_DEVICE_NAME) - 1 - req->offset);
-            } else {
+            } else { // 分片发送
                 cs_gatts_read_response(evt->gatt.conn_idx, CS_BLE_GATT_ERR_NO_ERROR, (uint8_t *)"", 0);
             }
 #endif
-            #if defined(GAP_APPEARANCE)
+#if defined(GAP_APPEARANCE) // 设备标识
         } else if (req->att_hdl == m_start_handle + IDX_APPE_VAL) {
             cs_gatts_read_response(evt->gatt.conn_idx, CS_BLE_GATT_ERR_NO_ERROR, (uint8_t *)GAP_APPEARANCE,
                                    sizeof(GAP_APPEARANCE) - 1);
-            #endif
-            #if SERVICE_BATTARY
+#endif
+#if SERVICE_BATTARY // 启用电池服务
         } else if (req->att_hdl == m_start_handle + IDX_BATVAL_VAL) {
             cs_gatts_read_response(evt->gatt.conn_idx, CS_BLE_GATT_ERR_NO_ERROR, &val_bat_lev,
                                    sizeof(val_bat_lev));
-            #endif
-            #if defined(DIS_SYSTEM_ID)
+#endif
+#if defined(DIS_SYSTEM_ID) // 系统标识符
         } else if (req->att_hdl == m_start_handle + IDX_SYSID_VAL) {
             cs_gatts_read_response(evt->gatt.conn_idx, CS_BLE_GATT_ERR_NO_ERROR, (uint8_t *)DIS_SYSTEM_ID, sizeof(DIS_SYSTEM_ID) - 1);
-            #endif
-            #if defined(DIS_HARD_VERSION)
+#endif
+#if defined(DIS_HARD_VERSION) // 硬件版本
         } else if (req->att_hdl == m_start_handle + IDX_H_REV_VAL) {
             cs_gatts_read_response(evt->gatt.conn_idx, CS_BLE_GATT_ERR_NO_ERROR, (uint8_t *)DIS_HARD_VERSION,
                                    sizeof(DIS_HARD_VERSION) - 1);
-            #endif
-            #if defined(DIS_SOFT_VERSION)
+#endif
+#if defined(DIS_SOFT_VERSION) // 软件版本
         } else if (req->att_hdl == m_start_handle + IDX_S_REV_VAL) {
             cs_gatts_read_response(evt->gatt.conn_idx, CS_BLE_GATT_ERR_NO_ERROR, (uint8_t *)DIS_SOFT_VERSION,
                                    sizeof(DIS_SOFT_VERSION) - 1);
-            #endif
-            #if defined(DIS_MANU_NAME_STR)
+#endif
+#if defined(DIS_MANU_NAME_STR) // 制造商
         } else if (req->att_hdl == m_start_handle + IDX_MANU_VAL) {
             if (req->offset < sizeof(DIS_MANU_NAME_STR) - 1) {
                 cs_gatts_read_response(evt->gatt.conn_idx, CS_BLE_GATT_ERR_NO_ERROR, (uint8_t *)DIS_MANU_NAME_STR + req->offset,
                                        sizeof(DIS_MANU_NAME_STR) - 1 - req->offset);
-            } else {
+            } else { // 分片发送
                 cs_gatts_read_response(evt->gatt.conn_idx, CS_BLE_GATT_ERR_NO_ERROR, (uint8_t *)"", 0);
             }
-            #endif
-            #if defined(DIS_PNP_ID)
+#endif
+#if defined(DIS_PNP_ID) // PNP id
         } else if (req->att_hdl == m_start_handle + IDX_PNPID_VAL) {
             cs_gatts_read_response(evt->gatt.conn_idx, CS_BLE_GATT_ERR_NO_ERROR, (uint8_t *)DIS_PNP_ID, sizeof(DIS_PNP_ID) - 1);
-            #endif
+#endif
         } else {
         }
-    } else if (evt_id == CS_GATTS_EVT_WRITE_REQ) {
-        #if SERVICE_BATTARY
+    } else if (evt_id == CS_GATTS_EVT_WRITE_REQ) { // 处理写请求
+#if SERVICE_BATTARY                                // 启用了电池服务
         if (evt->gatt.write_req.att_hdl == m_start_handle + IDX_BATVAL_DESC) {
             if (*evt->gatt.write_req.data) {
-                batt_level_report();
+                batt_level_report(); // 启用通知,立即上报电量
             }
         }
-        #endif /* SERVICE_BATTARY */
+#endif /* SERVICE_BATTARY */
     }
 }
 
@@ -204,87 +205,83 @@ static void service_discovery_event_cb(uint16_t evt_id, const cs_ble_evt_t *evt)
 void gatt_service_init(void)
 {
     uint16_t gatt_handle;
-    static const uint8_t serv_gap[2]  = {0x00, 0x18};
-    static const uint8_t char_name[2] = {0x00, 0x2a};
-    static const uint8_t char_2a01[2] = {0x01, 0x2a};
+    static const uint8_t serv_gap[2]       = {0x00, 0x18};
+    static const uint8_t char_name[2]      = {0x00, 0x2a};
+    static const uint8_t char_2a01[2]      = {0x01, 0x2a};
     static const cs_gatt_item_t atts_gap[] = {
-        { ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ },
-        { char_name,       CS_UUID_16BIT, CS_ATT_PROP_READ },
-        { ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ },
-        { char_2a01,       CS_UUID_16BIT, CS_ATT_PROP_READ },
+        {ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ},
+        {char_name, CS_UUID_16BIT, CS_ATT_PROP_READ},
+        {ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ},
+        {char_2a01, CS_UUID_16BIT, CS_ATT_PROP_READ},
     };
     static const cs_gatt_serv_t att_serv_gap = {
         serv_gap, CS_UUID_16BIT,
-        sizeof(atts_gap) / sizeof(atts_gap[0]), atts_gap
-    };
+        sizeof(atts_gap) / sizeof(atts_gap[0]), atts_gap};
     cs_gatts_add_service(&att_serv_gap, &m_start_handle);
 
-    #if (defined(DIS_SYSTEM_ID) || defined(DIS_HARD_VERSION) || defined(DIS_SOFT_VERSION) || defined(DIS_MANU_NAME_STR) || defined(DIS_PNP_ID))
-    static const uint8_t serv_dev[2]  = {0x0A, 0x18};
-    #if defined(DIS_SYSTEM_ID)
+#if (defined(DIS_SYSTEM_ID) || defined(DIS_HARD_VERSION) || defined(DIS_SOFT_VERSION) || defined(DIS_MANU_NAME_STR) || defined(DIS_PNP_ID))
+    static const uint8_t serv_dev[2] = {0x0A, 0x18};
+#if defined(DIS_SYSTEM_ID)
     static const uint8_t char_sys_id[2] = {0x23, 0x2a};
-    #endif
-    #if defined(DIS_HARD_VERSION)
+#endif
+#if defined(DIS_HARD_VERSION)
     static const uint8_t char_hard_v[2] = {0x27, 0x2a};
-    #endif
-    #if defined(DIS_SOFT_VERSION)
+#endif
+#if defined(DIS_SOFT_VERSION)
     static const uint8_t char_soft_v[2] = {0x28, 0x2a};
-    #endif
-    #if defined(DIS_MANU_NAME_STR)
+#endif
+#if defined(DIS_MANU_NAME_STR)
     static const uint8_t char_m_name[2] = {0x29, 0x2a};
-    #endif
-    #if defined(DIS_PNP_ID)
+#endif
+#if defined(DIS_PNP_ID)
     static const uint8_t char_pnp_id[2] = {0x50, 0x2a};
-    #endif
+#endif
     static const cs_gatt_item_t atts_dev[] = {
-        #if defined(DIS_SYSTEM_ID)
-        { ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ },
-        { char_sys_id,     CS_UUID_16BIT, CS_ATT_PROP_READ },
-        #endif
-        #if defined(DIS_HARD_VERSION)
-        { ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ },
-        { char_hard_v,     CS_UUID_16BIT, CS_ATT_PROP_READ },
-        #endif
-        #if defined(DIS_SOFT_VERSION)
-        { ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ },
-        { char_soft_v,     CS_UUID_16BIT, CS_ATT_PROP_READ },
-        #endif
-        #if defined(DIS_MANU_NAME_STR)
-        { ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ },
-        { char_m_name,     CS_UUID_16BIT, CS_ATT_PROP_READ },
-        #endif
-        #if defined(DIS_PNP_ID)
-        { ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ },
-        { char_pnp_id,     CS_UUID_16BIT, CS_ATT_PROP_READ },
-        #endif
+#if defined(DIS_SYSTEM_ID)
+        {ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ},
+        {char_sys_id, CS_UUID_16BIT, CS_ATT_PROP_READ},
+#endif
+#if defined(DIS_HARD_VERSION)
+        {ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ},
+        {char_hard_v, CS_UUID_16BIT, CS_ATT_PROP_READ},
+#endif
+#if defined(DIS_SOFT_VERSION)
+        {ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ},
+        {char_soft_v, CS_UUID_16BIT, CS_ATT_PROP_READ},
+#endif
+#if defined(DIS_MANU_NAME_STR)
+        {ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ},
+        {char_m_name, CS_UUID_16BIT, CS_ATT_PROP_READ},
+#endif
+#if defined(DIS_PNP_ID)
+        {ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ},
+        {char_pnp_id, CS_UUID_16BIT, CS_ATT_PROP_READ},
+#endif
     };
     static const cs_gatt_serv_t att_serv_dev = {
         serv_dev, CS_UUID_16BIT,
-        sizeof(atts_dev) / sizeof(atts_dev[0]), atts_dev
-    };
+        sizeof(atts_dev) / sizeof(atts_dev[0]), atts_dev};
     cs_gatts_add_service(&att_serv_dev, &gatt_handle);
-    #endif
-    #if SERVICE_BATTARY
-    static const uint8_t serv_bat[2]
-        = {0x0F, 0x18};
-    static const uint8_t char_bat[2] = {0x19, 0x2a};
+#endif
+#if SERVICE_BATTARY
+    static const uint8_t serv_bat[2]       = {0x0F, 0x18};
+    static const uint8_t char_bat[2]       = {0x19, 0x2a};
     static const cs_gatt_item_t atts_bat[] = {
-        { ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ },
-        { char_bat,        CS_UUID_16BIT, CS_ATT_PROP_READ | CS_ATT_PROP_NTF, 0 },
-        { ob_att_cccd_def, CS_UUID_16BIT, CS_ATT_PROP_READ | CS_ATT_PROP_WRITE },
+        {ob_att_char_def, CS_UUID_16BIT, CS_ATT_PROP_READ},
+        {char_bat, CS_UUID_16BIT, CS_ATT_PROP_READ | CS_ATT_PROP_NTF, 0},
+        {ob_att_cccd_def, CS_UUID_16BIT, CS_ATT_PROP_READ | CS_ATT_PROP_WRITE},
     };
     static const cs_gatt_serv_t att_serv_bat = {
         serv_bat, CS_UUID_16BIT,
-        sizeof(atts_bat) / sizeof(atts_bat[0]), atts_bat
-    };
+        sizeof(atts_bat) / sizeof(atts_bat[0]), atts_bat};
     cs_gatts_add_service(&att_serv_bat, &gatt_handle);
-    #endif
+#endif
 }
 
 void service_common_init(void)
 {
-    gatt_service_init();
-    cs_event_callback_reg(service_discovery_event_cb);
+    gatt_service_init();                               // 初始化 ​​GATT 服务
+    cs_event_callback_reg(service_discovery_event_cb); // 注册 GATT 相关事件
 }
 
 /** @} */

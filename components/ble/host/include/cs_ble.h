@@ -54,7 +54,7 @@
 /// BLE 消息结构体
 typedef struct {
     union {
-        cs_ble_gap_evt_t  gap;  ///< gap 消息，参考 @ref cs_ble_gap_evt_t
+        cs_ble_gap_evt_t gap;   ///< gap 消息，参考 @ref cs_ble_gap_evt_t
         cs_ble_gatt_evt_t gatt; ///< gatt 消息，参考 @ref cs_ble_gatt_evt_t
     };
 } cs_ble_evt_t;
@@ -125,7 +125,7 @@ uint32_t ble_init(struct cs_stack_param *param);
  * @param[in]  callback  协议栈初始化参数，参考 @ref cs_stack_param
  * @return 执行结果，参考@ref cs_ble_error
  */
-uint32_t cs_ble_set_user_event_callback(uint8_t event_id, void(*callback)(void));
+uint32_t cs_ble_set_user_event_callback(uint8_t event_id, void (*callback)(void));
 
 /**@brief 触发用户事件回调函数
  * @param[in]  event_id  事件ID，id值应小于 @ref cs_stack_param 中的max_user_event_num值

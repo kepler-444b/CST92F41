@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\ble_app_simple_cmsisos2_freertos.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\ble_app_simple_cmsisos2_freertos.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6230001: Last Updated: Mon Aug  4 09:15:21 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6230001: Last Updated: Mon Aug  4 18:19:05 2025
 <BR><P>
 <H3>Maximum Stack Usage =        960 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -5057,8 +5057,8 @@ Global Symbols
 <P><STRONG><a name="[1f1]"></a>obc_bb_frame_ongoing</STRONG> (Thumb, 76 bytes, Stack size 8 bytes, obc.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = obc_bb_frame_ongoing &rArr; drv_pmu_ana_enable
 </UL>
-<BR>[Calls]<UL><LI><a href="#[4ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pm_sleep_prevent
-<LI><a href="#[4cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pm_sleep_allow
+<BR>[Calls]<UL><LI><a href="#[4cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pm_sleep_allow
+<LI><a href="#[4ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pm_sleep_prevent
 <LI><a href="#[1d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_pmu_ana_enable
 <LI><a href="#[1f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ob_evt_set
 <LI><a href="#[1f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ob_evt_callback_get
@@ -8124,7 +8124,6 @@ Global Symbols
 
 <P><STRONG><a name="[4cf]"></a>pm_sleep_allow</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, pm.o(.text.pm_sleep_allow))
 <BR><BR>[Called By]<UL><LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cs_24g_callback
-<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vEvtScheduleTask
 <LI><a href="#[1f1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;obc_bb_frame_ongoing
 </UL>
 
@@ -9034,12 +9033,11 @@ Local Symbols
 <P><STRONG><a name="[a4]"></a>vTimerCallback</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, main.o(.text.vTimerCallback))
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text.vTestTask)
 </UL>
-<P><STRONG><a name="[a2]"></a>vEvtScheduleTask</STRONG> (Thumb, 184 bytes, Stack size 32 bytes, evt_task.o(.text.vEvtScheduleTask))
+<P><STRONG><a name="[a2]"></a>vEvtScheduleTask</STRONG> (Thumb, 176 bytes, Stack size 32 bytes, evt_task.o(.text.vEvtScheduleTask))
 <BR><BR>[Stack]<UL><LI>Max Depth = 608<LI>Call Chain = vEvtScheduleTask &rArr; app_24g_init &rArr; cs_log &rArr; cs_vprintf &rArr; _vsnprintf &rArr; _ftoa &rArr; _etoa &rArr;  _ftoa (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[62f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osEventFlagsWait
 <LI><a href="#[628]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osEventFlagsNew
-<LI><a href="#[4cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pm_sleep_allow
 <LI><a href="#[662]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pm_sleep_enable
 <LI><a href="#[661]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;drv_pmu_reboot_reason
 <LI><a href="#[586]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;app_24g_init
@@ -9406,9 +9404,9 @@ Local Symbols
 <P><STRONG><a name="[83]"></a>cs_24g_callback</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, app_24g.o(.text.cs_24g_callback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 584<LI>Call Chain = cs_24g_callback &rArr; cs_log &rArr; cs_vprintf &rArr; _vsnprintf &rArr; _ftoa &rArr; _etoa &rArr;  _ftoa (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cs_24g_switch_role
+<BR>[Calls]<UL><LI><a href="#[4cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pm_sleep_allow
+<LI><a href="#[1b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cs_24g_switch_role
 <LI><a href="#[520]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cs_24g_control
-<LI><a href="#[4cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;pm_sleep_allow
 <LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;cs_log
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_24g.o(.text.app_24g_init)

@@ -74,21 +74,18 @@ __RAM_CODES("PM")
 static bool drv_pmu_gpio_lowpower_is_ready(void)
 {
     uint32_t pin_wakeup = CS_PMU->GPIO_WAKEUP;
-    bool is_pin_ready = true;
+    bool is_pin_ready   = true;
 
-    if (pin_wakeup)
-    {
+    if (pin_wakeup) {
         uint32_t pin_wakeup_cur_level = drv_gpio_read(CS_GPIO0, pin_wakeup);
 
-        if (drv_pmu_env.pin_wakeup_double_edge_mask)
-        {
+        if (drv_pmu_env.pin_wakeup_double_edge_mask) {
             uint32_t pin_wakeup_cur_level_double_edge = pin_wakeup_cur_level & drv_pmu_env.pin_wakeup_double_edge_mask;
             REGW(&CS_PMU->GPIO_POL, drv_pmu_env.pin_wakeup_double_edge_mask, pin_wakeup_cur_level_double_edge);
         }
 
-        if (drv_pmu_env.pin_wakeup_none_edge_mask)
-        {
-            uint32_t pin_wakeup_cur_level_none_edge = pin_wakeup_cur_level & drv_pmu_env.pin_wakeup_none_edge_mask;
+        if (drv_pmu_env.pin_wakeup_none_edge_mask) {
+            uint32_t pin_wakeup_cur_level_none_edge   = pin_wakeup_cur_level & drv_pmu_env.pin_wakeup_none_edge_mask;
             uint32_t pin_wakeup_sleep_level_none_edge = CS_PMU->GPIO_POL & drv_pmu_env.pin_wakeup_none_edge_mask;
             if (pin_wakeup_cur_level_none_edge != pin_wakeup_sleep_level_none_edge)
                 is_pin_ready = false;
@@ -137,11 +134,9 @@ void drv_pmu_32k_switch_to_rc(bool calib, bool pd_others)
     // Switch
     REGW(&CS_PMU->MISC_CTRL, MASK_1REG(PMU_MISC_CTRL_CLK_32K_SEL, PMU_32K_SEL_RC));
     while ((CS_PMU->STATUS_READ & (PMU_STATUS_READ_CLK_32K_RC_CRY_DONE_MASK | PMU_STATUS_READ_CLK_32K_DIV_DONE_MASK)) !=
-           (PMU_STATUS_READ_CLK_32K_RC_CRY_DONE_MASK | PMU_STATUS_READ_CLK_32K_DIV_DONE_MASK))
-        ;
+           (PMU_STATUS_READ_CLK_32K_RC_CRY_DONE_MASK | PMU_STATUS_READ_CLK_32K_DIV_DONE_MASK));
 
-    if (pd_others)
-    {
+    if (pd_others) {
         REGW1(&CS_PMU->MISC_CTRL, PMU_MISC_CTRL_PD_CRY32K_MASK); // xtal32k
     }
 }
@@ -154,10 +149,8 @@ void drv_pmu_32k_switch_to_rc(bool calib, bool pd_others)
 __RAM_CODES("PM")
 static void drv_pmu_wakeup_pin_wait_idle(void)
 {
-    while (CS_PMU->MISC_CTRL & PMU_MISC_CTRL_CLR_PMU_INT_MASK)
-        ;
-    while (CS_PMU->STATUS_READ & PMU_STATUS_READ_CLR_PMU_INT_SYNC_APB_MASK)
-        ;
+    while (CS_PMU->MISC_CTRL & PMU_MISC_CTRL_CLR_PMU_INT_MASK);
+    while (CS_PMU->STATUS_READ & PMU_STATUS_READ_CLR_PMU_INT_SYNC_APB_MASK);
 }
 
 #if 0
@@ -179,8 +172,7 @@ __RAM_CODES("PM")
 static void drv_pmu_topclk_xtal32m_wait_ready(void)
 {
     // WAIT Ready
-    while (!(CS_DAIF->XTAL32M_INTRS & DAIF_XTAL32M_CLK_RDY_MASK))
-        ;
+    while (!(CS_DAIF->XTAL32M_INTRS & DAIF_XTAL32M_CLK_RDY_MASK));
 
     //    // Check
     //    if(!(CS_DAIF->XTAL32M_INTRS & DAIF_XTAL32M_CLK_RDY_MASK))
@@ -194,17 +186,13 @@ static void drv_pmu_topclk_xtal32m_wait_ready(void)
 __RAM_CODE
 void drv_pmu_topclk_x2_enable(bool enable)
 {
-    if (enable)
-    {
+    if (enable) {
         // 64MHz DVDD is 1.05v (FT calib to 1V)
         REGSW(&CS_PMU->ANA_REG, MASK_STEP_SSAT(PMU_ANA_REG_PMU_DIG_LDO_TRIM, drv_calib_repair_env.dig_ldo + 1), true /*should_update*/, 10 /*delay_us*/);
         // enable
         REGW1(&CS_PMU->ANA_PD, PMU_ANA_PD_EN_64M_MASK);
-    }
-    else
-    {
-        if (CS_PMU->ANA_PD & PMU_ANA_PD_EN_64M_MASK)
-        {
+    } else {
+        if (CS_PMU->ANA_PD & PMU_ANA_PD_EN_64M_MASK) {
             // disable
             REGW0(&CS_PMU->ANA_PD, PMU_ANA_PD_EN_64M_MASK);
             // 64MHz DVDD is 0.95v (FT calib to 1V)
@@ -220,8 +208,7 @@ void drv_pmu_topclk_switch_to_rc32m(void)
 {
     // To RC32M
     REGW0(&CS_PMU->MISC_CTRL, PMU_MISC_CTRL_MAIN_CLK_SEL_MASK); // 0:RC32MHz 1:64MHz
-    while (!(CS_CPM->STATUS_READ & CPM_STATUS_READ_MAIN_CLK_SYNC_DONE_MASK))
-        ;
+    while (!(CS_CPM->STATUS_READ & CPM_STATUS_READ_MAIN_CLK_SYNC_DONE_MASK));
 }
 
 #if 0
@@ -250,8 +237,7 @@ void drv_pmu_topclk_switch_to_xtal32m(void)
     DRV_DELAY_US(1);
     // To XTAL32M
     REGW1(&CS_PMU->MISC_CTRL, PMU_MISC_CTRL_MAIN_CLK_SEL_MASK); // 0:RC32MHz 1:CPUCLK
-    while (!(CS_CPM->STATUS_READ & CPM_STATUS_READ_MAIN_CLK_SYNC_DONE_MASK))
-        ;
+    while (!(CS_CPM->STATUS_READ & CPM_STATUS_READ_MAIN_CLK_SYNC_DONE_MASK));
 }
 
 /**
@@ -266,8 +252,7 @@ void drv_pmu_topclk_switch_to_xtal32m_x2(void)
     DRV_DELAY_US(1);
     // To 64M
     REGW1(&CS_PMU->MISC_CTRL, PMU_MISC_CTRL_MAIN_CLK_SEL_MASK); // 0:RC32MHz 1:64MHz
-    while (!(CS_CPM->STATUS_READ & CPM_STATUS_READ_MAIN_CLK_SYNC_DONE_MASK))
-        ;
+    while (!(CS_CPM->STATUS_READ & CPM_STATUS_READ_MAIN_CLK_SYNC_DONE_MASK));
 }
 
 /**
@@ -280,17 +265,13 @@ bool drv_pmu_topclk_rc32m_power_enable(bool enable)
 {
     bool is_last_enabled = (CS_PMU->MISC_CTRL_1 & PMU_MISC_CTRL_1_REG_PD_RC32M_MASK) ? false : true;
 
-    if (enable)
-    {
-        if (!is_last_enabled)
-        {
+    if (enable) {
+        if (!is_last_enabled) {
             REGW0(&CS_PMU->MISC_CTRL_1, PMU_MISC_CTRL_1_REG_PD_RC32M_MASK);
             // must delay more than 15us
             DRV_DELAY_US(10 * 3);
         }
-    }
-    else
-    {
+    } else {
         if (is_last_enabled)
             REGW1(&CS_PMU->MISC_CTRL_1, PMU_MISC_CTRL_1_REG_PD_RC32M_MASK);
     }
@@ -318,8 +299,7 @@ bool drv_pmu_topclk_rc32m_power_enable(bool enable)
  **/
 void drv_pmu_topclk_xtal32m_power_enable(bool enable)
 {
-    if (enable)
-    {
+    if (enable) {
         // open xtal32m ctrl clock
         REGW1(&CS_DAIF->CLK_ENS, DAIF_XTAL32M_CTRL_CLK_EN_MASK);
 
@@ -331,9 +311,7 @@ void drv_pmu_topclk_xtal32m_power_enable(bool enable)
 
         // close xtal32m ctrl clock
         REGW0(&CS_DAIF->CLK_ENS, DAIF_XTAL32M_CTRL_CLK_EN_MASK);
-    }
-    else
-    {
+    } else {
         REGW0(&CS_PMU->MISC_CTRL_1, PMU_MISC_CTRL_1_CRY32M_EN_MASK);
     }
 }
@@ -457,8 +435,7 @@ static void drv_pmu_force_into_reboot_sleep_mode(uint32_t ram_retention)
     drv_pmu_cpu_reset();
 
     // Never come here
-    while (1)
-        ;
+    while (1);
 }
 
 /*********************************************************************
@@ -477,7 +454,7 @@ void drv_pmu_init(void)
 
     // Default: GPIO wakeup mask disable
     CS_PMU->GPIO_WAKEUP = 0;
-    CS_PMU->GPIO_POL = 0;
+    CS_PMU->GPIO_POL    = 0;
 
     // Default: enable all IE control
     drv_pmu_pin_input_enable(0xFFFFFFFF);
@@ -523,8 +500,7 @@ void drv_pmu_xtal32m_startup(void)
     DRV_RCC_ANA_CLK_ENABLE();
 
     // check: whether is xtal24m opened
-    if (!drv_pmu_topclk_xtal32m_is_enabled())
-    {
+    if (!drv_pmu_topclk_xtal32m_is_enabled()) {
         // Next XTAL32M startup use normal-startup mode.
         REGW1(&CS_PMU->MISC_CTRL, PMU_MISC_CTRL_FIRST_RUN_REG_MASK);
 
@@ -571,8 +547,7 @@ void drv_pmu_xtal32m_fast_startup(bool force)
     DRV_RCC_ANA_CLK_ENABLE();
 
     // check
-    if (force || !drv_pmu_topclk_xtal32m_is_enabled())
-    {
+    if (force || !drv_pmu_topclk_xtal32m_is_enabled()) {
         // Next XTAL32M startup use fast-startup mode.
         REGW0(&CS_PMU->MISC_CTRL, PMU_MISC_CTRL_FIRST_RUN_REG_MASK);
 
@@ -634,8 +609,7 @@ void drv_pmu_xtal32m_x2_close(void)
     DRV_RCC_ANA_CLK_ENABLE();
 
     // startup xtal32m x2
-    if (drv_pmu_topclk_xtal32m_is_enabled() && drv_pmu_topclk_xtal32m_x2_is_enabled())
-    {
+    if (drv_pmu_topclk_xtal32m_is_enabled() && drv_pmu_topclk_xtal32m_x2_is_enabled()) {
         // to rc32m
         drv_pmu_topclk_rc32m_power_enable(true);
         drv_pmu_topclk_switch_to_rc32m();
@@ -671,61 +645,57 @@ void drv_pmu_xtal32m_x2_close(void)
 void drv_pmu_select_32k(pmu_32k_sel_t clk32k)
 {
     // Default: rc32k powered on, xtal32k powered down
-    switch (clk32k)
-    {
-    case PMU_32K_SEL_RC:
-        drv_pmu_select_32k(PMU_32K_SEL_DIV);
-        drv_pmu_32k_switch_to_rc(true /*calib*/, true /*pd_others*/);
-        break;
+    switch (clk32k) {
+        case PMU_32K_SEL_RC:
+            drv_pmu_select_32k(PMU_32K_SEL_DIV);
+            drv_pmu_32k_switch_to_rc(true /*calib*/, true /*pd_others*/);
+            break;
 
-    case PMU_32K_SEL_32768HZ_XTAL:
-        // Power on rc32k
-        // REGW0(&CS_PMU->MISC_CTRL, PMU_MISC_REG_PD_RC32K_MASK);
-        // while(!(CS_PMU->STATUS_READ & PMU_RC32K_READY_MASK));
+        case PMU_32K_SEL_32768HZ_XTAL:
+            // Power on rc32k
+            // REGW0(&CS_PMU->MISC_CTRL, PMU_MISC_REG_PD_RC32K_MASK);
+            // while(!(CS_PMU->STATUS_READ & PMU_RC32K_READY_MASK));
 
-        DRV_RCC_ANA_CLK_ENABLE_NOIRQ();
-        // GPIO reuse (IO24/IO25 reuse as xtal32k input)
-        REGW1(&CS_PMU->ANA_REG, PMU_ANA_REG_GPIO_REUSE_MASK);
-        // Open xtal32m calibration clock for xtal32k ready check
-        REGW1(&CS_DAIF->CLK_ENS, DAIF_XTAL32M_CTRL_CLK_EN_MASK | DAIF_C32K_CLK_EN_MASK);
-        // Power on xtal32k
-        REGW0(&CS_PMU->MISC_CTRL, PMU_MISC_CTRL_PD_CRY32K_MASK);
-        while (!(CS_PMU->BASIC & PMU_BASIC_CRY32K_READY_MASK))
-            ;
-        // Close xtal32m calibration clock
-        REGW0(&CS_DAIF->CLK_ENS, DAIF_XTAL32M_CTRL_CLK_EN_MASK | DAIF_C32K_CLK_EN_MASK);
-        DRV_RCC_ANA_CLK_RESTORE_NOIRQ();
+            DRV_RCC_ANA_CLK_ENABLE_NOIRQ();
+            // GPIO reuse (IO24/IO25 reuse as xtal32k input)
+            REGW1(&CS_PMU->ANA_REG, PMU_ANA_REG_GPIO_REUSE_MASK);
+            // Open xtal32m calibration clock for xtal32k ready check
+            REGW1(&CS_DAIF->CLK_ENS, DAIF_XTAL32M_CTRL_CLK_EN_MASK | DAIF_C32K_CLK_EN_MASK);
+            // Power on xtal32k
+            REGW0(&CS_PMU->MISC_CTRL, PMU_MISC_CTRL_PD_CRY32K_MASK);
+            while (!(CS_PMU->BASIC & PMU_BASIC_CRY32K_READY_MASK));
+            // Close xtal32m calibration clock
+            REGW0(&CS_DAIF->CLK_ENS, DAIF_XTAL32M_CTRL_CLK_EN_MASK | DAIF_C32K_CLK_EN_MASK);
+            DRV_RCC_ANA_CLK_RESTORE_NOIRQ();
 
-        // Switch
-        REGW(&CS_PMU->MISC_CTRL, MASK_1REG(PMU_MISC_CTRL_CLK_32K_SEL, PMU_32K_SEL_32768HZ_XTAL));
-        while ((CS_PMU->STATUS_READ & (PMU_STATUS_READ_CLK_32K_RC_CRY_DONE_MASK | PMU_STATUS_READ_CLK_32K_DIV_DONE_MASK)) !=
-               (PMU_STATUS_READ_CLK_32K_RC_CRY_DONE_MASK | PMU_STATUS_READ_CLK_32K_DIV_DONE_MASK))
-            ;
+            // Switch
+            REGW(&CS_PMU->MISC_CTRL, MASK_1REG(PMU_MISC_CTRL_CLK_32K_SEL, PMU_32K_SEL_32768HZ_XTAL));
+            while ((CS_PMU->STATUS_READ & (PMU_STATUS_READ_CLK_32K_RC_CRY_DONE_MASK | PMU_STATUS_READ_CLK_32K_DIV_DONE_MASK)) !=
+                   (PMU_STATUS_READ_CLK_32K_RC_CRY_DONE_MASK | PMU_STATUS_READ_CLK_32K_DIV_DONE_MASK));
 
-        // power down others
-        // REGW1(&CS_PMU->MISC_CTRL, PMU_MISC_REG_PD_RC32K_MASK);
+            // power down others
+            // REGW1(&CS_PMU->MISC_CTRL, PMU_MISC_REG_PD_RC32K_MASK);
 
-        // Keep on
-        REGW0(&CS_PMU->MISC_CTRL_1, PMU_MISC_CTRL_1_CRY32M_KEEP_ON_MASK);
-        break;
+            // Keep on
+            REGW0(&CS_PMU->MISC_CTRL_1, PMU_MISC_CTRL_1_CRY32M_KEEP_ON_MASK);
+            break;
 
-    case PMU_32K_SEL_DIV:
-        // Power on rc32k
-        // REGW0(&CS_PMU->MISC_CTRL, PMU_MISC_REG_PD_RC32K_MASK);
-        // while(!(CS_PMU->STATUS_READ & PMU_RC32K_READY_MASK));
+        case PMU_32K_SEL_DIV:
+            // Power on rc32k
+            // REGW0(&CS_PMU->MISC_CTRL, PMU_MISC_REG_PD_RC32K_MASK);
+            // while(!(CS_PMU->STATUS_READ & PMU_RC32K_READY_MASK));
 
-        // Open clock
-        REGW1(&CS_SYS->RST_32K_OSC_CTRL, SYS_CRY32M_DIV_EN_MASK);
+            // Open clock
+            REGW1(&CS_SYS->RST_32K_OSC_CTRL, SYS_CRY32M_DIV_EN_MASK);
 
-        // Switch
-        REGW(&CS_PMU->MISC_CTRL, MASK_1REG(PMU_MISC_CTRL_CLK_32K_SEL, PMU_32K_SEL_DIV));
-        while ((CS_PMU->STATUS_READ & (PMU_STATUS_READ_CLK_32K_RC_CRY_DONE_MASK | PMU_STATUS_READ_CLK_32K_DIV_DONE_MASK)) !=
-               (PMU_STATUS_READ_CLK_32K_RC_CRY_DONE_MASK | PMU_STATUS_READ_CLK_32K_DIV_DONE_MASK))
-            ;
+            // Switch
+            REGW(&CS_PMU->MISC_CTRL, MASK_1REG(PMU_MISC_CTRL_CLK_32K_SEL, PMU_32K_SEL_DIV));
+            while ((CS_PMU->STATUS_READ & (PMU_STATUS_READ_CLK_32K_RC_CRY_DONE_MASK | PMU_STATUS_READ_CLK_32K_DIV_DONE_MASK)) !=
+                   (PMU_STATUS_READ_CLK_32K_RC_CRY_DONE_MASK | PMU_STATUS_READ_CLK_32K_DIV_DONE_MASK));
 
-        // power down others
-        // REGW1(&CS_PMU->MISC_CTRL, PMU_MISC_REG_PD_CRY32K_MASK | PMU_MISC_REG_PD_RC32K_MASK);
-        break;
+            // power down others
+            // REGW1(&CS_PMU->MISC_CTRL, PMU_MISC_REG_PD_CRY32K_MASK | PMU_MISC_REG_PD_RC32K_MASK);
+            break;
     }
 
     drv_pmu_env.clock_32k = clk32k;
@@ -776,31 +746,27 @@ pm_status_t drv_pmu_sleep_status(void)
 __RAM_CODES("PM")
 void drv_pmu_sleep_enter(pm_status_t sleep_status, bool reboot_req)
 {
-    switch (sleep_status)
-    {
-    case PM_STATUS_DEEP_SLEEP:
-        if (!drv_pmu_env.enable_32k_with_deep_sleep)
-        {
-            if (drv_pmu_env.clock_32k == PMU_32K_SEL_32768HZ_XTAL)
-            {
-                // Power on 32k rc and switch to it
-                drv_pmu_32k_switch_to_rc(false /*calib*/, true /*pd_others*/);
+    switch (sleep_status) {
+        case PM_STATUS_DEEP_SLEEP:
+            if (!drv_pmu_env.enable_32k_with_deep_sleep) {
+                if (drv_pmu_env.clock_32k == PMU_32K_SEL_32768HZ_XTAL) {
+                    // Power on 32k rc and switch to it
+                    drv_pmu_32k_switch_to_rc(false /*calib*/, true /*pd_others*/);
+                }
+                // Set a flag to power down 32K (PMU_BASIC_WAKEUPB_DIS=0: when close 32k, PIN can wakeup)
+                REGW(&CS_PMU->BASIC, MASK_2REG(PMU_BASIC_SLEEP_WO_32K, 1, PMU_BASIC_WAKEUPB_DIS, 0));
+                break;
             }
-            // Set a flag to power down 32K (PMU_BASIC_WAKEUPB_DIS=0: when close 32k, PIN can wakeup)
-            REGW(&CS_PMU->BASIC, MASK_2REG(PMU_BASIC_SLEEP_WO_32K, 1, PMU_BASIC_WAKEUPB_DIS, 0));
+            // fall through
+
+        case PM_STATUS_SLEEP:
+            // Set a flag to keep on 32K
+            REGW0(&CS_PMU->BASIC, PMU_BASIC_SLEEP_WO_32K_MASK);
             break;
-        }
-        // fall through
 
-    case PM_STATUS_SLEEP:
-        // Set a flag to keep on 32K
-        REGW0(&CS_PMU->BASIC, PMU_BASIC_SLEEP_WO_32K_MASK);
-        break;
-
-    default:
-        while (1)
-            ;
-        break;
+        default:
+            while (1);
+            break;
     }
 
     // Wait wake IO clear ok
@@ -830,11 +796,9 @@ void drv_pmu_sleep_enter(pm_status_t sleep_status, bool reboot_req)
 __RAM_CODES("PM")
 void drv_pmu_sleep_leave(pmu_sleep_leave_step_t step, pm_status_t sleep_status)
 {
-    if (step & PMU_SLEEP_LEAVE_STEP1_ON_RC32M)
-    {
+    if (step & PMU_SLEEP_LEAVE_STEP1_ON_RC32M) {
         // BUG: Fix abnormal GPIO interrupts STEP(2)
-        if (CS_SYS->MON == 0)
-        {
+        if (CS_SYS->MON == 0) {
             CS_GPIO0->INTSTATUS = ~0;
             NVIC_ClearPendingIRQ(GPIO_IRQn);
         }
@@ -842,12 +806,11 @@ void drv_pmu_sleep_leave(pmu_sleep_leave_step_t step, pm_status_t sleep_status)
         // Open daif clock
         DRV_RCC_CLOCK_ENABLE(RCC_CLK_DAIF, 1U);
 
-        drv_pmu_env.ana_mask = 0;
+        drv_pmu_env.ana_mask                  = 0;
         drv_pmu_env.pin_wakeup_sleep_recently = true;
     }
 
-    if (step & PMU_SLEEP_LEAVE_STEP2_WAIT_XTAL32M)
-    {
+    if (step & PMU_SLEEP_LEAVE_STEP2_WAIT_XTAL32M) {
         // Wait xtal32m ready
         drv_pmu_topclk_xtal32m_wait_ready();
         // Wait switch to xtal32m OK
@@ -862,18 +825,15 @@ void drv_pmu_sleep_leave(pmu_sleep_leave_step_t step, pm_status_t sleep_status)
         drv_pmu_topclk_rc32m_power_enable(false);
     }
 
-    if (step & PMU_SLEEP_LEAVE_STEP3_FINISH)
-    {
+    if (step & PMU_SLEEP_LEAVE_STEP3_FINISH) {
 #ifdef CONFIG_IO_OUTPUT_LATCH_CTRL_BY_SOFTWARE
         // Release IO
         REGW0(&CS_PMU->MISC_CTRL, PMU_MISC_CTRL_GPIO_AUTO_LATCH_CTRL_MASK);
 #endif
 
         // re-enable xtal32k
-        if (!drv_pmu_env.enable_32k_with_deep_sleep)
-        {
-            if (drv_pmu_env.clock_32k == PMU_32K_SEL_32768HZ_XTAL)
-            {
+        if (!drv_pmu_env.enable_32k_with_deep_sleep) {
+            if (drv_pmu_env.clock_32k == PMU_32K_SEL_32768HZ_XTAL) {
                 drv_pmu_select_32k(drv_pmu_env.clock_32k);
             }
         }
@@ -914,41 +874,40 @@ void drv_pmu_pin_state_restore(void)
  **/
 void drv_pmu_pin_mode_set(uint32_t pin_mask, pmu_pin_mode_t mode)
 {
-    switch (mode)
-    {
-    case PMU_PIN_MODE_FLOAT:
-    case PMU_PIN_MODE_PP:
-        CS_PMU->GPIO_ODE_CTRL &= ~pin_mask;
-        CS_PMU->GPIO_PU_CTRL &= ~pin_mask;
-        CS_PMU->GPIO_PD_CTRL &= ~pin_mask;
-        break;
+    switch (mode) {
+        case PMU_PIN_MODE_FLOAT:
+        case PMU_PIN_MODE_PP:
+            CS_PMU->GPIO_ODE_CTRL &= ~pin_mask;
+            CS_PMU->GPIO_PU_CTRL &= ~pin_mask;
+            CS_PMU->GPIO_PD_CTRL &= ~pin_mask;
+            break;
 
-    case PMU_PIN_MODE_PD:
-        CS_PMU->GPIO_ODE_CTRL &= ~pin_mask;
-        CS_PMU->GPIO_PU_CTRL &= ~pin_mask;
-        CS_PMU->GPIO_PD_CTRL |= pin_mask;
-        break;
+        case PMU_PIN_MODE_PD:
+            CS_PMU->GPIO_ODE_CTRL &= ~pin_mask;
+            CS_PMU->GPIO_PU_CTRL &= ~pin_mask;
+            CS_PMU->GPIO_PD_CTRL |= pin_mask;
+            break;
 
-    case PMU_PIN_MODE_PU:
-        CS_PMU->GPIO_ODE_CTRL &= ~pin_mask;
-        CS_PMU->GPIO_PU_CTRL |= pin_mask;
-        CS_PMU->GPIO_PD_CTRL &= ~pin_mask;
-        break;
+        case PMU_PIN_MODE_PU:
+            CS_PMU->GPIO_ODE_CTRL &= ~pin_mask;
+            CS_PMU->GPIO_PU_CTRL |= pin_mask;
+            CS_PMU->GPIO_PD_CTRL &= ~pin_mask;
+            break;
 
-    case PMU_PIN_MODE_OD:
-        CS_PMU->GPIO_ODE_CTRL |= pin_mask;
-        CS_PMU->GPIO_PU_CTRL &= ~pin_mask;
-        CS_PMU->GPIO_PD_CTRL &= ~pin_mask;
-        break;
+        case PMU_PIN_MODE_OD:
+            CS_PMU->GPIO_ODE_CTRL |= pin_mask;
+            CS_PMU->GPIO_PU_CTRL &= ~pin_mask;
+            CS_PMU->GPIO_PD_CTRL &= ~pin_mask;
+            break;
 
-    case PMU_PIN_MODE_OD_PU:
-        CS_PMU->GPIO_ODE_CTRL |= pin_mask;
-        CS_PMU->GPIO_PU_CTRL |= pin_mask;
-        CS_PMU->GPIO_PD_CTRL &= ~pin_mask;
-        break;
+        case PMU_PIN_MODE_OD_PU:
+            CS_PMU->GPIO_ODE_CTRL |= pin_mask;
+            CS_PMU->GPIO_PU_CTRL |= pin_mask;
+            CS_PMU->GPIO_PD_CTRL &= ~pin_mask;
+            break;
 
-    default:
-        break;
+        default:
+            break;
     }
 }
 
@@ -981,110 +940,101 @@ void drv_pmu_ana_enable(bool enable, pmu_ana_type_t ana)
 {
     CS_CRITICAL_BEGIN();
 
-    if (enable)
-    {
-        if ((drv_pmu_env.ana_mask & ana) == 0)
-        {
+    if (enable) {
+        if ((drv_pmu_env.ana_mask & ana) == 0) {
             if (drv_pmu_env.ana_mask == 0)
                 DRV_RCC_CLOCK_ENABLE(RCC_CLK_DAIF, 1U);
 
-            switch (ana)
-            {
-            case PMU_ANA_RF:
-            case PMU_ANA_RF_24G:
-            case PMU_ANA_RF_BLE:
-                if ((drv_pmu_env.ana_mask & (PMU_ANA_RF | PMU_ANA_RF_24G | PMU_ANA_RF_BLE)) == 0)
-                {
-                    /*
-                     * PHY
-                     */
-                    DRV_RCC_CLOCK_ENABLE(RCC_CLK_PHY, 1U);
-                    // Enable RSSI function
-                    CS_PHY->RSSI_EST_EN = 1;
-                    // FIX issue: 2M PHY preamble leading should be carrier wave
-                    REGW(&CS_PHY->TX_CTRL0, MASK_2REG(PHY_TX_CTRL0_BDR_PPM_TX, 0, PHY_TX_CTRL0_EN_INTERP, 1));
-                    // 优化阻塞信道灵敏度策略
-                    REGWA(&CS_PHY->TONE_SUPPRESSION_CTRL, MASK_7REG(PHY_TONE_SUPPRESSION_CTRL_EN_TS, 2,
-                                                                    PHY_TONE_SUPPRESSION_CTRL_TS_EN_GAIN_COND, 0,
-                                                                    PHY_TONE_SUPPRESSION_CTRL_TS_MAG_LIM, 3,
-                                                                    PHY_TONE_SUPPRESSION_CTRL_TS_MODE, 1,
-                                                                    PHY_TONE_SUPPRESSION_CTRL_TS_MAG_EN, 1,
-                                                                    PHY_TONE_SUPPRESSION_CTRL_TS_K, 1,
-                                                                    PHY_TONE_SUPPRESSION_CTRL_TS_EST_DUR, 1));
+            switch (ana) {
+                case PMU_ANA_RF:
+                case PMU_ANA_RF_24G:
+                case PMU_ANA_RF_BLE:
+                    if ((drv_pmu_env.ana_mask & (PMU_ANA_RF | PMU_ANA_RF_24G | PMU_ANA_RF_BLE)) == 0) {
+                        /*
+                         * PHY
+                         */
+                        DRV_RCC_CLOCK_ENABLE(RCC_CLK_PHY, 1U);
+                        // Enable RSSI function
+                        CS_PHY->RSSI_EST_EN = 1;
+                        // FIX issue: 2M PHY preamble leading should be carrier wave
+                        REGW(&CS_PHY->TX_CTRL0, MASK_2REG(PHY_TX_CTRL0_BDR_PPM_TX, 0, PHY_TX_CTRL0_EN_INTERP, 1));
+                        // 优化阻塞信道灵敏度策略
+                        REGWA(&CS_PHY->TONE_SUPPRESSION_CTRL, MASK_7REG(PHY_TONE_SUPPRESSION_CTRL_EN_TS, 2,
+                                                                        PHY_TONE_SUPPRESSION_CTRL_TS_EN_GAIN_COND, 0,
+                                                                        PHY_TONE_SUPPRESSION_CTRL_TS_MAG_LIM, 3,
+                                                                        PHY_TONE_SUPPRESSION_CTRL_TS_MODE, 1,
+                                                                        PHY_TONE_SUPPRESSION_CTRL_TS_MAG_EN, 1,
+                                                                        PHY_TONE_SUPPRESSION_CTRL_TS_K, 1,
+                                                                        PHY_TONE_SUPPRESSION_CTRL_TS_EST_DUR, 1));
 
-                    /*
-                     * ANA power/clock
-                     */
-                    REGW1(&CS_DAIF->CLK_ENS, DAIF_PLL_VTRACK_CLK_EN_MASK | DAIF_PLL_LUT_CLK_EN_MASK |
-                                                 DAIF_MAIN_FSM_CLK_EN_MASK | DAIF_RX_AGC_CLK_EN_MASK | DAIF_DCOC_LUT_CLK_EN_MASK |
-                                                 DAIF_SDM_CLK_EN_MASK | DAIF_PLL_CLK_REF_EN_MASK | DAIF_PLL_AFC_CLK_EN_MASK);
-                    REGW1(&CS_DAIF->CLK_CFG, DAIF_XTAL32M_EN_CKO16M_DIG_MASK | DAIF_XTAL32M_EN_CKO16M_ANA_MASK | DAIF_XTAL32M_EN_CKO16M_PLL_MASK);
-                }
-                break;
+                        /*
+                         * ANA power/clock
+                         */
+                        REGW1(&CS_DAIF->CLK_ENS, DAIF_PLL_VTRACK_CLK_EN_MASK | DAIF_PLL_LUT_CLK_EN_MASK |
+                                                     DAIF_MAIN_FSM_CLK_EN_MASK | DAIF_RX_AGC_CLK_EN_MASK | DAIF_DCOC_LUT_CLK_EN_MASK |
+                                                     DAIF_SDM_CLK_EN_MASK | DAIF_PLL_CLK_REF_EN_MASK | DAIF_PLL_AFC_CLK_EN_MASK);
+                        REGW1(&CS_DAIF->CLK_CFG, DAIF_XTAL32M_EN_CKO16M_DIG_MASK | DAIF_XTAL32M_EN_CKO16M_ANA_MASK | DAIF_XTAL32M_EN_CKO16M_PLL_MASK);
+                    }
+                    break;
 
-            case PMU_ANA_ADC:
-                REGW1(&CS_DAIF->CLK_ENS, DAIF_ADC_CLK_EN_MASK);
-                REGW1(&CS_DAIF->CLK_CFG, DAIF_XTAL32M_SEL_CKO16M_GPADC_MASK);
-                break;
+                case PMU_ANA_ADC:
+                    REGW1(&CS_DAIF->CLK_ENS, DAIF_ADC_CLK_EN_MASK);
+                    REGW1(&CS_DAIF->CLK_CFG, DAIF_XTAL32M_SEL_CKO16M_GPADC_MASK);
+                    break;
 
-            case PMU_ANA_CALIB_RC32K:
-                REGW1(&CS_DAIF->CLK_ENS, DAIF_RC_32K_TUNE_CLK_EN_MASK);
-                break;
+                case PMU_ANA_CALIB_RC32K:
+                    REGW1(&CS_DAIF->CLK_ENS, DAIF_RC_32K_TUNE_CLK_EN_MASK);
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
             }
 
             drv_pmu_env.ana_mask |= ana;
         }
-    }
-    else
-    {
-        if (drv_pmu_env.ana_mask & ana)
-        {
+    } else {
+        if (drv_pmu_env.ana_mask & ana) {
             drv_pmu_env.ana_mask &= ~ana;
 
-            switch (ana)
-            {
-            case PMU_ANA_RF:
-            case PMU_ANA_RF_24G:
-            case PMU_ANA_RF_BLE:
-                if ((drv_pmu_env.ana_mask & (PMU_ANA_RF | PMU_ANA_RF_24G | PMU_ANA_RF_BLE)) == 0)
-                {
+            switch (ana) {
+                case PMU_ANA_RF:
+                case PMU_ANA_RF_24G:
+                case PMU_ANA_RF_BLE:
+                    if ((drv_pmu_env.ana_mask & (PMU_ANA_RF | PMU_ANA_RF_24G | PMU_ANA_RF_BLE)) == 0) {
 
-                    /*
-                     * ANA power/clock
-                     */
-                    // Wait for the digital state machine to finish running before turning off the clock.
-                    REGW(&CS_DAIF->DBG_REG, MASK_2REG(DAIF_DBG_EN, 1, DAIF_DBG_IDX, 3));
-                    cs_error_t ret; // Max: 25us
-                    DRV_WAIT_US_UNTIL_TO((REGR(&CS_DAIF->DBG_REG, MASK_POS(DAIF_DBG_DATA)) & 0xF), 30, ret);
-                    (void)ret;
-                    REGW(&CS_DAIF->DBG_REG, MASK_1REG(DAIF_DBG_EN, 0));
-                    /*
-                     * disable PHY clk,  If the PHY clock is turned off before waiting for the IDLE state, causing the PHY to not continue outputting data to the MAC,
-                     * MAC state machine stuck in RX_cRC state; However, MAC cannot return to the STANDBY state after CE is pulled low in RX_cRC state, resulting in RX_1N remaining high and the digital analog interface cannot return to IDLE;
-                     */
-                    DRV_DELAY_US(1);
-                    DRV_RCC_CLOCK_ENABLE(RCC_CLK_PHY, 0U);
-                    REGW0(&CS_DAIF->CLK_ENS, DAIF_PLL_VTRACK_CLK_EN_MASK | DAIF_PLL_LUT_CLK_EN_MASK |
-                                                 DAIF_MAIN_FSM_CLK_EN_MASK | DAIF_RX_AGC_CLK_EN_MASK | DAIF_DCOC_LUT_CLK_EN_MASK |
-                                                 DAIF_SDM_CLK_EN_MASK | DAIF_PLL_CLK_REF_EN_MASK | DAIF_PLL_AFC_CLK_EN_MASK);
-                    REGW0(&CS_DAIF->CLK_CFG, /*DAIF_XTAL32M_EN_CKO16M_DIG_MASK|*/ DAIF_XTAL32M_EN_CKO16M_ANA_MASK | DAIF_XTAL32M_EN_CKO16M_PLL_MASK);
-                }
-                break;
+                        /*
+                         * ANA power/clock
+                         */
+                        // Wait for the digital state machine to finish running before turning off the clock.
+                        REGW(&CS_DAIF->DBG_REG, MASK_2REG(DAIF_DBG_EN, 1, DAIF_DBG_IDX, 3));
+                        cs_error_t ret; // Max: 25us
+                        DRV_WAIT_US_UNTIL_TO((REGR(&CS_DAIF->DBG_REG, MASK_POS(DAIF_DBG_DATA)) & 0xF), 30, ret);
+                        (void)ret;
+                        REGW(&CS_DAIF->DBG_REG, MASK_1REG(DAIF_DBG_EN, 0));
+                        /*
+                         * disable PHY clk,  If the PHY clock is turned off before waiting for the IDLE state, causing the PHY to not continue outputting data to the MAC,
+                         * MAC state machine stuck in RX_cRC state; However, MAC cannot return to the STANDBY state after CE is pulled low in RX_cRC state, resulting in RX_1N remaining high and the digital analog interface cannot return to IDLE;
+                         */
+                        DRV_DELAY_US(1);
+                        DRV_RCC_CLOCK_ENABLE(RCC_CLK_PHY, 0U);
+                        REGW0(&CS_DAIF->CLK_ENS, DAIF_PLL_VTRACK_CLK_EN_MASK | DAIF_PLL_LUT_CLK_EN_MASK |
+                                                     DAIF_MAIN_FSM_CLK_EN_MASK | DAIF_RX_AGC_CLK_EN_MASK | DAIF_DCOC_LUT_CLK_EN_MASK |
+                                                     DAIF_SDM_CLK_EN_MASK | DAIF_PLL_CLK_REF_EN_MASK | DAIF_PLL_AFC_CLK_EN_MASK);
+                        REGW0(&CS_DAIF->CLK_CFG, /*DAIF_XTAL32M_EN_CKO16M_DIG_MASK|*/ DAIF_XTAL32M_EN_CKO16M_ANA_MASK | DAIF_XTAL32M_EN_CKO16M_PLL_MASK);
+                    }
+                    break;
 
-            case PMU_ANA_ADC:
-                REGW0(&CS_DAIF->CLK_ENS, DAIF_ADC_CLK_EN_MASK);
-                REGW0(&CS_DAIF->CLK_CFG, DAIF_XTAL32M_SEL_CKO16M_GPADC_MASK);
-                break;
+                case PMU_ANA_ADC:
+                    REGW0(&CS_DAIF->CLK_ENS, DAIF_ADC_CLK_EN_MASK);
+                    REGW0(&CS_DAIF->CLK_CFG, DAIF_XTAL32M_SEL_CKO16M_GPADC_MASK);
+                    break;
 
-            case PMU_ANA_CALIB_RC32K:
-                REGW0(&CS_DAIF->CLK_ENS, DAIF_RC_32K_TUNE_CLK_EN_MASK);
-                break;
+                case PMU_ANA_CALIB_RC32K:
+                    REGW0(&CS_DAIF->CLK_ENS, DAIF_RC_32K_TUNE_CLK_EN_MASK);
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
             }
 
             if (drv_pmu_env.ana_mask == 0)
@@ -1143,15 +1093,12 @@ bool drv_pmu_dcdc_is_enabled(void)
  **/
 void drv_pmu_dcdc_enable(bool enable)
 {
-    if (enable)
-    {
+    if (enable) {
         REGW(&CS_PMU->ANA_PD, MASK_1REG(PMU_ANA_PD_DCDC_DIS, 0));
         DRV_DELAY_US(10 * 20);
         REGW(&CS_PMU->ANA_PD, MASK_1REG(PMU_ANA_PD_ANA_1P2LDO_DIS, 1));
         REGW1(&CS_PMU->SW_STATUS, PMU_SW_STATUS_DCDC_ENABLED_MASK);
-    }
-    else
-    {
+    } else {
         REGW(&CS_PMU->ANA_PD, MASK_1REG(PMU_ANA_PD_ANA_1P2LDO_DIS, 0));
         DRV_DELAY_US(10 * 20);
         REGW(&CS_PMU->ANA_PD, MASK_1REG(PMU_ANA_PD_DCDC_DIS, 1));
@@ -1231,8 +1178,7 @@ void drv_pmu_xtal32k_change_param(int load_capacitance, int drive_current)
  **/
 void drv_pmu_xtal32m_change_param(int load_capacitance)
 {
-    if (load_capacitance >= 0)
-    {
+    if (load_capacitance >= 0) {
         REGSW(&CS_PMU->CLK_CTRL_2, MASK_STEP(PMU_CLK_CTRL_2_CT_XTAL32M, load_capacitance), false /*should_update*/, 10 /*delay_us*/);
     }
 }
@@ -1259,42 +1205,40 @@ void drv_pmu_wakeup_pin_set(uint32_t pin_mask, pmu_pin_wakeup_type_t trigger_typ
 {
     CS_CRITICAL_BEGIN();
 
-    switch (trigger_type)
-    {
-    case PMU_PIN_WAKEUP_DISABLE:
-        REGW0(&CS_PMU->GPIO_WAKEUP, pin_mask);
-        REGW0(&CS_PMU->GPIO_POL, pin_mask);
-        break;
+    switch (trigger_type) {
+        case PMU_PIN_WAKEUP_DISABLE:
+            REGW0(&CS_PMU->GPIO_WAKEUP, pin_mask);
+            REGW0(&CS_PMU->GPIO_POL, pin_mask);
+            break;
 
-    case PMU_PIN_WAKEUP_FALLING_EDGE:
-    case PMU_PIN_WAKEUP_LOW_LEVEL: // FALLING_EDGE
-        REGW1(&CS_PMU->GPIO_WAKEUP, pin_mask);
-        REGW1(&CS_PMU->GPIO_POL, pin_mask);
-        break;
+        case PMU_PIN_WAKEUP_FALLING_EDGE:
+        case PMU_PIN_WAKEUP_LOW_LEVEL: // FALLING_EDGE
+            REGW1(&CS_PMU->GPIO_WAKEUP, pin_mask);
+            REGW1(&CS_PMU->GPIO_POL, pin_mask);
+            break;
 
-    case PMU_PIN_WAKEUP_RISING_FAILING_EDGE:
-    case PMU_PIN_WAKEUP_RISING_EDGE:
-    case PMU_PIN_WAKEUP_HIGH_LEVEL: // RISING_EDGE
-        REGW1(&CS_PMU->GPIO_WAKEUP, pin_mask);
-        REGW0(&CS_PMU->GPIO_POL, pin_mask);
-        break;
+        case PMU_PIN_WAKEUP_RISING_FAILING_EDGE:
+        case PMU_PIN_WAKEUP_RISING_EDGE:
+        case PMU_PIN_WAKEUP_HIGH_LEVEL: // RISING_EDGE
+            REGW1(&CS_PMU->GPIO_WAKEUP, pin_mask);
+            REGW0(&CS_PMU->GPIO_POL, pin_mask);
+            break;
     }
 
-    switch (trigger_type)
-    {
-    case PMU_PIN_WAKEUP_LOW_LEVEL:
-    case PMU_PIN_WAKEUP_HIGH_LEVEL:
-        drv_pmu_env.pin_wakeup_none_edge_mask |= pin_mask;
-        drv_pmu_env.pin_wakeup_double_edge_mask &= ~pin_mask;
-        break;
+    switch (trigger_type) {
+        case PMU_PIN_WAKEUP_LOW_LEVEL:
+        case PMU_PIN_WAKEUP_HIGH_LEVEL:
+            drv_pmu_env.pin_wakeup_none_edge_mask |= pin_mask;
+            drv_pmu_env.pin_wakeup_double_edge_mask &= ~pin_mask;
+            break;
 
-    case PMU_PIN_WAKEUP_RISING_FAILING_EDGE:
-        drv_pmu_env.pin_wakeup_none_edge_mask &= ~pin_mask;
-        drv_pmu_env.pin_wakeup_double_edge_mask |= pin_mask;
-        break;
+        case PMU_PIN_WAKEUP_RISING_FAILING_EDGE:
+            drv_pmu_env.pin_wakeup_none_edge_mask &= ~pin_mask;
+            drv_pmu_env.pin_wakeup_double_edge_mask |= pin_mask;
+            break;
 
-    default:
-        break;
+        default:
+            break;
     }
 
     REGW(&CS_PMU->WAKE_DEB, PMU_WAKE_DEB_PIN_WAKE_LEVEL_EDGE_SEL_MASK | PMU_WAKE_DEB_PIN_DEBOUNCE_CYCLE_WAKE_MASK | PMU_WAKE_DEB_PIN_DEBOUNCE_COEFF_WAKE_MASK | PMU_WAKE_DEB_PIN_DEB_RST_MASK,
@@ -1306,8 +1250,7 @@ void drv_pmu_wakeup_pin_set(uint32_t pin_mask, pmu_pin_wakeup_type_t trigger_typ
 
     CS_CRITICAL_END();
 
-    if (trigger_type != PMU_PIN_WAKEUP_DISABLE)
-    {
+    if (trigger_type != PMU_PIN_WAKEUP_DISABLE) {
         // Enable IRQ
         NVIC_ClearPendingIRQ(PIN_WAKEUP_IRQn);
         NVIC_SetPriority(PIN_WAKEUP_IRQn, RTE_PMU_WAKEUP_PIN_IRQ_PRIORITY);
@@ -1362,8 +1305,7 @@ void drv_pmu_force_reboot(void)
     drv_pmu_cpu_reset();
 
     // Never come here
-    while (1)
-        ;
+    while (1);
 }
 
 /**
@@ -1384,15 +1326,12 @@ pmu_charge_status_t drv_pmu_charge_status(void)
 {
     volatile uint32_t charge_status = CS_SYS->CHRGR_STAT;
 
-    if (charge_status & SYS_CHRGR_INSERT_DETECT_MASK)
-    {
+    if (charge_status & SYS_CHRGR_INSERT_DETECT_MASK) {
         if (charge_status & SYS_CHRGR_FINISH_MASK)
             return PMU_CHARGE_COMPLETE;
         else
             return PMU_CHARGE_CHARGING;
-    }
-    else
-    {
+    } else {
         return PMU_CHARGE_EXTRACT;
     }
 }
@@ -1407,21 +1346,21 @@ pmu_charge_status_t drv_pmu_charge_status(void)
 pmu_reboot_reason_t drv_pmu_reboot_reason(void)
 {
     if (CS_PMU->SW_STATUS & PMU_SW_STATUS_REBOOT_FROM_WDT_MASK)
-        return PMU_REBOOT_FROM_WDT;
+        return PMU_REBOOT_FROM_WDT; // 看门狗复位
 
     if (CS_PMU->SW_STATUS & PMU_SW_STATUS_REBOOT_FROM_IFLASH_LOW_V_MASK)
-        return PMU_REBOOT_FROM_IFLASH_LOW_V;
+        return PMU_REBOOT_FROM_IFLASH_LOW_V; // 内部Flash低电压复位
 
     if (CS_PMU->SW_STATUS & PMU_SW_STATUS_REBOOT_FROM_SLEEP_MASK)
-        return PMU_REBOOT_FROM_ULTRA_DEEP_SLEEP;
+        return PMU_REBOOT_FROM_ULTRA_DEEP_SLEEP; // 深度睡眠唤醒
 
     if (CS_PMU->SW_STATUS & PMU_SW_STATUS_REBOOT_FROM_ISP_MASK)
-        return PMU_REBOOT_FROM_ISP;
+        return PMU_REBOOT_FROM_ISP; // SPI 烧录后复位
 
     if (CS_PMU->SW_STATUS & PMU_SW_STATUS_REBOOT_FORCE_MASK)
-        return PMU_REBOOT_FROM_USER;
+        return PMU_REBOOT_FROM_USER; // 用户主动复位
 
-    return PMU_REBOOT_FROM_POWER_ON;
+    return PMU_REBOOT_FROM_POWER_ON; // 常规上电复位
 }
 
 /**
@@ -1434,31 +1373,25 @@ pmu_reboot_reason_t drv_pmu_reboot_reason(void)
 void drv_pmu_reboot_reason_check(void)
 {
     // Store wdt-reset and clear it
-    if (CS_PMU->WDT_STATUS & PMU_WDT_STATUS_WDT_FLAG_MASK)
-    {
+    if (CS_PMU->WDT_STATUS & PMU_WDT_STATUS_WDT_FLAG_MASK) {
         // Clear
         REGW1(&CS_PMU->WDT_STATUS, PMU_WDT_STATUS_WDT_FLAG_CLR_MASK);
 
         // Soft flag
         REGW1(&CS_PMU->SW_STATUS, PMU_SW_STATUS_REBOOT_FROM_WDT_MASK);
         REGW0(&CS_PMU->SW_STATUS, PMU_SW_STATUS_REBOOT_FROM_SOFT_RESET_MASK);
-    }
-    else
-    {
+    } else {
         REGW0(&CS_PMU->SW_STATUS, PMU_SW_STATUS_REBOOT_FROM_WDT_MASK);
     }
 
-    if (CS_PMU->FLASH_LOW_VOL_CTRL_0 & PMU_FLASH_LOW_VOL_CTRL_0_FLASH_LOW_VOL_FLAG_MASK)
-    {
+    if (CS_PMU->FLASH_LOW_VOL_CTRL_0 & PMU_FLASH_LOW_VOL_CTRL_0_FLASH_LOW_VOL_FLAG_MASK) {
         // clear
         CS_PMU->FLASH_LOW_VOL_CTRL_1 = 0;
 
         // Soft flag
         REGW1(&CS_PMU->SW_STATUS, PMU_SW_STATUS_REBOOT_FROM_IFLASH_LOW_V_MASK);
         REGW0(&CS_PMU->SW_STATUS, PMU_SW_STATUS_REBOOT_FROM_SOFT_RESET_MASK);
-    }
-    else
-    {
+    } else {
         REGW0(&CS_PMU->SW_STATUS, PMU_SW_STATUS_REBOOT_FROM_IFLASH_LOW_V_MASK);
     }
 }
@@ -1512,8 +1445,7 @@ void drv_pmu_topclk_recalib(void)
     // calib RC32M
     drv_calib_sys_rc32m();
 
-    if (drv_pmu_topclk_xtal32m_x2_is_enabled())
-    {
+    if (drv_pmu_topclk_xtal32m_x2_is_enabled()) {
         // to rc32m
         drv_pmu_topclk_switch_to_rc32m();
 
@@ -1548,30 +1480,21 @@ void drv_pmu_register_step_set(volatile uint32_t *reg, uint32_t mask, uint32_t p
 {
     uint32_t cur = REGR(reg, mask, pos);
 
-    if (cur > value)
-    {
-        while (cur-- > value)
-        {
+    if (cur > value) {
+        while (cur-- > value) {
             REGW(reg, mask, cur << pos);
-            if (should_update)
-            {
+            if (should_update) {
                 REGW1(&CS_PMU->ANA_REG, PMU_ANA_REG_DIG_LDO_UPDATE_MASK);
-                while (CS_PMU->ANA_REG & PMU_ANA_REG_DIG_LDO_UPDATE_MASK)
-                    ;
+                while (CS_PMU->ANA_REG & PMU_ANA_REG_DIG_LDO_UPDATE_MASK);
             }
             DRV_DELAY_US(delay_us);
         }
-    }
-    else if (cur < value)
-    {
-        while (cur++ < value)
-        {
+    } else if (cur < value) {
+        while (cur++ < value) {
             REGW(reg, mask, cur << pos);
-            if (should_update)
-            {
+            if (should_update) {
                 REGW1(&CS_PMU->ANA_REG, PMU_ANA_REG_DIG_LDO_UPDATE_MASK);
-                while (CS_PMU->ANA_REG & PMU_ANA_REG_DIG_LDO_UPDATE_MASK)
-                    ;
+                while (CS_PMU->ANA_REG & PMU_ANA_REG_DIG_LDO_UPDATE_MASK);
             }
             DRV_DELAY_US(delay_us);
         }
@@ -1611,15 +1534,14 @@ void drv_pmu_register_step_set(volatile uint32_t *reg, uint32_t mask, uint32_t p
  **/
 void drv_pmu_dump(void *printf_dump_func)
 {
-    uint32_t wake_en_mask = CS_PMU->GPIO_WAKEUP;
-    uint32_t wakeup_level_mask = CS_PMU->GPIO_POL;
-    uint32_t pull_up_mask = CS_PMU->GPIO_PU_CTRL;
-    uint32_t pull_down_mask = CS_PMU->GPIO_PD_CTRL;
+    uint32_t wake_en_mask       = CS_PMU->GPIO_WAKEUP;
+    uint32_t wakeup_level_mask  = CS_PMU->GPIO_POL;
+    uint32_t pull_up_mask       = CS_PMU->GPIO_PU_CTRL;
+    uint32_t pull_down_mask     = CS_PMU->GPIO_PD_CTRL;
     uint32_t current_level_mask = CS_GPIO0->DATA;
 
     void (*__printf)(const char *format, ...) = /*lint -e{611}*/ (void (*)(const char *format, ...))printf_dump_func;
-    if (__printf == NULL)
-    {
+    if (__printf == NULL) {
         return;
     }
 
@@ -1632,84 +1554,64 @@ void drv_pmu_dump(void *printf_dump_func)
     // cpu clock
     __printf("[PMU] clocking CPU[%dMHZ]\n", drv_rcc_clock_get(RCC_CLK_CPU) / 1000000);
     // peripherals clock
-    if (!(CS_CPM->SF_CFG & CPM_SF_CFG_SF_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->SF_CFG & CPM_SF_CFG_SF_GATE_EN_MASK)) {
         __printf(" SF");
     }
-    if (!(CS_CPM->TIMER0_CFG & CPM_TIMERX_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->TIMER0_CFG & CPM_TIMERX_GATE_EN_MASK)) {
         __printf(" TIM0");
     }
-    if (!(CS_CPM->TIMER1_CFG & CPM_TIMERX_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->TIMER1_CFG & CPM_TIMERX_GATE_EN_MASK)) {
         __printf(" TIM1");
     }
-    if (!(CS_CPM->TIMER2_CFG & CPM_TIMERX_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->TIMER2_CFG & CPM_TIMERX_GATE_EN_MASK)) {
         __printf(" TIM2");
     }
-    if (!(CS_CPM->UART0_CFG & CPM_UARTx_CFG_UARTx_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->UART0_CFG & CPM_UARTx_CFG_UARTx_GATE_EN_MASK)) {
         __printf(" UART0");
     }
-    if (!(CS_CPM->UART1_CFG & CPM_UARTx_CFG_UARTx_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->UART1_CFG & CPM_UARTx_CFG_UARTx_GATE_EN_MASK)) {
         __printf(" UART1");
     }
-    if (!(CS_CPM->I2C_CFG & CPM_I2C_CFG_I2C_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->I2C_CFG & CPM_I2C_CFG_I2C_GATE_EN_MASK)) {
         __printf(" I2C0");
     }
-    if (!(CS_PMU->BASIC & PMU_BASIC_LPTIM_32K_CLK_GATE_MASK))
-    {
+    if (!(CS_PMU->BASIC & PMU_BASIC_LPTIM_32K_CLK_GATE_MASK)) {
         __printf(" LPTIM");
     }
-    if (!(CS_CPM->BLE_CFG & CPM_BLE_CFG_BLE_AHB_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->BLE_CFG & CPM_BLE_CFG_BLE_AHB_GATE_EN_MASK)) {
         __printf(" BLE");
     }
-    if (!(CS_CPM->DMA_CFG & CPM_DMA_CFG_DMA_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->DMA_CFG & CPM_DMA_CFG_DMA_GATE_EN_MASK)) {
         __printf(" DMA");
     }
-    if (CS_CPM->AES_CFG & CPM_AES_CLK_EN_MASK)
-    {
+    if (CS_CPM->AES_CFG & CPM_AES_CLK_EN_MASK) {
         __printf(" AES");
     }
-    if (!(CS_CPM->GPIO_CFG & CPM_GPIO_CFG_GPIO_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->GPIO_CFG & CPM_GPIO_CFG_GPIO_GATE_EN_MASK)) {
         __printf(" GPIO0");
     }
-    if (!(CS_CPM->PHY_CFG & CPM_PHY_CFG_PHY_16M_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->PHY_CFG & CPM_PHY_CFG_PHY_16M_GATE_EN_MASK)) {
         __printf(" PHY");
     }
-    if (!(CS_CPM->RNG_CFG & CPM_RNG_CFG_RNG_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->RNG_CFG & CPM_RNG_CFG_RNG_GATE_EN_MASK)) {
         __printf(" RNG");
     }
-    if (!(CS_CPM->MAC_2P4_CFG & CPM_2P4_CFG_MAC_2G4_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->MAC_2P4_CFG & CPM_2P4_CFG_MAC_2G4_GATE_EN_MASK)) {
         __printf(" 2.4G");
     }
-    if (!(CS_CPM->ANA_IF_CFG))
-    {
+    if (!(CS_CPM->ANA_IF_CFG)) {
         __printf(" DAIF");
     }
-    if (!(CS_CPM->EFUSE_CFG & CPM_EFUSE_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->EFUSE_CFG & CPM_EFUSE_GATE_EN_MASK)) {
         __printf(" EFUSE");
     }
-    if (!(CS_CPM->SPI0_CFG & CPM_SPI0_CFG_SPI0_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->SPI0_CFG & CPM_SPI0_CFG_SPI0_GATE_EN_MASK)) {
         __printf(" SPI0");
     }
-    if (!(CS_CPM->SPI1_CFG & CPM_SPI1_CFG_SPI1_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->SPI1_CFG & CPM_SPI1_CFG_SPI1_GATE_EN_MASK)) {
         __printf(" SPI1");
     }
-    if (!(CS_CPM->APB_CFG & CPM_APB_CFG_RTC_APB_GATE_EN_MASK))
-    {
+    if (!(CS_CPM->APB_CFG & CPM_APB_CFG_RTC_APB_GATE_EN_MASK)) {
         __printf(" RTC");
     }
     __printf("\n");
@@ -1744,12 +1646,9 @@ void drv_pmu_pin_wakeup_isr(void)
 
 void drv_pmu_pof_enable(bool enable, uint8_t voltage)
 {
-    if (enable)
-    {
+    if (enable) {
         REGW(&CS_PMU->POF_INT_CTRL, MASK_5REG(PMU_POF_INT_CTRL_PMU_POF_INT_EN, 1, PMU_POF_INT_CTRL_PMU_PD_POF_EN, 0, PMU_POF_INT_CTRL_PMU_PD_POF_ME, 1, PMU_POF_INT_CTRL_PMU_PD_POF_REG, 0, PMU_POF_INT_CTRL_PMU_POF_TH_REG, voltage));
-    }
-    else
-    {
+    } else {
         REGW(&CS_PMU->POF_INT_CTRL, MASK_4REG(PMU_POF_INT_CTRL_PMU_PD_POF_ME, 0, PMU_POF_INT_CTRL_PMU_PD_POF_REG, 1, PMU_POF_INT_CTRL_PMU_POF_INT_EN, 0, PMU_POF_INT_CTRL_PMU_PD_POF_EN, 1));
     }
 }

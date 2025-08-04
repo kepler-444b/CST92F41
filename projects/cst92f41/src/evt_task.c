@@ -29,34 +29,12 @@
 /* Kernel includes. */
 #include "cmsis_os2.h"
 
-/*********************************************************************
- * MACROS
- */
+#define EVENT_BLUETOOTH_MASK      0x0001 // 蓝牙事件
+#define EVENT_SYSTEM_RESERVE_MASK 0x00FF // 系统保留事件
 
-#define EVENT_BLUETOOTH_MASK      0x0001
-#define EVENT_SYSTEM_RESERVE_MASK 0x00FF
-
-/*********************************************************************
- * TYPEDEFS
- */
-
-/*********************************************************************
- * CONSTANTS
- */
-
-/*********************************************************************
- * LOCAL VARIABLES
- */
 static osEventFlagsId_t xEvtEvent = NULL;
 static evt_timer_t evt_timer_0;
 
-/*********************************************************************
- * GLOBAL VARIABLES
- */
-
-/*********************************************************************
- * LOCAL FUNCTIONS
- */
 void app_adv_init();
 void app_sec_init();
 void service_common_init(void);
@@ -65,36 +43,21 @@ void ancs_client_init(void);
 void app_media_hid_init(void);
 void app_24g_init(void);
 
-/**
- *******************************************************************************
- * @brief  evt timer 0 handler
- *
- * @param[in] timer  timer
- * @param[in] param  param
- *******************************************************************************
- */
 static void evt_timer_0_handler(evt_timer_t *timer, void *param)
 {
     CS_LOG_DEBUG("evt timer: %08X\n", timer->time);
 }
 
-/**
- * @brief  bluetooth event handler
- **/
 static void vEvtEventHandler(void)
 {
-    if (xEvtEvent)
+    if (xEvtEvent) { // 事件组句柄
+                     // 向事件组设置标志位
         osEventFlagsSet(xEvtEvent, EVENT_BLUETOOTH_MASK);
+    }
 }
 
-/**
- * @brief  bluetooth schedule task
- *
- * @param[in] pvParameters  pv parameters
- **/
 static void vEvtScheduleTask(void *argument)
 {
-
     uint32_t status;
     uint32_t uxBits;
     struct cs_stack_param param = {
@@ -108,6 +71,7 @@ static void vEvtScheduleTask(void *argument)
 
     nvds_init(0);              // 非易失性存储初始化
     status = ble_init(&param); // 蓝牙协议栈初始化
+
     if (status == 0) {
         CS_LOG_DEBUG("ble_init ok\n");
     } else {
@@ -131,48 +95,36 @@ static void vEvtScheduleTask(void *argument)
 
     // enable sleep
     pm_sleep_enable(CFG_SLEEP_ENABLE); // 全局启用睡眠模式
-    pm_sleep_allow(PM_ID_SHELL);       // PM_ID_SHELL 启用休眠
+    // pm_sleep_allow(PM_ID_SHELL);       // PM_ID_SHELL 启用休眠
 
     // Create event
     xEvtEvent = osEventFlagsNew(NULL); // 创建事件组组(用于任务间通信)
 
-    // 设置事件回调
-    evt_schedule_trigger_callback_set(vEvtEventHandler);
+    // 设置全局回调
+    evt_schedule_trigger_callback_set(vEvtEventHandler); // 绑定事件触发回调
 
     while (1) {
         evt_schedule(); // 执行任务调度
 
-        // 任务挂起,等待信号唤醒
+        // 阻塞等待RTOS事件
         uxBits = osEventFlagsWait(xEvtEvent, 0xFFFF, osFlagsWaitAny, osWaitForever);
         (void)uxBits;
     }
 }
 
-/*********************************************************************
- * PUBLIC FUNCTIONS
- */
-
-/**
- * @brief  v start bluetooth task
- **/
 void vStartEvtTask(void)
 {
     const osThreadAttr_t bluetoothThreadAttr =
         {
-            .name       = NULL,
-            .attr_bits  = 0,
-            .cb_mem     = NULL,
+            .name       = "main_thread",
+            .attr_bits  = 0,    // 无特殊标志
+            .cb_mem     = NULL, // 由RTOS自动分配TCB
             .cb_size    = 0,
-            .stack_mem  = NULL,
-            .stack_size = 2048,
-            .priority   = osPriorityRealtime,
-            .tz_module  = 0,
+            .stack_mem  = NULL,               // 由RTOS自动分配栈
+            .stack_size = 2048,               // 指定栈大小
+            .priority   = osPriorityRealtime, // 最高实时优先级
+            .tz_module  = 0,                  // 默认安全域
         };
 
-    // Create ble Task
     osThreadNew(vEvtScheduleTask, NULL, &bluetoothThreadAttr);
 }
-
-/** @} */
-
-// vim: fdm=marker

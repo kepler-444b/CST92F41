@@ -47,23 +47,23 @@
 /*********************************************************************
  * MACROS
  */
-/// GAP Device Name, 
-#define GAP_DEVICE_NAME   "CST92F41 Simple"
+/// GAP Device Name,
+#define GAP_DEVICE_NAME "CST92F41 Simple"
 /// GAP APPEARANCE
-#define GAP_APPEARANCE    "\xc2\x03"
+#define GAP_APPEARANCE "\xc2\x03"
 /// DIS SYSTEM ID
-#define DIS_SYSTEM_ID     "\x00\x00\x00\x00\x00\x00\x00\x00"
+#define DIS_SYSTEM_ID "\x00\x00\x00\x00\x00\x00\x00\x00"
 /// DIS HARD VERSION
-#define DIS_HARD_VERSION  "1.0.0.0"
-/// DIS SOFT VERSION 
-#define DIS_SOFT_VERSION  "1.0.0.0"
+#define DIS_HARD_VERSION "1.0.0.0"
+/// DIS SOFT VERSION
+#define DIS_SOFT_VERSION "1.0.0.0"
 /// DIS MANU NAME STR
 #define DIS_MANU_NAME_STR "chipsea."
 
 /// DIS PNP ID
-#define DIS_PNP_ID        ("\x01\xA7\x06\xB8\x32\x79\x49")
+#define DIS_PNP_ID ("\x01\xA7\x06\xB8\x32\x79\x49")
 /// Battery service, set 1 to Enable
-#define SERVICE_BATTARY   1
+#define SERVICE_BATTARY 1
 
 /*******************************************************************************
  * EXTERN FUNCTIONS

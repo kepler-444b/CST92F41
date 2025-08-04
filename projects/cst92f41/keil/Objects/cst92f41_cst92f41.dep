@@ -1,10 +1,10 @@
 Dependencies for Project 'cst92f41', Target 'cst92f41': (DO NOT MODIFY !)
 CompilerVersion: 6230000::V6.23::ARMCLANG
-F (../../../bsp/CST92F4X_EVB/board_cst92f41_evb.c)(0x688C31CD)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/board_cst92f41_evb.o -MMD)
+F (../../../bsp/CST92F4X_EVB/board_cst92f41_evb.c)(0x6890656F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/board_cst92f41_evb.o -MMD)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
@@ -80,7 +80,7 @@ I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_tim.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_lp_tim.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_rng.h)(0x68030958)
 I (..\..\..\common\cs_time.h)(0x68030956)
-I (..\..\..\bsp\CST92F4X_EVB\board_cst92f41_evb.h)(0x688B3E6C)
+I (..\..\..\bsp\CST92F4X_EVB\board_cst92f41_evb.h)(0x68906086)
 I (..\src\sdk_config.h)(0x688B3B74)
 F (../../../components/shell/shell.c)(0x688C1D52)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/shell.o -MMD)
 I (..\..\..\components\shell\shell_cmd.h)(0x68030957)
@@ -89,7 +89,7 @@ I (..\..\..\components\shell\shell_port.h)(0x68030957)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -127,7 +127,7 @@ I (..\..\..\components\shell\shell_port.h)(0x68030957)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -158,12 +158,12 @@ I (..\..\..\hal\device\include\..\chipsea\..\common\sys_reg.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\..\common\rng_reg.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\..\common\lp_timer_reg.h)(0x68030958)
 I (..\..\..\common\cs_printf.h)(0x68030956)
-F (../../../components/shell/shell_port.c)(0x689007D8)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/shell_port.o -MMD)
+F (../../../components/shell/shell_port.c)(0x68905EE5)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/shell_port.o -MMD)
 I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -241,14 +241,14 @@ I (..\..\..\common\cs_time.h)(0x68030956)
 I (..\..\..\components\shell\shell.h)(0x68030957)
 I (..\..\..\components\shell\shell_cmd.h)(0x68030957)
 I (..\..\..\components\shell\shell_port.h)(0x68030957)
-I (..\..\..\components\evt\evt.h)(0x68030956)
+I (..\..\..\components\evt\evt.h)(0x68906B9E)
 I (..\..\..\components\evt\evt_timer.h)(0x68030956)
 F (../../../components/mbr/mbr.c)(0x68030956)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/mbr.o -MMD)
 I (..\..\..\common\cs.h)(0x68030956)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -328,7 +328,7 @@ F (../../../components/trace/trc_io.c)(0x68030957)(-xc -std=c99 --target=arm-arm
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -405,12 +405,12 @@ I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_tim.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_lp_tim.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_rng.h)(0x68030958)
 I (..\..\..\common\cs_time.h)(0x68030956)
-F (../../../components/evt/evt.c)(0x688C2B16)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/evt.o -MMD)
+F (../../../components/evt/evt.c)(0x68906DF5)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/evt.o -MMD)
 I (..\..\..\common\cs_utils.h)(0x68030956)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -441,7 +441,7 @@ I (..\..\..\hal\device\include\..\chipsea\..\common\sys_reg.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\..\common\rng_reg.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\..\common\lp_timer_reg.h)(0x68030958)
 I (..\..\..\common\cs_log.h)(0x688D88FE)
-I (..\..\..\components\evt\evt.h)(0x68030956)
+I (..\..\..\components\evt\evt.h)(0x68906B9E)
 I (..\..\..\components\evt\evt_timer.h)(0x68030956)
 I (..\..\..\common\cs_list.h)(0x68030956)
 I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
@@ -492,7 +492,7 @@ F (../../../components/evt/evt_timer.c)(0x68030956)(-xc -std=c99 --target=arm-ar
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
@@ -568,15 +568,15 @@ I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_tim.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_lp_tim.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_rng.h)(0x68030958)
 I (..\..\..\common\cs_time.h)(0x68030956)
-I (..\..\..\components\evt\evt.h)(0x68030956)
+I (..\..\..\components\evt\evt.h)(0x68906B9E)
 I (..\..\..\components\evt\evt_timer.h)(0x68030956)
 I (..\..\..\components\trace\trc_io.h)(0x68030957)
-F (../src/main.c)(0x688DD798)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/main.o -MMD)
+F (../src/main.c)(0x68905D79)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/main.o -MMD)
 I (..\..\..\common\cs.h)(0x68030956)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -654,26 +654,26 @@ I (..\..\..\common\cs_time.h)(0x68030956)
 I (..\..\..\components\shell\shell.h)(0x68030957)
 I (..\..\..\components\shell\shell_cmd.h)(0x68030957)
 I (..\..\..\components\shell\shell_port.h)(0x68030957)
-I (..\..\..\components\evt\evt.h)(0x68030956)
+I (..\..\..\components\evt\evt.h)(0x68906B9E)
 I (..\..\..\components\evt\evt_timer.h)(0x68030956)
 I (..\..\..\bsp\include\board.h)(0x68030956)
-I (..\..\..\bsp\CST92F4X_EVB\board_cst92f41_evb.h)(0x688B3E6C)
+I (..\..\..\bsp\CST92F4X_EVB\board_cst92f41_evb.h)(0x68906086)
 I (..\..\..\components\mbr\mbr.h)(0x68030956)
 I (..\src\sdk_config.h)(0x688B3B74)
-I (..\..\..\components\ble\host\include\cs_ble.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble.h)(0x68907626)
 I (..\..\..\components\ble\host\include\cs_ble_gap.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_range.h)(0x68030956)
-I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x6890778E)
 I (..\..\..\components\ble\host\include\cs_ble_misc.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_error.h)(0x68030956)
 I (..\..\..\rtos\include\cmsis_os2.h)(0x68030958)
 F (..\src\sdk_config.h)(0x688B3B74)()
-F (../src/evt_task.c)(0x688D652C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/evt_task.o -MMD)
+F (../src/evt_task.c)(0x68908917)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/evt_task.o -MMD)
 I (..\..\..\common\cs.h)(0x68030956)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -751,33 +751,33 @@ I (..\..\..\common\cs_time.h)(0x68030956)
 I (..\..\..\components\shell\shell.h)(0x68030957)
 I (..\..\..\components\shell\shell_cmd.h)(0x68030957)
 I (..\..\..\components\shell\shell_port.h)(0x68030957)
-I (..\..\..\components\evt\evt.h)(0x68030956)
+I (..\..\..\components\evt\evt.h)(0x68906B9E)
 I (..\..\..\components\evt\evt_timer.h)(0x68030956)
 I (..\..\..\bsp\include\board.h)(0x68030956)
-I (..\..\..\bsp\CST92F4X_EVB\board_cst92f41_evb.h)(0x688B3E6C)
+I (..\..\..\bsp\CST92F4X_EVB\board_cst92f41_evb.h)(0x68906086)
 I (..\..\..\components\mbr\mbr.h)(0x68030956)
 I (..\..\..\components\nvds\nvds.h)(0x68030957)
 I (..\..\..\components\nvds\nvds_tags.h)(0x68030957)
 I (..\src\sdk_config.h)(0x688B3B74)
-I (..\..\..\components\ble\host\include\cs_ble.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble.h)(0x68907626)
 I (..\..\..\components\ble\host\include\cs_ble_gap.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_range.h)(0x68030956)
-I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x6890778E)
 I (..\..\..\components\ble\host\include\cs_ble_misc.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_error.h)(0x68030956)
 I (..\..\..\rtos\include\cmsis_os2.h)(0x68030958)
-F (../src/app_adv.c)(0x68030958)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/app_adv.o -MMD)
-I (..\..\..\components\ble\host\include\cs_ble.h)(0x68030956)
+F (../src/app_adv.c)(0x6890871A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/app_adv.o -MMD)
+I (..\..\..\components\ble\host\include\cs_ble.h)(0x68907626)
 I (..\..\..\components\ble\host\include\cs_ble_gap.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_range.h)(0x68030956)
-I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x6890778E)
 I (..\..\..\components\ble\host\include\cs_ble_misc.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_error.h)(0x68030956)
 I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -853,20 +853,20 @@ I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_lp_tim.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_rng.h)(0x68030958)
 I (..\..\..\common\cs_time.h)(0x68030956)
 I (..\src\app_adv.h)(0x68030958)
-I (..\..\..\bsp\CST92F4X_EVB\board_cst92f41_evb.h)(0x688B3E6C)
+I (..\..\..\bsp\CST92F4X_EVB\board_cst92f41_evb.h)(0x68906086)
 I (..\src\sdk_config.h)(0x688B3B74)
-F (../src/app_sec.c)(0x68030958)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/app_sec.o -MMD)
-I (..\..\..\components\ble\host\include\cs_ble.h)(0x68030956)
+F (../src/app_sec.c)(0x68907E6E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/app_sec.o -MMD)
+I (..\..\..\components\ble\host\include\cs_ble.h)(0x68907626)
 I (..\..\..\components\ble\host\include\cs_ble_gap.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_range.h)(0x68030956)
-I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x6890778E)
 I (..\..\..\components\ble\host\include\cs_ble_misc.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_error.h)(0x68030956)
 I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -942,10 +942,10 @@ I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_lp_tim.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_rng.h)(0x68030958)
 I (..\..\..\common\cs_time.h)(0x68030956)
 F (../../common/cs_ancs/ancs_client.c)(0x68030958)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/ancs_client.o -MMD)
-I (..\..\..\components\ble\host\include\cs_ble.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble.h)(0x68907626)
 I (..\..\..\components\ble\host\include\cs_ble_gap.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_range.h)(0x68030956)
-I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x6890778E)
 I (..\..\..\components\ble\host\include\cs_ble_misc.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_error.h)(0x68030956)
 I (..\..\common\cs_ancs\ancs_client.h)(0x68030958)
@@ -957,7 +957,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -1041,7 +1041,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -1118,10 +1118,10 @@ I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_rng.h)(0x68030958)
 I (..\..\..\common\cs_time.h)(0x68030956)
 I (..\..\..\components\mbr\mbr.h)(0x68030956)
 F (../../common/cs_dfu/service_chipsea_dfu.c)(0x68030958)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/service_chipsea_dfu.o -MMD)
-I (..\..\..\components\ble\host\include\cs_ble.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble.h)(0x68907626)
 I (..\..\..\components\ble\host\include\cs_ble_gap.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_range.h)(0x68030956)
-I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x6890778E)
 I (..\..\..\components\ble\host\include\cs_ble_misc.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_error.h)(0x68030956)
 I (..\..\common\cs_dfu\chipsea_dfu.h)(0x68030958)
@@ -1130,7 +1130,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -1207,30 +1207,30 @@ I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_rng.h)(0x68030958)
 I (..\..\..\common\cs_time.h)(0x68030956)
 I (..\..\..\components\mbr\mbr.h)(0x68030956)
 I (..\..\common\cs_dfu\service_chipsea_dfu.h)(0x68030958)
-F (../../common/cs_gap_dis_batt/service_common.c)(0x68030958)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/service_common.o -MMD)
+F (../../common/cs_gap_dis_batt/service_common.c)(0x68907BC9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/service_common.o -MMD)
 I (..\src\sdk_config.h)(0x688B3B74)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
-I (..\..\..\components\ble\host\include\cs_ble.h)(0x68030956)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
+I (..\..\..\components\ble\host\include\cs_ble.h)(0x68907626)
 I (..\..\..\components\ble\host\include\cs_ble_gap.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_range.h)(0x68030956)
-I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x6890778E)
 I (..\..\..\components\ble\host\include\cs_ble_misc.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_error.h)(0x68030956)
-I (..\..\common\cs_gap_dis_batt\service_common.h)(0x68030958)
+I (..\..\common\cs_gap_dis_batt\service_common.h)(0x689079DA)
 F (../../common/cs_hid_media/app_hid_media.c)(0x68030958)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/app_hid_media.o -MMD)
-I (..\..\..\components\ble\host\include\cs_ble.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble.h)(0x68907626)
 I (..\..\..\components\ble\host\include\cs_ble_gap.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_range.h)(0x68030956)
-I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x6890778E)
 I (..\..\..\components\ble\host\include\cs_ble_misc.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_error.h)(0x68030956)
 I (..\..\common\cs_hid_media\app_hid_media.h)(0x68030958)
-I (..\..\..\components\evt\evt.h)(0x68030956)
+I (..\..\..\components\evt\evt.h)(0x68906B9E)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\components\evt\evt_timer.h)(0x68030956)
 I (..\..\..\common\cs_list.h)(0x68030956)
 I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
@@ -1308,12 +1308,12 @@ I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_tim.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_lp_tim.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_rng.h)(0x68030958)
 I (..\..\..\common\cs_time.h)(0x68030956)
-F (..\src\app_24g.c)(0x688DCCAC)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/app_24g.o -MMD)
+F (..\src\app_24g.c)(0x68906E9C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/app_24g.o -MMD)
 I (..\..\..\common\cs.h)(0x68030956)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -1391,10 +1391,10 @@ I (..\..\..\common\cs_time.h)(0x68030956)
 I (..\..\..\components\shell\shell.h)(0x68030957)
 I (..\..\..\components\shell\shell_cmd.h)(0x68030957)
 I (..\..\..\components\shell\shell_port.h)(0x68030957)
-I (..\..\..\components\evt\evt.h)(0x68030956)
+I (..\..\..\components\evt\evt.h)(0x68906B9E)
 I (..\..\..\components\evt\evt_timer.h)(0x68030956)
 I (..\..\..\bsp\include\board.h)(0x68030956)
-I (..\..\..\bsp\CST92F4X_EVB\board_cst92f41_evb.h)(0x688B3E6C)
+I (..\..\..\bsp\CST92F4X_EVB\board_cst92f41_evb.h)(0x68906086)
 I (..\..\..\components\mbr\mbr.h)(0x68030956)
 I (..\..\..\components\nvds\nvds.h)(0x68030957)
 I (..\..\..\components\nvds\nvds_tags.h)(0x68030957)
@@ -1403,10 +1403,10 @@ I (..\..\..\components\ble\controller\include\cs_bc.h)(0x68030956)
 I (..\..\..\components\ble\controller\include\cs_bc_hci_h4.h)(0x68030956)
 I (..\..\..\components\ble\controller\include\cs_bc_llt.h)(0x68030956)
 I (..\..\..\components\ble\controller\include\cs_bc_pta.h)(0x68030956)
-I (..\..\..\components\ble\host\include\cs_ble.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble.h)(0x68907626)
 I (..\..\..\components\ble\host\include\cs_ble_gap.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_range.h)(0x68030956)
-I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x68030956)
+I (..\..\..\components\ble\host\include\cs_ble_gatt.h)(0x6890778E)
 I (..\..\..\components\ble\host\include\cs_ble_misc.h)(0x68030956)
 I (..\..\..\components\ble\host\include\cs_ble_error.h)(0x68030956)
 F (..\src\app_24g.h)(0x688DC227)()
@@ -1416,7 +1416,7 @@ I (..\..\..\common\cs.h)(0x68030956)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -1496,7 +1496,7 @@ F (../../../hal/driver/common/drv_isr.c)(0x68030958)(-xc -std=c99 --target=arm-a
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -1576,7 +1576,7 @@ F (../../../hal/driver/common/drv_usart.c)(0x68030958)(-xc -std=c99 --target=arm
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -1656,7 +1656,7 @@ F (../../../hal/driver/common/drv_usart_ex.c)(0x688DDF17)(-xc -std=c99 --target=
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -1736,7 +1736,7 @@ F (../../../hal/driver/common/drv_wdt.c)(0x68030958)(-xc -std=c99 --target=arm-a
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -1816,7 +1816,7 @@ F (../../../hal/driver/common/drv_pmu_timer.c)(0x68030958)(-xc -std=c99 --target
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -1896,7 +1896,7 @@ F (../../../hal/driver/common/drv_cortex.c)(0x68030958)(-xc -std=c99 --target=ar
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -1976,7 +1976,7 @@ F (../../../hal/driver/common/drv_24g.c)(0x688DA4D0)(-xc -std=c99 --target=arm-a
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -2056,7 +2056,7 @@ F (../../../hal/driver/common/drv_aes_hw.c)(0x68030958)(-xc -std=c99 --target=ar
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -2136,7 +2136,7 @@ F (../../../hal/driver/common/drv_gpio.c)(0x68030958)(-xc -std=c99 --target=arm-
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -2216,7 +2216,7 @@ F (../../../hal/driver/common/drv_efuse.c)(0x68030958)(-xc -std=c99 --target=arm
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -2296,13 +2296,13 @@ F (../../../hal/driver/common/drv_sf_base.c)(0x68030958)(-xc -std=c99 --target=a
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 F (../../../hal/driver/common/drv_sf_sys.c)(0x68030958)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/drv_sf_sys.o -MMD)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
@@ -2382,7 +2382,7 @@ F (../../../hal/driver/common/drv_sf.c)(0x68030958)(-xc -std=c99 --target=arm-ar
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
@@ -2462,7 +2462,7 @@ F (../../../hal/driver/common/drv_dma.c)(0x68030958)(-xc -std=c99 --target=arm-a
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -2542,7 +2542,7 @@ F (../../../hal/driver/common/drv_spi.c)(0x68030958)(-xc -std=c99 --target=arm-a
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -2622,7 +2622,7 @@ F (../../../hal/driver/common/drv_i2c.c)(0x68030958)(-xc -std=c99 --target=arm-a
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -2702,7 +2702,7 @@ F (../../../hal/driver/common/drv_rtc.c)(0x68030958)(-xc -std=c99 --target=arm-a
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -2782,7 +2782,7 @@ F (../../../hal/driver/common/drv_radio.c)(0x688C4F46)(-xc -std=c99 --target=arm
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -2862,7 +2862,7 @@ F (../../../hal/driver/common/drv_tim.c)(0x68030958)(-xc -std=c99 --target=arm-a
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -2942,7 +2942,7 @@ F (../../../hal/driver/common/drv_lp_tim.c)(0x68030958)(-xc -std=c99 --target=ar
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -3022,7 +3022,7 @@ F (../../../hal/driver/common/drv_rng.c)(0x68030958)(-xc -std=c99 --target=arm-a
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -3098,11 +3098,11 @@ I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_tim.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_lp_tim.h)(0x68030958)
 I (..\..\..\hal\driver\include\..\chipsea\..\common\drv_rng.h)(0x68030958)
 I (..\..\..\common\cs_time.h)(0x68030956)
-F (../../../hal/driver/chipsea/drv_pinmux.c)(0x68030958)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/drv_pinmux.o -MMD)
+F (../../../hal/driver/chipsea/drv_pinmux.c)(0x6890656B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/drv_pinmux.o -MMD)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -3182,7 +3182,7 @@ F (../../../hal/driver/chipsea/drv_pmu.c)(0x688B4A94)(-xc -std=c99 --target=arm-
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\common\cs.h)(0x68030956)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
@@ -3262,7 +3262,7 @@ F (../../../hal/driver/chipsea/drv_rcc.c)(0x68030958)(-xc -std=c99 --target=arm-
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -3343,7 +3343,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -3423,7 +3423,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -3502,7 +3502,7 @@ F (../../../hal/driver/chipsea/drv_adc.c)(0x68030958)(-xc -std=c99 --target=arm-
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
@@ -3582,7 +3582,7 @@ F (../../../hal/device/chipsea/system.c)(0x68030958)(-xc -std=c99 --target=arm-a
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -3668,7 +3668,7 @@ I (..\..\..\components\unity\unity_internals.h)(0x68030957)
 I (..\..\..\components\unity\unity_config.h)(0x68030957)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\components\shell\shell.h)(0x68030957)
 I (..\..\..\components\shell\shell_cmd.h)(0x68030957)
 I (..\..\..\components\shell\shell_port.h)(0x68030957)
@@ -3710,7 +3710,7 @@ I (..\..\..\components\unity\unity_internals.h)(0x68030957)
 I (..\..\..\components\unity\unity_config.h)(0x68030957)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\components\shell\shell.h)(0x68030957)
 I (..\..\..\components\shell\shell_cmd.h)(0x68030957)
 I (..\..\..\components\shell\shell_port.h)(0x68030957)
@@ -3749,7 +3749,7 @@ F (../../../components/ble/common/cs_ble_mem_heap.c)(0x68030956)(-xc -std=c99 --
 I (..\src\sdk_config.h)(0x688B3B74)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\components\ble\common\cs_ble_mem.h)(0x68030956)
 I (..\..\..\common\cs.h)(0x68030956)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
@@ -3799,7 +3799,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -3890,7 +3890,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -3982,7 +3982,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -4071,7 +4071,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -4162,7 +4162,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -4253,7 +4253,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -4345,7 +4345,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -4437,7 +4437,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -4527,7 +4527,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -4608,7 +4608,7 @@ I (..\..\..\rtos\FreeRTOS\Source\Include\portable.h)(0x68030958)
 I (..\..\..\rtos\FreeRTOS\Source\Include\deprecated_definitions.h)(0x68030958)
 I (..\..\..\rtos\FreeRTOS\Source\Portable\chipsea\GCC\portmacro.h)(0x688C1175)
 I (..\..\..\rtos\FreeRTOS\Source\Include\mpu_wrappers.h)(0x68030958)
-F (../../../rtos/FreeRTOS/CMSIS/Source/cmsis_os2.c)(0x68030958)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/cmsis_os2.o -MMD)
+F (../../../rtos/FreeRTOS/CMSIS/Source/cmsis_os2.c)(0x68906860)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/cmsis_os2.o -MMD)
 I (..\..\..\rtos\include\cmsis_os2.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\cmsis_compiler.h)(0x68030957)
 I (..\..\..\hal\CMSIS\Core\Include\cmsis_armclang.h)(0x68030957)
@@ -4619,7 +4619,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -4714,7 +4714,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -4810,7 +4810,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -4900,7 +4900,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -4984,7 +4984,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -5071,7 +5071,7 @@ F (../../../common/cs_libc_retarget.c)(0x68030956)(-xc -std=c99 --target=arm-arm
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -5110,7 +5110,7 @@ I (..\..\..\common\cs.h)(0x68030956)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -5161,7 +5161,7 @@ I (..\..\..\common\cs_utils.h)(0x68030956)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -5197,7 +5197,7 @@ I (..\..\..\common\cs_utils.h)(0x68030956)
 I (..\..\..\hal\device\include\cs_device.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\device\include\..\chipsea\cst92f41.h)(0x68030958)
 I (..\..\..\hal\CMSIS\Core\Include\core_cm4.h)(0x68030957)
 I (..\..\..\hal\device\include\..\chipsea\..\common\common_reg.h)(0x68030958)
@@ -5231,7 +5231,7 @@ I (..\..\..\common\cs_log.h)(0x688D88FE)
 F (../../../common/cs_log.c)(0x68030956)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=none -mfloat-abi=soft -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__MICROLIB -gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC/port.c -I ../../../bsp/include -I ../../../bsp/CST92F4X_EVB -I ../../../common -I ../../../components/shell -I ../../../components/unity -I ../../../components/ble/include -I ../../../components/ble/controller/include -I ../../../components/ble/host/include -I ../../../components/ble/mesh/include -I ../../../components/ble/controller -I ../../../components/ble/controller/include -I ../../../components/ble/controller/main -I ../../../components/ble/controller/cc -I ../../../components/ble/controller/llp -I ../../../components/ble/controller/dbg -I ../../../components/ble/controller/ecc_p256 -I ../../../components/ble/controller/co -I ../../../components/ble/controller/rf -I ../../../components/ble/controller/bb -I ../../../components/ble/controller/bb/reg -I ../../../components/ble/controller/ll -I ../../../components/ble/controller/hci -I ../../../components/ble/controller/llt -I ../../../components/ble/common -I ../../../components/nvds -I ../../../components/evt -I ../../../components/crypto -I ../../../components/crypto/micro_ecc -I ../../../components/pm -I ../../../components/mbr -I ../../../components/trace -I ../../../hal/CMSIS/Core/Include -I ../../../hal/driver/include -I ../../../hal/device/include -I ../src -I ../../common -I ../../common/cs_ancs -I ../../common/cs_dfu -I ../../common/cs_gap_dis_batt -I ../../common/cs_hid_media -I ../../common/cs_tspp -I ../../../rtos/include -I ../../../rtos/FreeRTOS/Source/Include -I ../../../rtos/FreeRTOS/CMSIS/Config/ARMCM -I ../../../rtos/FreeRTOS/CMSIS/Include -I ../../../rtos/FreeRTOS/CMSIS/Include1 -I ../../../rtos/FreeRTOS/Source/Portable/chipsea/GCC -I ../../../include -I ../src-D__UVISION_VERSION="542" -DCONFIG_CST92F41="1" -DCONFIG_LIB_PRESET_BLE_1PERIPHERAL -DCONFIG_AUTOCONF_PRESET -D_start="main"-o ./objects/cs_log.o -MMD)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\common\cs_log.h)(0x688D88FE)
 I (..\..\..\components\shell\shell.h)(0x68030957)
 I (..\..\..\components\shell\shell_cmd.h)(0x68030957)
@@ -5274,7 +5274,7 @@ I (..\..\..\hal\driver\include\cs_driver.h)(0x68030958)
 I (..\..\..\hal\driver\include\RTE_cst92f4x.h)(0x68030958)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\hal\driver\include\..\..\device\chipsea\rom_lib\current\config\RTE_cst92f41.h)(0x688DCF82)
 I (..\..\..\hal\driver\include\..\chipsea\driver_cst92f41.h)(0x68030958)
 I (..\..\..\common\cs_error.h)(0x68030956)
@@ -5360,7 +5360,7 @@ F (..\..\..\chipsea_adapter\fault_handler\adapter.c)(0x68030956)(-xc -std=c99 --
 I (..\src\sdk_config.h)(0x688B3B74)
 I (..\..\..\include\features.h)(0x68030958)
 I (..\..\..\hal\device\include\autoconf_preset.h)(0x68030958)
-I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x688DD634)
+I (..\..\..\hal\device\include\..\chipsea\rom_lib\current\config\autoconf_preset_ble_1peripheral.h)(0x68905ECA)
 I (..\..\..\common\cs_log.h)(0x688D88FE)
 I (..\..\..\hal\CMSIS\Core\Include\cmsis_compiler.h)(0x68030957)
 I (..\..\..\hal\CMSIS\Core\Include\cmsis_armclang.h)(0x68030957)

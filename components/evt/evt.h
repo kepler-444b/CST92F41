@@ -46,18 +46,15 @@
 #ifndef __EVT_H
 #define __EVT_H
 
-
 /*******************************************************************************
  * INCLUDES
  */
 #include "features.h"
 #include "evt_timer.h"
 
-#ifdef  __cplusplus
-extern "C"
-{
+#ifdef __cplusplus
+extern "C" {
 #endif
-
 
 /*******************************************************************************
  * MACROS
@@ -73,15 +70,15 @@ typedef void (*evt_callback_t)(void);
 
 /// event type
 typedef enum {
-    EVT_TYPE_RESERVE,                       ///< Reserved
-    EVT_TYPE_BLE,                           ///< Event type for BLE
-    EVT_TYPE_TIMER,                         ///< Event type for Timer
-    EVT_TYPE_SHELL,                         ///< Event type for Shell
+    EVT_TYPE_RESERVE, ///< Reserved
+    EVT_TYPE_BLE,     ///< Event type for BLE
+    EVT_TYPE_TIMER,   ///< Event type for Timer
+    EVT_TYPE_SHELL,   ///< Event type for Shell
 
-    EVT_TYPE_USR_FIRST = 16,                ///< Event type user first
-    EVT_TYPE_USR_LAST = 31,                 ///< Event type user last
+    EVT_TYPE_USR_FIRST = 16, ///< Event type user first
+    EVT_TYPE_USR_LAST  = 31, ///< Event type user last
 
-    EVT_TYPE_NUM,                           ///< Event number
+    EVT_TYPE_NUM, ///< Event number
 } evt_type_t;
 
 /*******************************************************************************
@@ -193,11 +190,10 @@ void evt_schedule(void);
  */
 uint32_t evt_schedule_once(void);
 
-#ifdef  __cplusplus
+#ifdef __cplusplus
 }
 #endif
 
-#endif  /* __EVT_H */
+#endif /* __EVT_H */
 
 /** @} */
-

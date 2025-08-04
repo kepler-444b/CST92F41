@@ -38,7 +38,6 @@
  * @{
  */
 
-
 /*******************************************************************************
  * INCLUDES
  */
@@ -48,27 +47,21 @@
 #include "cs_device.h"
 #include "cs_driver.h"
 
-
 /*******************************************************************************
  * MACROS
  */
-
 
 /*******************************************************************************
  * TYPEDEFS
  */
 
-
 /*******************************************************************************
  * CONST & VARIABLES
  */
 
-
 /*******************************************************************************
  * LOCAL FUNCTIONS
  */
-
-
 
 /*******************************************************************************
  * PUBLIC FUNCTIONS
@@ -88,7 +81,7 @@ void drv_pin_mux_set(uint8_t pin, pin_func_t func)
 
     CS_ASSERT(pin < DRV_PIN_NUM);
 
-    if (func.pin_func < PINMUX_COMMON_PERIPHERAL_CFG) {     // common peripheral
+    if (func.pin_func < PINMUX_COMMON_PERIPHERAL_CFG) { // common peripheral
         i = pin / 4;
         p = (pin % 4) * 8;
 
@@ -123,8 +116,6 @@ void drv_pin_init(const pin_config_t *pin_cfg, uint32_t pin_cfg_num)
     }
 }
 
-
-#endif  /* RTE_PIN */
-
+#endif /* RTE_PIN */
 
 /** @} */

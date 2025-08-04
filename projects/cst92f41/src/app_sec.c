@@ -50,8 +50,12 @@
  * MACROS
  */
 #define log_debug CS_LOG_DEBUG
-#define hexdump(d, l) do{for(int i=0;i<l;i++)log_debug("%02X ", ((uint8_t*)d)[i]);log_debug("\n");}while(0);
-#define PERIPHERAL_IOCAP  CS_BLE_SMP_IOCAP_NONE
+#define hexdump(d, l)                                                      \
+    do {                                                                   \
+        for (int i = 0; i < l; i++) log_debug("%02X ", ((uint8_t *)d)[i]); \
+        log_debug("\n");                                                   \
+    } while (0);
+#define PERIPHERAL_IOCAP CS_BLE_SMP_IOCAP_NONE
 
 /*********************************************************************
  * LOCAL VARIABLES
@@ -73,11 +77,11 @@
  */
 static void app_sec_event_cb(uint16_t evt_id, const cs_ble_evt_t *evt)
 {
-    if (evt_id == CS_GAP_EVT_CONNECTED) {
+    if (evt_id == CS_GAP_EVT_CONNECTED) { // 连接事件
         log_debug("CS_GAP_EVT_CONNECTED(%d): %d\n", evt->gap.conn_idx, evt->gap.connected.adv_idx);
-    } else if (evt_id == CS_GAP_EVT_DISCONNECTED) {
+    } else if (evt_id == CS_GAP_EVT_DISCONNECTED) { // 断开事件
         log_debug("CS_GAP_EVT_DISCONNECTED 0x%02X\n", evt->gap.disconnected.reason);
-    } else if (evt_id == CS_GAP_EVT_PIN_REQUEST) {
+    } else if (evt_id == CS_GAP_EVT_PIN_REQUEST) { // PIN 码请求
         log_debug("CS_GAP_EVT_PIN_REQUEST:%d\n", evt->gap.pin_request.type);
         cs_smp_pin_t pin_info;
         switch (evt->gap.pin_request.type) {
@@ -91,11 +95,11 @@ static void app_sec_event_cb(uint16_t evt_id, const cs_ble_evt_t *evt)
                 break;
             }
         }
-    } else if (evt_id == CS_GAP_EVT_BONDED) {
+    } else if (evt_id == CS_GAP_EVT_BONDED) { // 绑定完成事件
         log_debug("CS_GAP_EVT_BONDED: 0x%04X\n", evt->gap.bonded.status);
-    } else if (evt_id == CS_GAP_EVT_BOND_INFO_REQUEST) {
+    } else if (evt_id == CS_GAP_EVT_BOND_INFO_REQUEST) { // 绑定信息请求
         log_debug("CS_GAP_EVT_BOND_INFO_REQUEST:%s\n", evt->gap.bond_info_request.type == CS_BOND_INFO_LTK ? "LTK" : "IRK");
-        cs_bond_info_t bond_info = { evt->gap.bond_info_request.type };
+        cs_bond_info_t bond_info = {evt->gap.bond_info_request.type};
         if (evt->gap.bond_info_request.type == CS_BOND_INFO_LTK) {
             memcpy(bond_info.enc_info.ltk, (uint8_t *)"LTKLTKLTKLTKLTK", 16);
             memcpy(bond_info.enc_info.random, (uint8_t *)"_RANDOM_", 8);
@@ -107,21 +111,21 @@ static void app_sec_event_cb(uint16_t evt_id, const cs_ble_evt_t *evt)
             memcpy(&bond_info.id_info.id_addr, addr, sizeof(addr));
         }
         cs_gap_bond_info_response(evt->gap.conn_idx, &bond_info);
-    } else if (evt_id == CS_GAP_EVT_LTK_REQUEST) {
+    } else if (evt_id == CS_GAP_EVT_LTK_REQUEST) { // LTK请求事件(长期密钥)
         log_debug("CS_GAP_EVT_LTK_REQUEST\n");
         cs_gap_ltk_response(evt->gap.conn_idx, (uint8_t *)"LTKLTKLTKLTKLTK");
-    } else if (evt_id == CS_GAP_EVT_PAIRING_REQUEST) {
+    } else if (evt_id == CS_GAP_EVT_PAIRING_REQUEST) { // 配对请求事件
         log_debug("CS_GAP_EVT_PAIRING_REQUEST\n");
         cs_pairing_param_t response;
-        response.authreq.bond_flags = 1;
-        response.authreq.mitm = 1;
-        response.authreq.sc = 0;
-        response.oob_data_flag = 0;
+        response.authreq.bond_flags         = 1;
+        response.authreq.mitm               = 1;
+        response.authreq.sc                 = 0;
+        response.oob_data_flag              = 0;
         response.initiator_key_distribution = CS_BLE_SMP_DIST_BIT_ENC_KEY | CS_BLE_SMP_DIST_BIT_ID_KEY;
         response.responder_key_distribution = CS_BLE_SMP_DIST_BIT_ENC_KEY;
-        response.io_capability = PERIPHERAL_IOCAP;
+        response.io_capability              = PERIPHERAL_IOCAP;
         cs_gap_pairing_response(evt->gap.conn_idx, &response);
-    } else if (evt_id == CS_GAP_EVT_BOND_INFO) {
+    } else if (evt_id == CS_GAP_EVT_BOND_INFO) { // 绑定信息接收事件
         log_debug("CS_GAP_EVT_BOND_INFO\n");
         if (evt->gap.bond_info.type == CS_BOND_INFO_LTK) {
             log_debug("Recv LTK: ");
@@ -135,7 +139,7 @@ static void app_sec_event_cb(uint16_t evt_id, const cs_ble_evt_t *evt)
             log_debug("Recv ID: %01X ", evt->gap.bond_info.id_info.id_addr.addr_type);
             hexdump(&evt->gap.bond_info.id_info.id_addr.addr, 6);
         }
-    } else if (evt_id == CS_GAP_EVT_ENCRYPT) {
+    } else if (evt_id == CS_GAP_EVT_ENCRYPT) { // 加密状态事件
         log_debug("CS_GAP_EVT_ENCRYPT: %d\n", evt->gap.encrypt.encrypted);
     } else {
     }

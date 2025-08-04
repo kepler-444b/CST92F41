@@ -49,42 +49,42 @@
  */
 
 /// UUID 16bit 长度值
-#define CS_UUID_16BIT    2
+#define CS_UUID_16BIT 2
 /// UUID 128bit 长度值
-#define CS_UUID_128BIT  16
+#define CS_UUID_128BIT 16
 
 // GATT
 
 /// CS_BLE_GATT_EVENTS
 enum CS_BLE_GATT_EVENTS {
     /// Notification 或 Write Command发送完成事件，参考 @ref cs_gatt_evt_tx_complete_t
-    CS_BLE_GATT_EVT_TX_COMPLETE              = CS_BLE_GATT_EVTS_BASE + 0,
+    CS_BLE_GATT_EVT_TX_COMPLETE = CS_BLE_GATT_EVTS_BASE + 0,
     /// MTU 更新完成事件，参考 @ref cs_gatt_evt_mtu_exchanged_t
-    CS_BLE_GATT_EVT_MTU_EXCHANGED            = CS_BLE_GATT_EVTS_BASE + 1,
+    CS_BLE_GATT_EVT_MTU_EXCHANGED = CS_BLE_GATT_EVTS_BASE + 1,
     /// 请求超时事件，参考 @ref cs_gatt_evt_timeout_t
-    CS_BLE_GATT_EVT_TIMEOUT                  = CS_BLE_GATT_EVTS_BASE + 2,
+    CS_BLE_GATT_EVT_TIMEOUT = CS_BLE_GATT_EVTS_BASE + 2,
     /// Indication响应事件，参考 @ref cs_gatts_evt_indicate_cfm_t
-    CS_GATTS_EVT_INDICATE_CFM            = CS_BLE_GATT_EVTS_BASE + 3,
+    CS_GATTS_EVT_INDICATE_CFM = CS_BLE_GATT_EVTS_BASE + 3,
     /// 读请求事件，参考 @ref cs_gatts_evt_read_req_t
-    CS_GATTS_EVT_READ_REQ                = CS_BLE_GATT_EVTS_BASE + 4,
+    CS_GATTS_EVT_READ_REQ = CS_BLE_GATT_EVTS_BASE + 4,
     /// 写请求事件，参考 @ref cs_gatts_evt_write_req_t
-    CS_GATTS_EVT_WRITE_REQ               = CS_BLE_GATT_EVTS_BASE + 5,
+    CS_GATTS_EVT_WRITE_REQ = CS_BLE_GATT_EVTS_BASE + 5,
     /// 服务发现完成事件，参考 @ref cs_gattc_evt_find_serv_rsp_t
-    CS_GATTC_EVT_FIND_SERV_RSP           = CS_BLE_GATT_EVTS_BASE + 6,
+    CS_GATTC_EVT_FIND_SERV_RSP = CS_BLE_GATT_EVTS_BASE + 6,
     /// 服务发现完成事件，参考 @ref cs_gattc_evt_find_serv_by_uuid_rsp_t
-    CS_GATTC_EVT_FIND_SERV_BY_UUID_RSP   = CS_BLE_GATT_EVTS_BASE + 7,
+    CS_GATTC_EVT_FIND_SERV_BY_UUID_RSP = CS_BLE_GATT_EVTS_BASE + 7,
     /// 特征发现完成事件，参考 @ref cs_gattc_evt_find_char_rsp_t
-    CS_GATTC_EVT_FIND_CHAR_RSP           = CS_BLE_GATT_EVTS_BASE + 8,
+    CS_GATTC_EVT_FIND_CHAR_RSP = CS_BLE_GATT_EVTS_BASE + 8,
     /// 描述发现完成事件，参考 @ref cs_gattc_evt_find_desc_rsp_t
-    CS_GATTC_EVT_FIND_DESC_RSP           = CS_BLE_GATT_EVTS_BASE + 9,
+    CS_GATTC_EVT_FIND_DESC_RSP = CS_BLE_GATT_EVTS_BASE + 9,
     /// 读完成事件，参考 @ref cs_gattc_evt_read_rsp_t
-    CS_GATTC_EVT_READ_RSP                = CS_BLE_GATT_EVTS_BASE + 10,
+    CS_GATTC_EVT_READ_RSP = CS_BLE_GATT_EVTS_BASE + 10,
     /// 读完成事件，参考 @ref cs_gattc_evt_read_by_uuid_rsp_t
-    CS_GATTC_EVT_READ_BY_UUID_RSP        = CS_BLE_GATT_EVTS_BASE + 11,
+    CS_GATTC_EVT_READ_BY_UUID_RSP = CS_BLE_GATT_EVTS_BASE + 11,
     /// 写完成事件，参考 @ref cs_gattc_evt_write_rsp_t
-    CS_GATTC_EVT_WRITE_RSP               = CS_BLE_GATT_EVTS_BASE + 12,
+    CS_GATTC_EVT_WRITE_RSP = CS_BLE_GATT_EVTS_BASE + 12,
     /// notification或indication接收事件，参考 @ref cs_gattc_evt_hvx_ind_t
-    CS_GATTC_EVT_HVX_IND                 = CS_BLE_GATT_EVTS_BASE + 13,
+    CS_GATTC_EVT_HVX_IND = CS_BLE_GATT_EVTS_BASE + 13,
 };
 
 /// att属性
@@ -115,86 +115,86 @@ typedef struct {
 
 /// CS_BLE_GATT_HVX_TYPE
 enum cs_gatt_hvx_type {
-    CS_HANDLE_VALUE_NTF,  ///< notification 类型
-    CS_HANDLE_VALUE_IND,  ///< indication 类型
+    CS_HANDLE_VALUE_NTF, ///< notification 类型
+    CS_HANDLE_VALUE_IND, ///< indication 类型
 };
 
 /// GATT写类型
 enum cs_gattc_write_type {
-    CS_GATTC_WRITE_REQ,  ///< write request 类型
-    CS_GATTC_WRITE_CMD,  ///< write no response 类型
+    CS_GATTC_WRITE_REQ, ///< write request 类型
+    CS_GATTC_WRITE_CMD, ///< write no response 类型
 };
 
 /// gatt handle value notify/indicate结构体
 typedef struct {
-    uint8_t type;           ///< CS_HANDLE_VALUE_NTF or CS_HANDLE_VALUE_IND, ref @ref cs_gatt_hvx_type
-    uint16_t att_hdl;       ///< att handle
-    const uint8_t *data;    ///< 数据，长度不应大于当前MTU值
-    int len;                ///< 数据长度
-    uint16_t id;             ///< 与CS_GATT_EVT_TX_COMPLETE事件中的id值对应，用于发送完成的消息
+    uint8_t type;        ///< CS_HANDLE_VALUE_NTF or CS_HANDLE_VALUE_IND, ref @ref cs_gatt_hvx_type
+    uint16_t att_hdl;    ///< att handle
+    const uint8_t *data; ///< 数据，长度不应大于当前MTU值
+    int len;             ///< 数据长度
+    uint16_t id;         ///< 与CS_GATT_EVT_TX_COMPLETE事件中的id值对应，用于发送完成的消息
 } cs_gatts_hvx_t;
 
 /// Event structure for @ref CS_BLE_GATT_EVT_TX_COMPLETE.
 typedef struct {
-    uint16_t id;             ///< Notification 或 Write Command消息已经发送完成时数据对应id
+    uint16_t id; ///< Notification 或 Write Command消息已经发送完成时数据对应id
 } cs_gatt_evt_tx_complete_t;
 
 /// Event structure for @ref CS_BLE_GATT_EVT_MTU_EXCHANGED.
 typedef struct {
-    uint16_t mtu;           ///< 更新后的MTU值
+    uint16_t mtu; ///< 更新后的MTU值
 } cs_gatt_evt_mtu_exchanged_t;
 
 /// Event structure for @ref CS_BLE_GATT_EVT_TIMEOUT.
 typedef struct {
-    uint8_t att_opcode;     ///< 超时的指令
+    uint8_t att_opcode; ///< 超时的指令
 } cs_gatt_evt_timeout_t;
 
 /// Event structure for @ref CS_GATTS_EVT_INDICATE_CFM.
 typedef struct {
-    uint16_t att_hdl;       ///< att handle
+    uint16_t att_hdl; ///< att handle
 } cs_gatts_evt_indicate_cfm_t;
 
 /// Event structure for @ref CS_GATTS_EVT_READ_REQ.
 typedef struct {
-    uint16_t att_hdl;       ///< att handle
-    uint16_t offset;        ///< data offset
+    uint16_t att_hdl; ///< att handle
+    uint16_t offset;  ///< data offset
 } cs_gatts_evt_read_req_t;
 
 /// Event structure for @ref CS_GATTS_EVT_WRITE_REQ.
 typedef struct {
-    uint16_t att_hdl;       ///< att handle
-    const uint8_t *data;    ///< data
-    uint16_t len;           ///< data length
+    uint16_t att_hdl;    ///< att handle
+    const uint8_t *data; ///< data
+    uint16_t len;        ///< data length
 } cs_gatts_evt_write_req_t;
 
 /// Gatt Service结构体
 typedef struct {
-    uint16_t start_hdl;     ///< start handle
-    uint16_t end_hdl;       ///< end handle
-    const uint8_t *uuid;    ///< service UUID
-    uint8_t uuid_len;       ///< length of UUID
+    uint16_t start_hdl;  ///< start handle
+    uint16_t end_hdl;    ///< end handle
+    const uint8_t *uuid; ///< service UUID
+    uint8_t uuid_len;    ///< length of UUID
 } cs_gatt_service_t;
 
 /// Event structure for @ref CS_GATTC_EVT_FIND_SERV_RSP.
 typedef struct {
-    uint32_t status;                ///< 状态
-    cs_gatt_service_t *service;     ///< gatt service 数组
-    uint8_t service_num;            ///< gatt service 数量
+    uint32_t status;            ///< 状态
+    cs_gatt_service_t *service; ///< gatt service 数组
+    uint8_t service_num;        ///< gatt service 数量
 } cs_gattc_evt_find_serv_rsp_t;
 
 /// Event structure for @ref CS_GATTC_EVT_FIND_SERV_BY_UUID_RSP.
 typedef struct {
-    uint32_t status;                ///< 状态
-    cs_gatt_service_t *service;     ///< gatt service 数组
-    uint8_t service_num;            ///< gatt service 数量
+    uint32_t status;            ///< 状态
+    cs_gatt_service_t *service; ///< gatt service 数组
+    uint8_t service_num;        ///< gatt service 数量
 } cs_gattc_evt_find_serv_by_uuid_rsp_t;
 
 /// Gatt Service结构体
 typedef struct {
-    uint16_t value_hdl;     ///< value handle
-    uint8_t properties;     ///< properties
-    const uint8_t *uuid;    ///< char UUID
-    uint8_t uuid_len;       ///< length of UUID
+    uint16_t value_hdl;  ///< value handle
+    uint8_t properties;  ///< properties
+    const uint8_t *uuid; ///< char UUID
+    uint8_t uuid_len;    ///< length of UUID
 } cs_gatt_characteristic_t;
 
 /// Event structure for @ref CS_GATTC_EVT_FIND_CHAR_RSP.
@@ -206,66 +206,66 @@ typedef struct {
 
 /// Gatt Service结构体
 typedef struct {
-    uint16_t att_hdl;       ///< att handle
-    const uint8_t *uuid;    ///< char UUID
-    uint8_t uuid_len;       ///< length of UUID
+    uint16_t att_hdl;    ///< att handle
+    const uint8_t *uuid; ///< char UUID
+    uint8_t uuid_len;    ///< length of UUID
 } cs_gatt_descriptor_t;
 
 /// Event structure for @ref CS_GATTC_EVT_FIND_DESC_RSP.
 typedef struct {
-    uint32_t status;                    ///< 状态
-    cs_gatt_descriptor_t *descriptor;   ///< gatt descriptor 数组
-    uint8_t desc_num;                   ///< gatt descriptor 数量
+    uint32_t status;                  ///< 状态
+    cs_gatt_descriptor_t *descriptor; ///< gatt descriptor 数组
+    uint8_t desc_num;                 ///< gatt descriptor 数量
 } cs_gattc_evt_find_desc_rsp_t;
 
 /// Event structure for @ref CS_GATTC_EVT_READ_RSP.
 typedef struct {
-    uint32_t status;        ///< 状态
-    uint16_t att_hdl;       ///< att handle
-    uint16_t offset;        ///< read offset
-    const uint8_t *data;    ///< data
-    uint16_t len;           ///< data length
+    uint32_t status;     ///< 状态
+    uint16_t att_hdl;    ///< att handle
+    uint16_t offset;     ///< read offset
+    const uint8_t *data; ///< data
+    uint16_t len;        ///< data length
 } cs_gattc_evt_read_rsp_t;
 
 /// Event structure for @ref CS_GATTC_EVT_READ_BY_UUID_RSP.
 typedef struct {
-    uint32_t status;        ///< 状态
-    uint16_t att_hdl;       ///< att handle
-    const uint8_t *data;    ///< data
-    uint16_t len;           ///< data length
+    uint32_t status;     ///< 状态
+    uint16_t att_hdl;    ///< att handle
+    const uint8_t *data; ///< data
+    uint16_t len;        ///< data length
 } cs_gattc_evt_read_by_uuid_rsp_t;
 
 /// Event structure for @ref CS_GATTC_EVT_WRITE_RSP.
 typedef struct {
-    uint32_t status;        ///< 写入状态
+    uint32_t status; ///< 写入状态
 } cs_gattc_evt_write_rsp_t;
 
 /// Event structure for @ref CS_GATTC_EVT_HVX_IND.
 typedef struct {
-    uint8_t type;           ///< @ref cs_gatt_hvx_type
-    uint16_t att_hdl;       ///< att handle
-    const uint8_t *data;    ///< data
-    uint16_t len;           ///< data length
+    uint8_t type;        ///< @ref cs_gatt_hvx_type
+    uint16_t att_hdl;    ///< att handle
+    const uint8_t *data; ///< data
+    uint16_t len;        ///< data length
 } cs_gattc_evt_hvx_ind_t;
 
 /// GATT 消息结构体
 typedef struct {
     uint8_t conn_idx; ///< 连接 index
     union {
-        cs_gatt_evt_tx_complete_t             tx_complete;            ///< Notify 或 Write Cmd发送完成事件参数
-        cs_gatt_evt_mtu_exchanged_t           mtu_exchanged;          ///< MTU 更新完成事件参数
-        cs_gatt_evt_timeout_t                 timeout;                ///< 请求超时事件参数
-        cs_gatts_evt_indicate_cfm_t           indicate_cfm;           ///< Indication响应事件参数
-        cs_gatts_evt_read_req_t               read_req;               ///< 读请求事件参数
-        cs_gatts_evt_write_req_t              write_req;              ///< 写请求事件参数
-        cs_gattc_evt_find_serv_rsp_t          find_serv_rsp;          ///< 服务发现完成事件参数
-        cs_gattc_evt_find_serv_by_uuid_rsp_t  find_serv_by_uuid_rsp;  ///< 服务发现完成事件参数
-        cs_gattc_evt_find_char_rsp_t          find_char_rsp;          ///< 特征发现完成事件参数
-        cs_gattc_evt_find_desc_rsp_t          find_desc_rsp;          ///< 描述发现完成事件参数
-        cs_gattc_evt_read_rsp_t               read_rsp;               ///< 读完成事件参数
-        cs_gattc_evt_read_by_uuid_rsp_t       read_by_uuid_rsp;       ///< 读完成事件参数
-        cs_gattc_evt_write_rsp_t              write_rsp;              ///< 写完成事件参数
-        cs_gattc_evt_hvx_ind_t                hvx_ind;                ///< notification或indication接收事件参数
+        cs_gatt_evt_tx_complete_t tx_complete;                      ///< Notify 或 Write Cmd发送完成事件参数
+        cs_gatt_evt_mtu_exchanged_t mtu_exchanged;                  ///< MTU 更新完成事件参数
+        cs_gatt_evt_timeout_t timeout;                              ///< 请求超时事件参数
+        cs_gatts_evt_indicate_cfm_t indicate_cfm;                   ///< Indication响应事件参数
+        cs_gatts_evt_read_req_t read_req;                           ///< 读请求事件参数
+        cs_gatts_evt_write_req_t write_req;                         ///< 写请求事件参数
+        cs_gattc_evt_find_serv_rsp_t find_serv_rsp;                 ///< 服务发现完成事件参数
+        cs_gattc_evt_find_serv_by_uuid_rsp_t find_serv_by_uuid_rsp; ///< 服务发现完成事件参数
+        cs_gattc_evt_find_char_rsp_t find_char_rsp;                 ///< 特征发现完成事件参数
+        cs_gattc_evt_find_desc_rsp_t find_desc_rsp;                 ///< 描述发现完成事件参数
+        cs_gattc_evt_read_rsp_t read_rsp;                           ///< 读完成事件参数
+        cs_gattc_evt_read_by_uuid_rsp_t read_by_uuid_rsp;           ///< 读完成事件参数
+        cs_gattc_evt_write_rsp_t write_rsp;                         ///< 写完成事件参数
+        cs_gattc_evt_hvx_ind_t hvx_ind;                             ///< notification或indication接收事件参数
     };
 } cs_ble_gatt_evt_t;
 
